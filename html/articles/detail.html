@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artikel Detail — Arya Dwi Putra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] }, colors: { brand: { dark: '#080808', muted: '#5a5a5a', border: '#d8d8d8' }, accent: { purple: '#7a3dff', pink: '#ed52cb', blue: '#3b89ff', orange: '#ff6b00', green: '#00d722' } }, boxShadow: { soft: '0 2px 4px rgba(0,0,0,0.02), 0 10px 30px rgba(0,0,0,0.04)', 'soft-hover': '0 4px 12px rgba(0,0,0,0.05), 0 20px 40px rgba(0,0,0,0.08)' }, borderRadius: { button: '4px', card: '8px' } } } }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #080808; -webkit-font-smoothing: antialiased; } 
+        *:focus-visible { outline: 2px solid #7a3dff; outline-offset: 2px; }
+        
+        /* Hide scrollbar for clean horizontal layout inside sidebar if needed */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="pb-20 md:pb-0">
+
+    <!-- READING PROGRESS BAR (STICKY TOP) -->
+    <div id="progress-container" class="fixed top-0 left-0 w-full h-1 bg-gray-100 z-[60] md:top-16">
+        <div id="progress-bar" class="h-full bg-accent-purple w-0 transition-all duration-700"></div>
+    </div>
+
+    <!-- NAVBAR DESKTOP -->
+    <header class="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-brand-border hidden md:block">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="../index.html" class="text-base font-semibold tracking-tight text-brand-dark hover:opacity-80 transition-opacity">arya<span class="text-accent-purple">dwiputra</span></a>
+            <nav class="flex items-center space-x-8">
+                <a href="../index.html" class="text-sm font-medium text-brand-muted hover:text-brand-dark transition-colors">Home</a>
+                <a href="../portfolio/index.html" class="text-sm font-medium text-brand-muted hover:text-brand-dark transition-colors">Portfolio</a>
+                <a href="./index.html" class="text-sm font-medium text-brand-dark hover:text-accent-purple transition-colors">Artikel</a>
+                <a href="../about/index.html" class="text-sm font-medium text-brand-muted hover:text-brand-dark transition-colors">Tentang</a>
+                <a href="../contact/index.html" class="text-sm font-medium text-brand-muted hover:text-brand-dark transition-colors">Kontak</a>
+            </nav>
+            <a href="../contact/index.html" class="inline-flex items-center justify-center px-4 py-2 bg-brand-dark text-white text-sm font-medium rounded-button hover:bg-opacity-90 transition-all shadow-soft">Let's Talk</a>
+        </div>
+    </header>
+
+    <!-- BOTTOM BAR MOBILE -->
+    <nav class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-brand-border px-4 py-2.5 md:hidden shadow-[0_-4px_12px_rgba(0,0,0,0.03)]">
+        <div class="grid grid-cols-4 justify-items-center items-center">
+            <a href="../index.html" class="flex flex-col items-center space-y-1 text-brand-muted hover:text-brand-dark"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg><span class="text-[10px] font-medium tracking-wide">Home</span></a>
+            <a href="../portfolio/index.html" class="flex flex-col items-center space-y-1 text-brand-muted hover:text-brand-dark"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg><span class="text-[10px] font-medium tracking-wide">Portfolio</span></a>
+            <a href="./index.html" class="flex flex-col items-center space-y-1 text-brand-dark"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg><span class="text-[10px] font-medium tracking-wide">Artikel</span></a>
+            <a href="../contact/index.html" class="flex flex-col items-center space-y-1 text-brand-muted hover:text-brand-dark"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg><span class="text-[10px] font-medium tracking-wide">Kontak</span></a>
+        </div>
+    </nav>
+
+    <!-- ========================================== -->
+    <!-- REVAMPED MAIN CONTENT SECTIONS             -->
+    <!-- ========================================== -->
+    <main class="bg-white">
+        <!-- 1. EDITORIAL ARTICLE HERO HEADER -->
+        <header class="border-b border-brand-border bg-white pt-10 pb-12 md:py-16">
+            <div class="max-w-4xl mx-auto px-6">
+                <!-- Breadcrumb -->
+                <nav class="text-[11px] font-medium uppercase tracking-widest text-brand-muted flex items-center gap-2 mb-6">
+                    <a href="../index.html" class="hover:text-brand-dark transition-colors">Home</a> 
+                    <span class="text-brand-border">/</span> 
+                    <a href="./index.html" class="hover:text-brand-dark transition-colors">Artikel</a> 
+                    <span class="text-brand-border">/</span> 
+                    <span class="text-brand-dark">Detail</span>
+                </nav>
+
+                <!-- Article Core Meta -->
+                <div class="space-y-5">
+                    <span class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-accent-purple bg-accent-purple/5 px-2.5 py-1 rounded">
+                        <span class="w-1.5 h-1.5 rounded-full bg-accent-purple"></span> Laravel Architecture
+                    </span>
+                    <h1 class="text-3xl md:text-5xl lg:text-6xl font-semibold tracking-tight text-brand-dark leading-[1.15]">
+                        Merapikan Fondasi Laravel Sebelum Trafik Bertambah
+                    </h1>
+                    
+                    <!-- Author & Info Row -->
+                    <div class="flex items-center gap-4 pt-2 text-xs border-t border-brand-border/60 mt-6 pt-5">
+                        <div class="w-8 h-8 rounded-full bg-gray-100 border border-brand-border flex items-center justify-center font-mono font-bold text-brand-dark">
+                            AD
+                        </div>
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-x-4 gap-y-0.5 text-brand-muted">
+                            <span class="font-medium text-brand-dark">Arya Dwi Putra</span>
+                            <span class="hidden sm:inline text-brand-border">|</span>
+                            <time datetime="2026-05-12">12 Mei 2026</time>
+                            <span class="hidden sm:inline text-brand-border">&bull;</span>
+                            <span class="inline-flex items-center gap-1">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg> 8 Menit Baca
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 2. HIGH-READABILITY ARTICLES CONTENT WRAPPER -->
+        <section class="py-12 md:py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Left Content: Main Post Body (Optimized Typography with max-w-2xl) -->
+                <div class="lg:col-span-8 max-w-2xl mx-auto lg:mx-0 w-full space-y-6 text-brand-dark">
+                    
+                    <!-- Sub-Hero Standfirst Excerpt -->
+                    <p class="text-lg md:text-xl text-brand-muted font-normal leading-relaxed tracking-normal border-l-2 border-brand-dark pl-4 py-1 italic">
+                        Banyak aplikasi mulai terasa lambat atau sulit dipelihara bukan ketika trafik sudah sangat besar, tetapi ketika pertumbuhan fitur berjalan jauh lebih cepat daripada kemampuan fondasi teknisnya untuk beradaptasi.
+                    </p>
+
+                    <!-- Decorative Thumbnail Canvas Frame -->
+                    <div class="aspect-[16/9] w-full rounded-card border border-brand-border bg-gradient-to-br from-gray-50 via-white to-gray-50 shadow-soft relative overflow-hidden my-8 flex items-center justify-center">
+                        <div class="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-60"></div>
+                        <span class="text-xs font-mono text-brand-muted/40 z-10">[Feature Graphic: Refactoring Monolith Architecture Diagram]</span>
+                    </div>
+
+                    <!-- Paragraphs -->
+                    <p class="text-base leading-relaxed text-brand-muted">
+                        Sebelum berbicara tentang *scaling* atau memecah modul, ada satu pertanyaan penting yang perlu dijawab secara jujur: apakah aplikasi Anda sudah cukup mudah dipahami, dipantau, dan diubah oleh engineer lain? Dalam banyak proyek komersial, jawaban jujurnya adalah belum. Controller mulai menebal, query kustom menumpuk di sembarang tempat, standarisasi penamaan (*naming convention*) tidak konsisten, dan perubahan kecil pada satu baris kode mulai memicu efek samping (*side-effects*) yang tidak terduga di modul lain.
+                    </p>
+
+                    <p class="text-base leading-relaxed text-brand-muted">
+                        Masalah struktural seperti ini belum tentu langsung membuat aplikasi gagal beroperasi hari ini, tetapi perlahan bertindak sebagai beban tidak terlihat yang memperlambat semua orang. Tim jadi lebih ragu saat merilis perubahan baru, proses *onboarding engineer* baru memakan waktu lebih lama, dan keputusan teknis cenderung diambil secara reaktif karena sistem sudah terasa terlalu rapuh untuk disentuh dengan penuh percaya diri.
+                    </p>
+
+                    <!-- Subheading 1 -->
+                    <h2 class="pt-6 text-xl md:text-2xl font-semibold tracking-tight text-brand-dark">
+                        Tiga sinyal utama fondasi sistem perlu dirapikan
+                    </h2>
+                    <p class="text-base leading-relaxed text-brand-muted">
+                        Bagaimana mengidentifikasi bahwa aplikasi Laravel Anda sudah mencapai titik jenuh teknis sebelum beban trafik puncak (*peak traffic*) datang? Perhatikan tiga gejala empiris berikut:
+                    </p>
+
+                    <!-- Bullet Points Minimalist List -->
+                    <ul class="space-y-3.5 my-4 pl-1 text-sm text-brand-muted">
+                        <li class="flex items-start gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-accent-purple mt-2 shrink-0"></span>
+                            <span><strong class="text-brand-dark font-medium">Siklus rilis melambat:</strong> Waktu pengerjaan fitur baru terus bertambah secara tidak wajar, walaupun ruang lingkup (*scope*) perubahan relatif kecil.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-accent-pink mt-2 shrink-0"></span>
+                            <span><strong class="text-brand-dark font-medium">Bug berantai:</strong> Munculnya eror fungsional yang terisolasi di area yang seharusnya sama sekali tidak ikut termodifikasi oleh commit terbaru.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-accent-blue mt-2 shrink-0"></span>
+                            <span><strong class="text-brand-dark font-medium">Ketiadaan sekat logis:</strong> Performa respon mulai sulit ditebak karena tidak ada batas yang tegas antara logika bisnis (*domain logic*), kueri data mentah (*raw query*), dan orkestrasi proses API eksternal.</span>
+                        </li>
+                    </ul>
+
+                    <!-- Premium Blockquote Component -->
+                    <blockquote class="my-8 border-l-4 border-accent-purple bg-gray-50/50 py-4 pr-4 pl-5 text-base italic leading-relaxed text-brand-muted rounded-r-card border-y border-r border-brand-border/40">
+                        "Fondasi arsitektur yang baik bukan berarti membuat sistem menjadi rumit penuh abstraksi. Justru sebaliknya, tujuannya adalah membuat perubahan harian terasa aman, terukur, dan berbiaya murah."
+                    </blockquote>
+
+                    <p class="text-base leading-relaxed text-brand-muted">
+                        Di fase kritis ini, pendekatan terbaik biasanya bukanlah melakukan perombakan total (*big-bang refactor*). Yang jauh lebih efektif adalah mendeteksi titik operasional dengan dampak (*leverage*) paling tinggi: mengisolasi aturan penulisan ke dalam *Service Layer* khusus untuk alur bisnis yang paling sering mengalami mutasi fitur, mengaudit n+1 query via *eager loading* di kueri halaman utama dashboard, serta memperjelas kepemilikan data.
+                    </p>
+
+                    <!-- Subheading 2 with Code block context -->
+                    <h2 class="pt-6 text-xl md:text-2xl font-semibold tracking-tight text-brand-dark">
+                        Mulai dari alur bisnis riil, bukan dari dogma pola desain
+                    </h2>
+                    <p class="text-base leading-relaxed text-brand-muted">
+                        Salah satu kesalahan umum dari tim pengembang adalah terlalu cepat menerapkan pola arsitektur mutakhir (seperti microservices atau DDD kompleks) hanya karena terlihat ideal di atas kertas. Dalam praktik, kebutuhan alur bisnis riil harus tetap menjadi kompas utama. 
+                    </p>
+
+                    <!-- Minimalist Premium Code Block Layout -->
+                    <div class="rounded-card border border-brand-border overflow-hidden my-6 shadow-soft">
+                        <div class="bg-gray-50 px-4 py-2 border-b border-brand-border flex items-center justify-between text-xs font-mono text-brand-muted">
+                            <span>OrderService.php (Kaidah Pemisahan Logika)</span>
+                            <span class="text-[10px] tracking-wider uppercase">PHP 8.3 / Clean Service</span>
+                        </div>
+                        <pre class="p-4 bg-white overflow-x-auto text-[13px] font-mono leading-relaxed text-brand-dark">
+<span class="text-purple-600">public function</span> <span class="text-blue-600">processCheckout</span>(OrderRequest $request): Order
+{
+    <span class="text-gray-400">// 1. Validasi state atomic via DB Transaction</span>
+    <span class="text-purple-600">return</span> DB::<span class="text-blue-600">transaction</span>(<span class="text-purple-600">function</span> () <span class="text-purple-600">use</span> ($request) {
+        $stock = $this->inventory-><span class="text-blue-600">lockForUpdate</span>($request->product_id);
+        
+        <span class="text-gray-400">// 2. Eksekusi Domain Rule terisolasi</span>
+        $order = $this->orders-><span class="text-blue-600">createFromValidatedInput</span>($request->validated());
+        
+        <span class="text-gray-400">// 3. Dispatch Event Async ke antrean background job</span>
+        OrderProcessed::<span class="text-blue-600">dispatch</span>($order);
+        
+        <span class="text-purple-600">return</span> $order;
+    });
+}</pre>
+                    </div>
+
+                    <p class="text-base leading-relaxed text-brand-muted">
+                        Untuk ekosistem Laravel, perapian ini berarti menegakkan disiplin tanggung jawab komponen: biarkan Form Request menangani validasi aturan payload masuk, Service Classes murni mengelola alur transaksi domain internal, dan Query Objects atau Eloquent scopes digunakan hanya saat membantu menjaga kueri SQL tetap konsisten serta mudah dilacak. Tidak semua aplikasi membutuhkan abstraksi kelas berlapis-lapis, tetapi hampir seluruh aplikasi membutuhkan batas tanggung jawab (*boundaries*) yang tegas.
+                    </p>
+
+                    <!-- Subheading 3 -->
+                    <h2 class="pt-6 text-xl md:text-2xl font-semibold tracking-tight text-brand-dark">
+                        Apa target hasil riil yang seharusnya dicapai?
+                    </h2>
+                    <p class="text-base leading-relaxed text-brand-muted">
+                        Target jangka pendek perbaikan sistem bukanlah raihan skor benchmark semata atau struktur folder yang terlihat indah secara visual di IDE. Hasil yang jauh lebih berharga adalah tim engineer Anda bisa merilis pembaruan fitur dengan tingkat kepercayaan diri tinggi tanpa ketakutan konstan akan crash, insiden performa di sisi server dapat ditelusuri akar masalahnya dalam hitungan menit, dan diskusi teknis dipenuhi data akurat, bukan tebakan liar.
+                    </p>
+                    <p class="text-base leading-relaxed text-brand-muted">
+                        Saat fondasi kode sudah rapi dan stabil, barulah percakapan mengenai ekspansi infrastruktur (*scaling*) menjadi diskusi yang sehat. Anda bisa menetapkan bagian data mana saja yang valid untuk dimasukkan ke cache Redis, proses berat mana yang layak dilempar ke background queue jobs, dan modul internal mana yang benar-benar esensial untuk dipisahkan menjadi layanan independen berdasarkan kalkulasi metrik beban riil, bukan berdasarkan rasa cemas.
+                    </p>
+
+                    <!-- Contextual In-Article Callout Widget -->
+                    <div class="mt-12 rounded-card border border-brand-border p-6 md:p-8 bg-gray-50 space-y-3">
+                        <span class="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-widest text-accent-green bg-accent-green/10 border border-accent-green/20 px-2 py-0.5 rounded">
+                            Layanan Konsultasi Teknis
+                        </span>
+                        <h3 class="text-xl font-semibold tracking-tight text-brand-dark">Apakah platform digital Anda mulai terasa berat untuk diubah?</h3>
+                        <p class="text-xs md:text-sm text-brand-muted leading-relaxed">
+                            Itu adalah sinyal awal bahwa sistem Anda membutuhkan audit kode dan profiling database sebelum trafik transaksi melonjak lebih tinggi. Perbaikan kecil terarah di waktu yang tepat jauh lebih efisien daripada stabilisasi darurat saat platform kolaps di jam operasional sibuk.
+                        </p>
+                        <div class="pt-2">
+                            <a href="../contact/index.html" class="inline-flex items-center justify-center px-4 py-2 bg-brand-dark text-white text-xs font-semibold rounded-button hover:bg-opacity-90 transition-all shadow-soft">
+                                Jadwalkan Audit Teknis Monolith
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Content: Clean Sticky Editorial Sidebar (Widgets) -->
+                <aside class="lg:col-span-4 space-y-8 lg:sticky lg:top-24 w-full">
+                    
+                    <!-- Sidebar Widget 1: Article Metadata Breakdown -->
+                    <div class="border border-brand-border p-6 rounded-card bg-white space-y-4 shadow-soft">
+                        <h4 class="text-xs font-semibold uppercase tracking-widest text-brand-dark/40 border-b border-brand-border pb-2.5">Detail Publikasi</h4>
+                        <div class="space-y-3 text-xs">
+                            <div class="flex justify-between">
+                                <span class="text-brand-muted">Topik Utama</span>
+                                <span class="font-medium text-brand-dark">Software Architecture</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-brand-muted">Framework</span>
+                                <span class="font-medium text-brand-dark font-mono">Laravel 11.x Core</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-brand-muted">Tingkat Konten</span>
+                                <span class="font-medium text-accent-purple bg-accent-purple/5 px-1.5 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wide">Senior Level</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Widget 2: Social Share Module -->
+                    <div class="border border-brand-border p-6 rounded-card bg-white space-y-3 shadow-soft">
+                        <h4 class="text-xs font-semibold uppercase tracking-widest text-brand-dark/40 border-b border-brand-border pb-2.5">Bagikan Artikel</h4>
+                        <div class="flex flex-wrap gap-2 pt-1">
+                            <button onclick="navigator.clipboard.writeText(window.location.href); alert('Link artikel berhasil disalin!');" class="h-8 px-3 border border-brand-border rounded-button text-xs font-medium text-brand-dark hover:border-brand-dark transition-all inline-flex items-center gap-1.5 bg-white">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg> Copy Link
+                            </button>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener" class="h-8 px-3 border border-brand-border rounded-button text-xs font-medium text-brand-dark hover:border-brand-dark transition-all inline-flex items-center bg-white">
+                                LinkedIn
+                            </a>
+                        </div>
+                    </div>
+
+                </aside>
+
+            </div>
+        </section>
+
+        <!-- 3. TRUST INTEGRATEDRELATED ARTICLES FEED SECTION -->
+        <section class="py-16 border-t border-brand-border bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                
+                <!-- Section Header -->
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 pb-4 border-b border-brand-border/60">
+                    <div class="space-y-1">
+                        <span class="text-xs font-semibold text-accent-blue uppercase tracking-wider block">Kelanjutan Bacaan</span>
+                        <h2 class="text-2xl font-semibold tracking-tight text-brand-dark">Artikel teknis terkait lainnya</h2>
+                    </div>
+                    <a href="./index.html" class="text-xs font-semibold text-brand-dark hover:text-accent-purple inline-flex items-center gap-1 group transition-colors whitespace-nowrap">
+                        Lihat semua tulisan <span class="transform group-hover:translate-x-0.5 transition-transform">&rarr;</span>
+                    </a>
+                </div>
+
+                <!-- 3-Column Related Feed Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Related Item 1 -->
+                    <a href="./detail.html" class="group border border-brand-border p-5 rounded-card bg-white hover:shadow-soft hover:border-brand-dark/20 transition-all flex flex-col justify-between">
+                        <div class="space-y-2.5">
+                            <span class="text-[10px] font-semibold uppercase tracking-widest text-accent-blue bg-accent-blue/5 px-2 py-0.5 rounded w-fit block">Architecture</span>
+                            <h3 class="text-base font-semibold text-brand-dark leading-snug group-hover:text-accent-purple transition-colors">
+                                Kapan Sebaiknya Memecah Modul Menjadi Service Terpisah?
+                            </h3>
+                        </div>
+                        <span class="text-[11px] font-medium text-brand-muted inline-flex items-center pt-4 border-t border-dashed border-brand-border/40 mt-6">
+                            Baca tulisan <span class="ml-1 transform group-hover:translate-x-0.5 transition-transform">&rarr;</span>
+                        </span>
+                    </a>
+
+                    <!-- Related Item 2 -->
+                    <a href="./detail.html" class="group border border-brand-border p-5 rounded-card bg-white hover:shadow-soft hover:border-brand-dark/20 transition-all flex flex-col justify-between">
+                        <div class="space-y-2.5">
+                            <span class="text-[10px] font-semibold uppercase tracking-widest text-accent-orange bg-accent-orange/5 px-2 py-0.5 rounded w-fit block">Database</span>
+                            <h3 class="text-base font-semibold text-brand-dark leading-snug group-hover:text-accent-orange transition-colors">
+                                Mengurangi Query Mahal di Dashboard Operasional
+                            </h3>
+                        </div>
+                        <span class="text-[11px] font-medium text-brand-muted inline-flex items-center pt-4 border-t border-dashed border-brand-border/40 mt-6">
+                            Baca tulisan <span class="ml-1 transform group-hover:translate-x-0.5 transition-transform">&rarr;</span>
+                        </span>
+                    </a>
+
+                    <!-- Related Item 3 -->
+                    <a href="./detail.html" class="group border border-brand-border p-5 rounded-card bg-white hover:shadow-soft hover:border-brand-dark/20 transition-all flex flex-col justify-between">
+                        <div class="space-y-2.5">
+                            <span class="text-[10px] font-semibold uppercase tracking-widest text-accent-green bg-accent-green/5 px-2 py-0.5 rounded w-fit block">Delivery</span>
+                            <h3 class="text-base font-semibold text-brand-dark leading-snug group-hover:text-accent-green transition-colors">
+                                Menyusun Scope MVP Tanpa Mengorbankan Fondasi Teknis
+                            </h3>
+                        </div>
+                        <span class="text-[11px] font-medium text-brand-muted inline-flex items-center pt-4 border-t border-dashed border-brand-border/40 mt-6">
+                            Baca tulisan <span class="ml-1 transform group-hover:translate-x-0.5 transition-transform">&rarr;</span>
+                        </span>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- ========================================== -->
+
+    <!-- FOOTER PROFESSIONAL -->
+    <footer class="bg-white border-t border-brand-border py-12 md:py-16">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+            <div class="md:col-span-4 space-y-4">
+                <a href="../index.html" class="text-base font-semibold tracking-tight text-brand-dark">arya<span class="text-accent-purple">dwiputra</span></a>
+                <p class="text-xs text-brand-muted leading-relaxed max-w-xs">Senior Laravel Engineer yang berfokus membangun produk digital berkualitas tinggi berbasis arsitektur server-side handal dan antarmuka interaktif modern.</p>
+            </div>
+            <div class="md:col-span-2 space-y-3">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-brand-dark">Navigation</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="../index.html" class="text-brand-muted hover:text-brand-dark transition-colors">Home</a></li>
+                    <li><a href="../portfolio/index.html" class="text-brand-muted hover:text-brand-dark transition-colors">Portfolio</a></li>
+                    <li><a href="./index.html" class="text-brand-muted hover:text-brand-dark transition-colors">Artikel</a></li>
+                    <li><a href="../about/index.html" class="text-brand-muted hover:text-brand-dark transition-colors">Tentang</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-3 space-y-3">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-brand-dark">Services</h4>
+                <ul class="space-y-2 text-xs text-brand-muted">
+                    <li>Backend API Development</li>
+                    <li>Database Engineering & Profiling</li>
+                    <li>Custom System Integration</li>
+                    <li>Fullstack App Architecture</li>
+                </ul>
+            </div>
+            <div class="md:col-span-3 space-y-3">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-brand-dark">Connect</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="https://github.com" target="_blank" rel="noopener" class="text-brand-muted hover:text-brand-dark transition-colors inline-flex items-center">GitHub</a></li>
+                    <li><a href="https://linkedin.com" target="_blank" rel="noopener" class="text-brand-muted hover:text-brand-dark transition-colors inline-flex items-center">LinkedIn</a></li>
+                    <li><a href="mailto:hello@aryadwiputra.com" class="text-brand-muted hover:text-brand-dark transition-colors">hello@aryadwiputra.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-brand-border flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-brand-muted">
+            <p>&copy; 2026 Arya Dwi Putra. All rights reserved.</p>
+            <p class="text-gray-400">Designed with modern minimalistic layout guidelines.</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTS: READING PROGRESS INDICATOR -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const progressBar = document.getElementById('progress-bar');
+            
+            window.addEventListener('scroll', () => {
+                const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+                
+                if (progressBar) {
+                    progressBar.style.width = scrolled + "%";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

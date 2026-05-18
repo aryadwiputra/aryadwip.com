@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio — Arya Dwi Putra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#080808',
+                            muted: '#5a5a5a',
+                            border: '#d8d8d8',
+                        },
+                        accent: {
+                            purple: '#7a3dff',
+                            pink: '#ed52cb',
+                            blue: '#3b89ff',
+                            orange: '#ff6b00',
+                            green: '#00d722',
+                        }
+                    },
+                    boxShadow: {
+                        soft: '0 2px 4px rgba(0,0,0,0.02), 0 10px 30px rgba(0,0,0,0.04)',
+                        'soft-hover': '0 4px 12px rgba(0,0,0,0.05), 0 20px 40px rgba(0,0,0,0.08)',
+                    },
+                    borderRadius: {
+                        button: '4px',
+                        card: '8px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #080808;
+            -webkit-font-smoothing: antialiased;
+        }
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(3deg); }
+        }
+        @keyframes float-delayed {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(10px) rotate(-5deg); }
+        }
+        .animate-float-1 { animation: float-slow 7s ease-in-out infinite; }
+        .animate-float-2 { animation: float-delayed 6s ease-in-out infinite; }
+        *:focus-visible {
+            outline: 2px solid #7a3dff;
+            outline-offset: 2px;
+        }
+        /* Smooth filter transition */
+        .project-card {
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), cubic-bezier(0.4, 0, 0.2, 1) display;
+        }
+        .project-card.is-hidden {
+            opacity: 0;
+            transform: scale(0.96);
+            position: absolute;
+            width: 0;
+            height: 0;
+            padding: 0;
+            margin: 0;
+            border: none;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="pb-20 md:pb-0">
+    <!-- NAVBAR DESKTOP -->
+    <header class="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-brand-border hidden md:block">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="../index.html" class="text-base font-semibold tracking-tight text-brand-dark hover:opacity-80 transition-opacity">
+                arya<span class="text-accent-purple">dwiputra</span>
+            </a>
+            <nav class="flex items-center space-x-8">
+                <a href="../index.html" class="text-sm font-medium text-brand-muted hover:text-brand-dark transition-colors">Home</a>
+                <a href="./index.html" class="text-sm font-medium text-brand-dark hover:text-accent-purple transition-colors">Portfolio</a>
+                <a href="../articles/index.html" class="text-sm font-medium text-brand-muted hover:text-brand-dark transition-colors">Artikel</a>
+                <a href="../about/index.html" class="text-sm font-medium text-brand-muted hover:text-brand-dark transition-colors">Tentang</a>
+                <a href="../contact/index.html" class="text-sm font-medium text-brand-muted hover:text-brand-dark transition-colors">Kontak</a>
+            </nav>
+            <a href="../contact/index.html" class="inline-flex items-center justify-center px-4 py-2 bg-brand-dark text-white text-sm font-medium rounded-button hover:bg-opacity-90 transition-all shadow-soft">
+                Let's Talk
+            </a>
+        </div>
+    </header>
+
+    <!-- BOTTOM BAR MOBILE -->
+    <nav class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-brand-border px-4 py-2.5 md:hidden shadow-[0_-4px_12px_rgba(0,0,0,0.03)]">
+        <div class="grid grid-cols-4 justify-items-center items-center">
+            <a href="../index.html" class="flex flex-col items-center space-y-1 text-brand-muted hover:text-brand-dark">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                <span class="text-[10px] font-medium tracking-wide">Home</span>
+            </a>
+            <a href="./index.html" class="flex flex-col items-center space-y-1 text-brand-dark">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+                <span class="text-[10px] font-medium tracking-wide">Portfolio</span>
+            </a>
+            <a href="../articles/index.html" class="flex flex-col items-center space-y-1 text-brand-muted hover:text-brand-dark">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+                <span class="text-[10px] font-medium tracking-wide">Artikel</span>
+            </a>
+            <a href="../contact/index.html" class="flex flex-col items-center space-y-1 text-brand-muted hover:text-brand-dark">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                <span class="text-[10px] font-medium tracking-wide">Kontak</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ========================================== -->
+    <!-- REVAMPED MAIN CONTENT SECTIONS             -->
+    <!-- ========================================== -->
+    <main>
+        <!-- 1. HEADER / HERO PORTFOLIO SECTION -->
+        <section class="relative overflow-hidden bg-white pt-16 pb-20 md:pt-24 md:pb-28 border-b border-brand-border">
+            <!-- Decorative Minimal Floating Shapes -->
+            <div class="absolute top-16 left-12 w-10 h-10 rounded-full border-[3px] border-accent-purple/20 animate-float-1 hidden sm:block"></div>
+            <div class="absolute bottom-12 right-16 w-6 h-6 bg-accent-blue/5 border border-accent-blue/20 rounded-card animate-float-2 hidden sm:block"></div>
+            
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                <div class="lg:col-span-8 space-y-6">
+                    <span class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-accent-purple bg-accent-purple/5 px-3 py-1 rounded">
+                        <span class="w-1.5 h-1.5 rounded-full bg-accent-purple"></span> Selected Works
+                    </span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] text-brand-dark">
+                        Studi kasus produk digital, arsitektur data, dan integrasi skala enterprise.
+                    </h1>
+                    <p class="text-base md:text-lg text-brand-muted max-w-3xl leading-relaxed">
+                        Kumpulan proyek representatif yang menguji kapabilitas saya dalam memecahkan masalah bisnis nyata melalui ekosistem **Laravel**, optimasi query kompleks, serta pengiriman kode yang *clean* dan terstruktur.
+                    </p>
+                </div>
+                
+                <!-- Quick Metric Context Card -->
+                <div class="lg:col-span-4 w-full">
+                    <div class="bg-white rounded-card border border-brand-border p-6 shadow-soft relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-gray-50 to-transparent -z-10 rounded-bl-full"></div>
+                        <p class="text-xs font-semibold uppercase tracking-widest text-brand-dark/40 border-b border-brand-border pb-3">Konteks Produksi</p>
+                        <div class="mt-4 grid grid-cols-2 gap-x-4 gap-y-5">
+                            <div>
+                                <span class="block text-3xl font-semibold text-brand-dark tracking-tight">06</span>
+                                <span class="text-xs text-brand-muted mt-0.5 block">Sistem Aktif</span>
+                            </div>
+                            <div>
+                                <span class="block text-3xl font-semibold text-brand-dark tracking-tight">4+</span>
+                                <span class="text-xs text-brand-muted mt-0.5 block">Domain Industri</span>
+                            </div>
+                            <div>
+                                <span class="block text-xs font-semibold text-accent-purple bg-accent-purple/5 px-2 py-0.5 rounded w-fit mt-1">Laravel 11+</span>
+                                <span class="text-[11px] text-brand-muted mt-1 block">Core Backend</span>
+                            </div>
+                            <div>
+                                <span class="block text-xs font-semibold text-accent-green bg-accent-green/5 px-2 py-0.5 rounded w-fit mt-1">Robust</span>
+                                <span class="text-[11px] text-brand-muted mt-1 block">End-to-End Delivery</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. STICKY FILTER BAR SECTION -->
+        <section class="sticky top-16 z-40 py-4 bg-white/80 backdrop-blur-md border-b border-brand-border transition-all">
+            <div class="max-w-7xl mx-auto px-6 flex items-center justify-between overflow-x-auto no-scrollbar gap-4" id="portfolio-filters">
+                <div class="flex items-center gap-2">
+                    <button data-filter="all" class="filter-btn h-9 inline-flex items-center justify-center px-4 text-xs font-medium bg-brand-dark text-white rounded-button transition-all shadow-soft whitespace-nowrap">
+                        All Projects
+                    </button>
+                    <button data-filter="laravel" class="filter-btn h-9 inline-flex items-center justify-center px-4 bg-white text-brand-dark border border-brand-border text-xs font-medium rounded-button hover:border-brand-dark transition-all whitespace-nowrap">
+                        Laravel Ecosystem
+                    </button>
+                    <button data-filter="fullstack" class="filter-btn h-9 inline-flex items-center justify-center px-4 bg-white text-brand-dark border border-brand-border text-xs font-medium rounded-button hover:border-brand-dark transition-all whitespace-nowrap">
+                        Fullstack (Inertia/Vue)
+                    </button>
+                    <button data-filter="dashboard" class="filter-btn h-9 inline-flex items-center justify-center px-4 bg-white text-brand-dark border border-brand-border text-xs font-medium rounded-button hover:border-brand-dark transition-all whitespace-nowrap">
+                        Internal Dashboard
+                    </button>
+                    <button data-filter="integration" class="filter-btn h-9 inline-flex items-center justify-center px-4 bg-white text-brand-dark border border-brand-border text-xs font-medium rounded-button hover:border-brand-dark transition-all whitespace-nowrap">
+                        API & Integration
+                    </button>
+                </div>
+                <div class="text-[11px] text-brand-muted font-medium hidden sm:block whitespace-nowrap bg-gray-50 px-2.5 py-1 rounded border border-brand-border">
+                    Showing <span id="project-count" class="text-brand-dark font-semibold">6</span> projects
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PREMIUM PORTFOLIO GRID SECTION -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10" id="project-grid">
+                    
+                    <!-- Card 1: Asset Management System -->
+                    <article data-category="laravel fullstack dashboard" class="project-card group bg-white border border-brand-border rounded-card overflow-hidden hover:shadow-soft-hover hover:border-brand-dark/30 transition-all flex flex-col">
+                        <div class="aspect-[16/10] w-full bg-gray-50 relative overflow-hidden border-b border-brand-border">
+                            <div class="absolute inset-0 flex items-center justify-center text-brand-muted/20 text-xs font-mono">Image Placeholder [600x375]</div>
+                            <img src="https://picsum.photos/600/375?random=1" alt="Asset Management System" class="w-full h-full object-cover opacity-90 filter grayscale group-hover:grayscale-0 group-hover:scale-[1.01] transition-all duration-300 mix-blend-multiply">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow space-y-3.5">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-semibold uppercase tracking-widest text-accent-purple bg-accent-purple/5 px-2.5 py-0.5 rounded">Logistics & Asset</span>
+                                <span class="text-xs font-mono text-brand-muted">2026</span>
+                            </div>
+                            <h2 class="text-xl font-semibold tracking-tight text-brand-dark leading-snug group-hover:text-accent-purple transition-colors">
+                                Asset Management System (shelf.nu Model)
+                            </h2>
+                            <p class="text-xs text-brand-muted leading-relaxed line-clamp-3">
+                                Sistem kustom pelacakan aset internal, depresiasi nilai otomatis barang penyusutan, alur persetujuan bertingkat (*multi-level approval*), dan manajemen multi-gudang.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 pt-1.5">
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-50 border border-brand-border rounded text-brand-dark font-medium">Laravel 11</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-50 border border-brand-border rounded text-brand-dark font-medium">InertiaJS</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-50 border border-brand-border rounded text-brand-dark font-medium">React</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-50 border border-brand-border rounded text-brand-dark font-medium">Tailwind</span>
+                            </div>
+                            <div class="pt-4 mt-auto border-t border-dashed border-brand-border/60 flex items-center justify-between">
+                                <a href="./detail.html" class="text-xs font-semibold text-brand-dark inline-flex items-center group-hover:text-accent-purple transition-colors">
+                                    Lihat Studi Kasus <span class="ml-1.5 transform group-hover:translate-x-1 transition-transform">→</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 2: Inventory Dashboard -->
+                    <article data-category="laravel dashboard" class="project-card group bg-white border border-brand-border rounded-card overflow-hidden hover:shadow-soft-hover hover:border-brand-dark/30 transition-all flex flex-col">
+                        <div class="aspect-[16/10] w-full bg-gray-50 relative overflow-hidden border-b border-brand-border">
+                            <div class="absolute inset-0 flex items-center justify-center text-brand-muted/20 text-xs font-mono">Image Placeholder [600x375]</div>
+                            <img src="https://picsum.photos/600/375?random=2" alt="Inventory Dashboard" class="w-full h-full object-cover opacity-90 filter grayscale group-hover:grayscale-0 group-hover:scale-[1.01] transition-all duration-300 mix-blend-multiply">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow space-y-3.5">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-semibold uppercase tracking-widest text-accent-blue bg-accent-blue/5 px-2.5 py-0.5 rounded">Distributor ERP</span>
+                                <span class="text-xs font-mono text-brand-muted">2026</span>
+                            </div>
+                            <h2 class="text-xl font-semibold tracking-tight text-brand-dark leading-snug group-hover:text-accent-blue transition-colors">
+                                Warehouse & Realtime Inventory Dashboard
+                            </h2>
+                            <p class="text-xs text-brand-muted leading-relaxed line-clamp-3">
+                                Modernisasi sistem legacy menjadi dashboard manajemen inventaris multi-gudang terpusat untuk monitoring stok, manajemen purchasing order, dan tracking manifest barang.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 pt-1.5">
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-50 border border-brand-border rounded text-brand-dark font-medium">Laravel Octane</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-50 border border-brand-border rounded text-brand-dark font-medium">MySQL</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-50 border border-brand-border rounded text-brand-dark font-medium">Redis Cache</span>
+                            </div>
+                            <div class="pt-4 mt-auto border-t border-dashed border-brand-border/60 flex items-center justify-between">
+                                <a href="./detail.html" class="text-xs font-semibold text-brand-dark inline-flex items-center group-hover:text-accent-blue transition-colors">
+                                    Lihat Studi Kasus <span class="ml-1.5 transform group-hover:translate-x-1 transition-transform">→</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 3: HRIS Platform -->
+                    <article data-category="fullstack dashboard" class="project-card group bg-white border border-brand-border rounded-card overflow-hidden hover:shadow-soft-hover hover:border-brand-dark/30 transition-all flex flex-col">
+                        <div class="aspect-[16/10] w-full bg-gray-50 relative overflow-hidden border-b border-brand-border">
+                            <div class="absolute inset-0 flex items-center justify-center text-brand-muted/20 text-xs font-mono">Image Placeholder [600x375]</div>
+                            <img src="https://picsum.photos/600/375?random=3" alt="HRIS Platform" class="w-full h-full object-cover opacity-90 filter grayscale group-hover:grayscale-0 group-hover:scale-[1.01] transition-all duration-300 mix-blend-multiply">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow space-y-3.5">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-semibold uppercase tracking-widest text-accent-pink bg-accent-pink/5 px-2.5 py-0.5 rounded">SaaS Platform</span>
+                                <span class="text-xs font-mono text-brand-muted">2025</span>
+                            </div>
+                            <h2 class="text-xl font-semibold tracking-tight text-brand-dark leading-snug group-hover:text-accent-pink transition-colors">
+                                Enterprise SaaS HRIS & Automated Payroll Hub
+                            </h2>
+                            <p class="text-xs text-brand-muted leading-relaxed line-clamp-3">
+                                Portal manajemen internal SDM, pencatatan absensi berbasis geofencing, kalkulasi komponen *payroll* otomatis berstandar perpajakan lokal, dan SLA KPI.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 pt-1.5">
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-50 border border-brand-border rounded text-brand-dark font-medium">Filament v3</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-50 border border-brand-border rounded text-brand-dark font-medium">AlpineJS</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-50 border border-brand-border rounded text-brand-dark font-medium">PostgreSQL</span>
+                            </div>
+                            <div class="pt-4 mt-auto border-t border-dashed border-brand-border/60 flex items-center justify-between">
+                                <a href="./detail.html" class="text-xs font-semibold text-brand-dark inline-flex items-center group-hover:text-accent-pink transition-colors">
+                                    Lihat Studi Kasus <span class="ml-1.5 transform group-hover:translate-x-1 transition-transform">→</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 4: Finance Reporting App -->
+                    <article data-category="laravel integration" class="project-card group bg-white border border-brand-border rounded-card overflow-hidden hover:shadow-soft-hover hover:border-brand-dark/30 transition-all flex flex-col">
+                        <div class="aspect-[16/10] w-full bg-gray-50 relative overflow-hidden border-b border-brand-border">
+                            <div class="absolute inset-0 flex items-center justify-center text-brand-muted/20 text-xs font-mono">Image Placeholder [600x375]</div>
+                            <img src="https://picsum.photos/600/375?random=4" alt="Finance Reporting App" class="w-full h-full object-cover opacity-90 filter grayscale group-hover:grayscale-0 group-hover:scale-[1.01] transition-all duration-300 mix-blend-multiply">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow space-y-3.5">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-semibold uppercase tracking-widest text-accent-orange bg-accent-orange/5 px-2.5 py-0.5 rounded">Fintech Core</span>
+                                <span class="text-xs font-mono text-brand-muted">2025</span>
+                            </div>
+                            <h2 class="text-xl font-semibold tracking-tight text-brand-dark leading-snug group-hover:text-accent-orange transition-colors">
+                                Finance Reconciliation & Auditing Hub
+                            </h2>
+                            <p class="text-xs text-brand-muted leading-relaxed line-clamp-3">
+                                Engine background processor untuk sinkronisasi, validasi kepatuhan aturan bisnis keuangan, enkripsi data transaksi tinggi, dan pencatatan audit log mutasi saldo masif.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 pt-1.5">
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-50 border border-brand-border rounded text-brand-dark font-medium">PHP 8.3 Enforce</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-50 border border-brand-border rounded text-brand-dark font-medium">Sanctum</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-50 border border-brand-border rounded text-brand-dark font-medium">Queue Scheduler</span>
+                            </div>
+                            <div class="pt-4 mt-auto border-t border-dashed border-brand-border/60 flex items-center justify-between">
+                                <a href="./detail.html" class="text-xs font-semibold text-brand-dark inline-flex items-center group-hover:text-accent-orange transition-colors">
+                                    Lihat Studi Kasus <span class="ml-1.5 transform group-hover:translate-x-1 transition-transform">→</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 5: Company Profile CMS / Datakelola -->
+                    <article data-category="laravel fullstack" class="project-card group bg-white border border-brand-border rounded-card overflow-hidden hover:shadow-soft-hover hover:border-brand-dark/30 transition-all flex flex-col">
+                        <div class="aspect-[16/10] w-full bg-gray-50 relative overflow-hidden border-b border-brand-border">
+                            <div class="absolute inset-0 flex items-center justify-center text-brand-muted/20 text-xs font-mono">Image Placeholder [600x375]</div>
+                            <img src="https://picsum.photos/600/375?random=5" alt="Omnichannel Multichat Platform" class="w-full h-full object-cover opacity-90 filter grayscale group-hover:grayscale-0 group-hover:scale-[1.01] transition-all duration-300 mix-blend-multiply">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow space-y-3.5">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-semibold uppercase tracking-widest text-accent-green bg-accent-green/5 px-2.5 py-0.5 rounded">Omnichannel Hub</span>
+                                <span class="text-xs font-mono text-brand-muted">2026</span>
+                            </div>
+                            <h2 class="text-xl font-semibold tracking-tight text-brand-dark leading-snug group-hover:text-accent-green transition-colors">
+                                Datakelola Omnichannel Multichat Platform
+                            </h2>
+                            <p class="text-xs text-brand-muted leading-relaxed line-clamp-3">
+                                Pembangunan arsitektur perpesanan tersentralisasi yang menghubungkan berbagai API chat stream masuk ke satu dasbor manajemen agen terpadu dengan respon latensi rendah.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 pt-1.5">
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-50 border border-brand-border rounded text-brand-dark font-medium">Laravel API</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-50 border border-brand-border rounded text-brand-dark font-medium">VueJS 3</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-50 border border-brand-border rounded text-brand-dark font-medium">Webhooks Hub</span>
+                            </div>
+                            <div class="pt-4 mt-auto border-t border-dashed border-brand-border/60 flex items-center justify-between">
+                                <a href="./detail.html" class="text-xs font-semibold text-brand-dark inline-flex items-center group-hover:text-accent-green transition-colors">
+                                    Lihat Studi Kasus <span class="ml-1.5 transform group-hover:translate-x-1 transition-transform">→</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Card 6: Online Travel Agent / Komodo Voyage -->
+                    <article data-category="integration fullstack" class="project-card group bg-white border border-brand-border rounded-card overflow-hidden hover:shadow-soft-hover hover:border-brand-dark/30 transition-all flex flex-col">
+                        <div class="aspect-[16/10] w-full bg-gray-50 relative overflow-hidden border-b border-brand-border">
+                            <div class="absolute inset-0 flex items-center justify-center text-brand-muted/20 text-xs font-mono">Image Placeholder [600x375]</div>
+                            <img src="https://picsum.photos/600/375?random=6" alt="Online Travel Agent Komodo Voyage" class="w-full h-full object-cover opacity-90 filter grayscale group-hover:grayscale-0 group-hover:scale-[1.01] transition-all duration-300 mix-blend-multiply">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow space-y-3.5">
+                            <div class="flex items-center justify-between">
+                                <span class="text-[10px] font-semibold uppercase tracking-widest text-accent-purple bg-accent-purple/5 px-2.5 py-0.5 rounded">Booking Engine</span>
+                                <span class="text-xs font-mono text-brand-muted">2026</span>
+                            </div>
+                            <h2 class="text-xl font-semibold tracking-tight text-brand-dark leading-snug group-hover:text-accent-purple transition-colors">
+                                Komodo Voyage — Online Travel Booking Engine
+                            </h2>
+                            <p class="text-xs text-brand-muted leading-relaxed line-clamp-3">
+                                Platform OTA kustom berskala komersial tinggi. Mengintegrasikan pemesanan tiket, sinkronisasi manifes perjalanan kapal otomatis, sistem invoice otomatis, dan *payment gateway hub*.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5 pt-1.5">
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-50 border border-brand-border rounded text-brand-dark font-medium">Laravel Core</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-50 border border-brand-border rounded text-brand-dark font-medium">Blade Component</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-50 border border-brand-border rounded text-brand-dark font-medium">Third Party API</span>
+                            </div>
+                            <div class="pt-4 mt-auto border-t border-dashed border-brand-border/60 flex items-center justify-between">
+                                <a href="./detail.html" class="text-xs font-semibold text-brand-dark inline-flex items-center group-hover:text-accent-purple transition-colors">
+                                    Lihat Studi Kasus <span class="ml-1.5 transform group-hover:translate-x-1 transition-transform">→</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+                
+                <!-- Zero State Feedback (Hidden by default) -->
+                <div id="portfolio-empty" class="hidden text-center py-20 border border-dashed border-brand-border rounded-card bg-gray-50/50">
+                    <p class="text-sm text-brand-muted font-medium">Tidak ada proyek yang sesuai dengan kategori filter terpilih.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. BOTTOM VALUE PROPOSITION / TRUST CONTEXT -->
+        <section class="py-20 border-y border-brand-border bg-brand-dark text-white relative overflow-hidden">
+            <!-- Smooth Minimal Mesh Glow Grid -->
+            <div class="absolute -top-32 -right-32 w-80 h-80 bg-accent-purple/10 rounded-full blur-[100px] pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                <div class="lg:col-span-8 space-y-4">
+                    <span class="inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-accent-green bg-accent-green/10 border border-accent-green/20 px-2.5 py-1 rounded">
+                        <span class="w-1.5 h-1.5 rounded-full bg-accent-green animate-pulse"></span> Open for collaboration
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight leading-[1.2]">
+                        Mencari partner teknis berpengalaman untuk mengamankan backend platform Anda?
+                    </h2>
+                    <p class="text-sm md:text-base text-gray-400 max-w-3xl leading-relaxed">
+                        Saya terbiasa bergabung sejak tahap inisiasi arsitektur (*discovery phase*), stabilisasi sistem *legacy* yang rentan kolaps, hingga implementasi modul kritis yang membutuhkan *delivery* cepat namun tetap *maintainable*.
+                    </p>
+                </div>
+                <div class="lg:col-span-4 flex lg:justify-end">
+                    <a href="../contact/index.html" class="w-full sm:w-auto inline-flex items-center justify-center px-6 h-12 bg-white text-brand-dark text-sm font-semibold rounded-button hover:bg-gray-50 transition-all shadow-soft group">
+                        Diskusikan Proyek <span class="ml-2 transform group-hover:translate-x-1 transition-transform">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- ========================================== -->
+
+    <!-- FOOTER PROFESSIONAL -->
+    <footer class="bg-white border-t border-brand-border py-12 md:py-16">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+            <div class="md:col-span-4 space-y-4">
+                <a href="../index.html" class="text-base font-semibold tracking-tight text-brand-dark">arya<span class="text-accent-purple">dwiputra</span></a>
+                <p class="text-xs text-brand-muted leading-relaxed max-w-xs">Senior Laravel Engineer yang berfokus membangun produk digital berkualitas tinggi berbasis arsitektur server-side handal dan antarmuka interaktif modern.</p>
+            </div>
+            <div class="md:col-span-2 space-y-3">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-brand-dark">Navigation</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="../index.html" class="text-brand-muted hover:text-brand-dark transition-colors">Home</a></li>
+                    <li><a href="./index.html" class="text-brand-muted hover:text-brand-dark transition-colors">Portfolio</a></li>
+                    <li><a href="../articles/index.html" class="text-brand-muted hover:text-brand-dark transition-colors">Artikel</a></li>
+                    <li><a href="../about/index.html" class="text-brand-muted hover:text-brand-dark transition-colors">Tentang</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-3 space-y-3">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-brand-dark">Services</h4>
+                <ul class="space-y-2 text-xs text-brand-muted">
+                    <li>Backend API Development</li>
+                    <li>Database Engineering & Profiling</li>
+                    <li>Custom System Integration</li>
+                    <li>Fullstack App Architecture</li>
+                </ul>
+            </div>
+            <div class="md:col-span-3 space-y-3">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-brand-dark">Connect</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="https://github.com" target="_blank" rel="noopener" class="text-brand-muted hover:text-brand-dark transition-colors inline-flex items-center">GitHub</a></li>
+                    <li><a href="https://linkedin.com" target="_blank" rel="noopener" class="text-brand-muted hover:text-brand-dark transition-colors inline-flex items-center">LinkedIn</a></li>
+                    <li><a href="mailto:hello@aryadwiputra.com" class="text-brand-muted hover:text-brand-dark transition-colors">hello@aryadwiputra.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-brand-border flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-brand-muted">
+            <p>&copy; 2026 Arya Dwi Putra. All rights reserved.</p>
+            <p class="text-gray-400">Designed with modern minimalistic layout guidelines.</p>
+        </div>
+    </footer>
+
+    <!-- OPTIMIZED JAVASCRIPT FILTER MODULE -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            const emptyState = document.getElementById('portfolio-empty');
+            const countBadge = document.getElementById('project-count');
+
+            filterButtons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const selectedFilter = button.dataset.filter;
+
+                    // Reset button states cleanly
+                    filterButtons.forEach((item) => {
+                        item.classList.remove('bg-brand-dark', 'text-white', 'shadow-soft');
+                        item.classList.add('bg-white', 'text-brand-dark', 'border', 'border-brand-border');
+                    });
+
+                    // Set active button state
+                    button.classList.add('bg-brand-dark', 'text-white', 'shadow-soft');
+                    button.classList.remove('bg-white', 'text-brand-dark', 'border', 'border-brand-border');
+
+                    let visibleCount = 0;
+
+                    // Perform smooth transition sorting
+                    projectCards.forEach((card) => {
+                        const cardCategories = card.dataset.category;
+                        const isVisible = selectedFilter === 'all' || cardCategories.includes(selectedFilter);
+                        
+                        if (isVisible) {
+                            card.classList.remove('is-hidden');
+                            visibleCount++;
+                        } else {
+                            card.classList.add('is-hidden');
+                        }
+                    });
+
+                    // Update count indicators dynamically
+                    if (countBadge) countBadge.textContent = visibleCount;
+
+                    // Dynamic layout feedback toggle
+                    if (visibleCount === 0) {
+                        emptyState.classList.remove('hidden');
+                    } else {
+                        emptyState.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

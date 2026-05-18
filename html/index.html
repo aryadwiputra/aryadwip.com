@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senior Laravel Engineer - Personal Portfolio</title>
+    <!-- Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js CDN for lightweight interactions -->
+    <script defer href="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#080808',
+                            muted: '#5a5a5a',
+                            border: '#d8d8d8',
+                        },
+                        accent: {
+                            purple: '#7a3dff',
+                            pink: '#ed52cb',
+                            blue: '#3b89ff',
+                            orange: '#ff6b00',
+                            green: '#00d722',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 2px 4px rgba(0,0,0,0.02), 0 10px 30px rgba(0,0,0,0.04)',
+                        'soft-hover': '0 4px 8px rgba(0,0,0,0.04), 0 16px 40px rgba(0,0,0,0.08)',
+                    },
+                    borderRadius: {
+                        'button': '4px',
+                        'card': '8px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #080808;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Custom Marquee Animation */
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: marquee 25s linear infinite;
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused;
+        }
+
+        /* Float Animations */
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+        @keyframes float-delayed {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(12px) rotate(-8deg); }
+        }
+        .animate-float-1 { animation: float-slow 6s ease-in-out infinite; }
+        .animate-float-2 { animation: float-delayed 7s ease-in-out infinite; }
+        .animate-float-3 { animation: float-slow 5s ease-in-out infinite 1s; }
+        
+        /* Focus state helper */
+        *:focus-visible {
+            outline: 2px solid #7a3dff;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body class="pb-20 md:pb-0">
+
+    <!-- ========================================== -->
+    <!-- 1. NAVBAR DESKTOP                          -->
+    <!-- ========================================== -->
+    <header class="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-brand-border hidden md:block">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <!-- Left: Logo -->
+            <a href="./index.html" class="text-base font-semibold tracking-tight text-brand-dark hover:opacity-80 transition-opacity">
+                arya<span class="text-accent-purple">dwiputra</span>
+            </a>
+            
+            <!-- Middle: Navigation Links -->
+            <nav class="flex items-center space-x-8">
+                <a href="./index.html" class="text-sm font-medium text-brand-dark hover:text-accent-purple transition-colors">Home</a>
+                <a href="./portfolio/index.html" class="text-sm font-medium text-brand-muted hover:text-brand-dark transition-colors">Portfolio</a>
+                <a href="./articles/index.html" class="text-sm font-medium text-brand-muted hover:text-brand-dark transition-colors">Artikel</a>
+                <a href="./about/index.html" class="text-sm font-medium text-brand-muted hover:text-brand-dark transition-colors">Tentang</a>
+                <a href="./contact/index.html" class="text-sm font-medium text-brand-muted hover:text-brand-dark transition-colors">Kontak</a>
+            </nav>
+            
+            <!-- Right: CTA -->
+            <div>
+                <a href="./contact/index.html" class="inline-flex items-center justify-center px-4 py-2 bg-brand-dark text-white text-sm font-medium rounded-button hover:bg-opacity-90 transition-all shadow-soft">
+                    Let's Talk
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- ========================================== -->
+    <!-- 2. BOTTOM BAR MOBILE                       -->
+    <!-- ========================================== -->
+    <nav class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-brand-border px-4 py-2.5 md:hidden shadow-[0_-4px_12px_rgba(0,0,0,0.03)] safe-area-pb">
+        <div class="grid grid-cols-4 justify-items-center items-center">
+            <a href="./index.html" class="flex flex-col items-center space-y-1 text-brand-dark">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                <span class="text-[10px] font-medium tracking-wide">Home</span>
+            </a>
+            <a href="./portfolio/index.html" class="flex flex-col items-center space-y-1 text-brand-muted hover:text-brand-dark">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+                <span class="text-[10px] font-medium tracking-wide">Portfolio</span>
+            </a>
+            <a href="./articles/index.html" class="flex flex-col items-center space-y-1 text-brand-muted hover:text-brand-dark">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+                <span class="text-[10px] font-medium tracking-wide">Artikel</span>
+            </a>
+            <a href="./contact/index.html" class="flex flex-col items-center space-y-1 text-brand-muted hover:text-brand-dark">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                <span class="text-[10px] font-medium tracking-wide">Kontak</span>
+            </a>
+        </div>
+    </nav>
+
+
+    <main>
+        <!-- ========================================== -->
+        <!-- 3. HERO SECTION                            -->
+        <!-- ========================================== -->
+        <section class="relative min-h-[calc(100vh-4rem)] flex items-center py-12 md:py-20 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 w-full grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column Content -->
+                <div class="md:col-span-7 space-y-6 order-2 md:order-1">
+                    <span class="inline-block text-xs font-semibold uppercase tracking-widest text-accent-purple bg-accent-purple/5 px-2.5 py-1 rounded">
+                        Senior Laravel Engineer
+                    </span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold text-brand-dark tracking-tight leading-[1.1]">
+                        I build scalable web apps, clean backend systems, and business-ready digital products.
+                    </h1>
+                    <p class="text-base md:text-lg text-brand-muted max-w-xl leading-relaxed">
+                        Spesialis dalam merancang arsitektur MVC/RESTful API yang kokoh menggunakan ekosistem Laravel modern. Terbiasa menangani optimalisasi database kompleks, dashboard interaktif, serta integrasi sistem informasi enterprise.
+                    </p>
+                    
+                    <!-- CTAs -->
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="./portfolio/index.html" class="inline-flex items-center justify-center px-6 py-3 bg-brand-dark text-white text-sm font-medium rounded-button hover:bg-opacity-90 transition-all shadow-soft">
+                            View Portfolio
+                        </a>
+                        <a href="./contact/index.html" class="inline-flex items-center justify-center px-6 py-3 bg-white text-brand-dark border border-brand-border text-sm font-medium rounded-button hover:bg-gray-50 transition-all">
+                            Contact Me
+                        </a>
+                    </div>
+
+                    <!-- Mini Stats -->
+                    <div class="grid grid-cols-3 gap-4 pt-10 border-t border-brand-border max-w-lg">
+                        <div>
+                            <p class="text-2xl font-semibold text-brand-dark">6+ Years</p>
+                            <p class="text-xs text-brand-muted mt-1">Experience</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-semibold text-brand-dark">Laravel</p>
+                            <p class="text-xs text-brand-muted mt-1">Specialist</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-semibold text-brand-dark">100%</p>
+                            <p class="text-xs text-brand-muted mt-1">Fullstack Delivery</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column Profile Frame with Animated Shapes -->
+                <div class="md:col-span-5 relative flex justify-center order-1 md:order-2 py-10 md:py-0">
+                    <!-- Animated Decorative Shapes -->
+                    <div class="absolute top-4 left-10 w-12 h-12 rounded-full border-4 border-accent-purple/20 animate-float-1"></div>
+                    <div class="absolute bottom-10 right-4 w-0 h-0 border-l-[20px] border-l-transparent border-b-[35px] border-b-accent-pink/30 border-r-[20px] border-r-transparent animate-float-2"></div>
+                    <div class="absolute top-1/2 right-12 w-8 h-8 bg-accent-blue/10 rounded-card animate-float-3"></div>
+                    <div class="absolute bottom-8 left-8 w-16 h-16 rounded-full border-2 border-dashed border-accent-orange/40 animate-spin [animation-duration:20s]"></div>
+
+                    <!-- Profile Card -->
+                    <div class="relative bg-white p-4 rounded-card border border-brand-border shadow-soft max-w-[320px] md:max-w-sm w-full z-10 transform hover:scale-[1.01] transition-transform">
+                        <div class="aspect-square w-full bg-gray-100 rounded-card overflow-hidden relative">
+                            <!-- Placeholder Profile Image -->
+                            <img src="assets/arya-dwi-putra.png" alt="Arya Dwi Putra" class="w-full h-full object-cover relative z-10 mix-blend-multiply filter opacity-90">
+                        </div>
+                        <div class="mt-4 flex justify-between items-center">
+                            <div>
+                                <h3 class="text-sm font-semibold text-brand-dark">Arya Dwi Putra</h3>
+                                <p class="text-xs text-brand-muted">Available for remote work</p>
+                            </div>
+                            <span class="w-2 h-2 rounded-full bg-accent-green animate-pulse"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- 4. CLIENTS SECTION (MARQUEE)               -->
+        <!-- ========================================== -->
+        <section id="clients" class="py-12 border-y border-brand-border bg-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 mb-6">
+                <p class="text-center text-xs font-medium uppercase tracking-widest text-brand-muted">
+                    Trusted by teams and growing businesses
+                </p>
+            </div>
+            
+            <!-- Infinite Marquee Wrapper -->
+            <div class="relative w-full flex items-center overflow-x-hidden whitespace-nowrap mask-gradient">
+                <div class="animate-marquee flex space-x-16 items-center">
+                    <!-- Set 1 -->
+                    <span class="text-lg font-semibold tracking-wider text-gray-400 grayscale">DATAKELOLA</span>
+                    <span class="text-lg font-semibold tracking-wider text-gray-400 grayscale">KOMODO VOYAGE</span>
+                    <span class="text-lg font-semibold tracking-wider text-gray-400 grayscale">NEXUS TECH</span>
+                    <span class="text-lg font-semibold tracking-wider text-gray-400 grayscale">VERTEX INDO</span>
+                    <span class="text-lg font-semibold tracking-wider text-gray-400 grayscale">AMARTA LABS</span>
+                    <span class="text-lg font-semibold tracking-wider text-gray-400 grayscale">STELLAR DIGITAL</span>
+                    <!-- Set 2 (Duplicate for seamless loop) -->
+                    <span class="text-lg font-semibold tracking-wider text-gray-400 grayscale">DATAKELOLA</span>
+                    <span class="text-lg font-semibold tracking-wider text-gray-400 grayscale">KOMODO VOYAGE</span>
+                    <span class="text-lg font-semibold tracking-wider text-gray-400 grayscale">NEXUS TECH</span>
+                    <span class="text-lg font-semibold tracking-wider text-gray-400 grayscale">VERTEX INDO</span>
+                    <span class="text-lg font-semibold tracking-wider text-gray-400 grayscale">AMARTA LABS</span>
+                    <span class="text-lg font-semibold tracking-wider text-gray-400 grayscale">STELLAR DIGITAL</span>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- 5. TOOLS SECTION                           -->
+        <!-- ========================================== -->
+        <section id="tools" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+                    <span class="text-xs font-semibold text-accent-orange uppercase tracking-wider">Ecosystem & Stack</span>
+                    <h2 class="text-3xl font-semibold tracking-tight text-brand-dark">The toolkit behind robust platforms</h2>
+                    <p class="text-brand-muted text-sm md:text-base">Kombinasi backend tangguh, pengelolaan data efisien, dan antarmuka modern untuk menghasilkan performa terbaik.</p>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                    <!-- Core Tool Card (Accent Surface) -->
+                    <div class="bg-accent-purple/5 border border-accent-purple/20 p-5 rounded-card flex flex-col justify-between h-32 hover:shadow-soft transition-all">
+                        <span class="text-xs font-semibold text-accent-purple bg-white border border-accent-purple/10 w-fit px-2 py-0.5 rounded">Core</span>
+                        <p class="font-semibold text-brand-dark text-base mt-auto">Laravel</p>
+                    </div>
+
+                    <div class="bg-accent-pink/5 border border-accent-pink/20 p-5 rounded-card flex flex-col justify-between h-32 hover:shadow-soft transition-all">
+                        <span class="text-xs font-semibold text-accent-pink bg-white border border-accent-pink/10 w-fit px-2 py-0.5 rounded">Runtime</span>
+                        <p class="font-semibold text-brand-dark text-base mt-auto">PHP</p>
+                    </div>
+
+                    <div class="bg-white border border-brand-border p-5 rounded-card flex flex-col justify-between h-32 hover:border-brand-dark hover:shadow-soft transition-all">
+                        <span class="w-6 h-6 rounded-md bg-gray-100 text-xs font-medium flex items-center justify-center text-brand-muted">Db</span>
+                        <p class="font-semibold text-brand-dark text-base mt-auto">MySQL</p>
+                    </div>
+
+                    <div class="bg-white border border-brand-border p-5 rounded-card flex flex-col justify-between h-32 hover:border-brand-dark hover:shadow-soft transition-all">
+                        <span class="w-6 h-6 rounded-md bg-gray-100 text-xs font-medium flex items-center justify-center text-brand-muted">Db</span>
+                        <p class="font-semibold text-brand-dark text-base mt-auto">PostgreSQL</p>
+                    </div>
+
+                    <div class="bg-accent-orange/5 border border-accent-orange/20 p-5 rounded-card flex flex-col justify-between h-32 hover:shadow-soft transition-all">
+                        <span class="text-xs font-semibold text-accent-orange bg-white border border-accent-orange/10 w-fit px-2 py-0.5 rounded">Cache</span>
+                        <p class="font-semibold text-brand-dark text-base mt-auto">Redis</p>
+                    </div>
+
+                    <!-- Grid Row 2 -->
+                    <div class="bg-white border border-brand-border p-5 rounded-card flex flex-col justify-between h-32 hover:border-brand-dark hover:shadow-soft transition-all">
+                        <span class="w-6 h-6 rounded-md bg-gray-100 text-xs font-medium flex items-center justify-center text-brand-muted">API</span>
+                        <p class="font-semibold text-brand-dark text-base mt-auto">REST API</p>
+                    </div>
+
+                    <div class="bg-accent-blue/5 border border-accent-blue/20 p-5 rounded-card flex flex-col justify-between h-32 hover:shadow-soft transition-all">
+                        <span class="text-xs font-semibold text-accent-blue bg-white border border-accent-blue/10 w-fit px-2 py-0.5 rounded">UI</span>
+                        <p class="font-semibold text-brand-dark text-base mt-auto">Tailwind CSS</p>
+                    </div>
+
+                    <div class="bg-white border border-brand-border p-5 rounded-card flex flex-col justify-between h-32 hover:border-brand-dark hover:shadow-soft transition-all">
+                        <span class="w-6 h-6 rounded-md bg-gray-100 text-xs font-medium flex items-center justify-center text-brand-muted">UI</span>
+                        <p class="font-semibold text-brand-dark text-base mt-auto">ReactJS</p>
+                    </div>
+
+                    <div class="bg-white border border-brand-border p-5 rounded-card flex flex-col justify-between h-32 hover:border-brand-dark hover:shadow-soft transition-all">
+                        <span class="w-6 h-6 rounded-md bg-gray-100 text-xs font-medium flex items-center justify-center text-brand-muted">UI</span>
+                        <p class="font-semibold text-brand-dark text-base mt-auto">Vue.js</p>
+                    </div>
+
+                    <div class="bg-white border border-brand-border p-5 rounded-card flex flex-col justify-between h-32 hover:border-brand-dark hover:shadow-soft transition-all">
+                        <span class="w-6 h-6 rounded-md bg-gray-100 text-xs font-medium flex items-center justify-center text-brand-muted">Ops</span>
+                        <p class="font-semibold text-brand-dark text-base mt-auto">Docker</p>
+                    </div>
+                    
+                    <!-- Extra items to fulfill standard requirement -->
+                    <div class="bg-white border border-brand-border p-5 rounded-card flex flex-col justify-between h-32 hover:border-brand-dark hover:shadow-soft transition-all">
+                        <span class="w-6 h-6 rounded-md bg-gray-100 text-xs font-medium flex items-center justify-center text-brand-muted">Ops</span>
+                        <p class="font-semibold text-brand-dark text-base mt-auto">Nginx</p>
+                    </div>
+                    <div class="bg-white border border-brand-border p-5 rounded-card flex flex-col justify-between h-32 hover:border-brand-dark hover:shadow-soft transition-all">
+                        <span class="w-6 h-6 rounded-md bg-gray-100 text-xs font-medium flex items-center justify-center text-brand-muted">JS</span>
+                        <p class="font-semibold text-brand-dark text-base mt-auto">Node.js</p>
+                    </div>
+                    <div class="bg-white border border-brand-border p-5 rounded-card flex flex-col justify-between h-32 hover:border-brand-dark hover:shadow-soft transition-all">
+                        <span class="w-6 h-6 rounded-md bg-gray-100 text-xs font-medium flex items-center justify-center text-brand-muted">VCS</span>
+                        <p class="font-semibold text-brand-dark text-base mt-auto">Git</p>
+                    </div>
+                    <div class="bg-white border border-brand-border p-5 rounded-card flex flex-col justify-between h-32 hover:border-brand-dark hover:shadow-soft transition-all">
+                        <span class="w-6 h-6 rounded-md bg-gray-100 text-xs font-medium flex items-center justify-center text-brand-muted">JS</span>
+                        <p class="font-semibold text-brand-dark text-base mt-auto">InertiaJS</p>
+                    </div>
+                    <div class="bg-white border border-brand-border p-5 rounded-card flex flex-col justify-between h-32 hover:border-brand-dark hover:shadow-soft transition-all">
+                        <span class="w-6 h-6 rounded-md bg-gray-100 text-xs font-medium flex items-center justify-center text-brand-muted">UI</span>
+                        <p class="font-semibold text-brand-dark text-base mt-auto">Bootstrap</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- 6. PORTFOLIO SECTION                       -->
+        <!-- ========================================== -->
+        <section id="portfolio" class="py-20 bg-white border-t border-brand-border">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-10 space-y-3">
+                    <span class="text-xs font-semibold text-accent-purple uppercase tracking-wider">Selected Works</span>
+                    <h2 class="text-3xl font-semibold tracking-tight text-brand-dark">Proven digital systems in production</h2>
+                    <p class="text-brand-muted text-sm md:text-base">Studi kasus pengembangan platform kompleks dari tahap inisiasi arsitektur database hingga deployment siap pakai.</p>
+                </div>
+                <div class="flex justify-center mb-12">
+                    <a href="./portfolio/index.html" class="inline-flex items-center justify-center px-5 py-3 bg-white text-brand-dark border border-brand-border text-sm font-medium rounded-button hover:bg-gray-50 transition-all">
+                        Lihat semua portfolio
+                    </a>
+                </div>
+
+                <!-- Grid Portfolio -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Card 1: Asset Management System -->
+                    <article class="group bg-white border border-brand-border rounded-card overflow-hidden hover:shadow-soft-hover hover:border-brand-dark/30 transition-all flex flex-col">
+                        <div class="aspect-video w-full bg-gray-100 relative overflow-hidden">
+                            <div class="absolute inset-0 flex items-center justify-center text-brand-muted/30 text-xs">Thumbnail Placeholder</div>
+                            <img src="https://picsum.photos/600/400?random=1" alt="Asset Management System" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300 filter grayscale group-hover:grayscale-0">
+                        </div>
+                        <div class="p-5 flex flex-col flex-grow space-y-3">
+                            <span class="text-[10px] font-semibold uppercase tracking-wider text-accent-purple bg-accent-purple/5 px-2 py-0.5 rounded w-fit">Enterprise App</span>
+                            <h3 class="text-lg font-semibold text-brand-dark leading-snug">Asset Management System</h3>
+                            <p class="text-xs text-brand-muted line-clamp-2">Sistem pelacakan inventaris internal, depresiasi otomatis barang, dan approval module berbasis multi-gudang.</p>
+                            <div class="flex flex-wrap gap-1.5 pt-2">
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-100 rounded text-brand-dark font-medium">Laravel 11</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-100 rounded text-brand-dark font-medium">InertiaJS</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-100 rounded text-brand-dark font-medium">PostgreSQL</span>
+                            </div>
+                            <a href="./portfolio/detail.html" class="text-xs font-medium text-brand-dark inline-flex items-center pt-4 mt-auto group-hover:text-accent-purple transition-colors">
+                                View Case Study <span class="ml-1 group-hover:translate-x-1 transition-transform">→</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Card 2: Inventory Dashboard -->
+                    <article class="group bg-white border border-brand-border rounded-card overflow-hidden hover:shadow-soft-hover hover:border-brand-dark/30 transition-all flex flex-col">
+                        <div class="aspect-video w-full bg-gray-100 relative overflow-hidden">
+                            <div class="absolute inset-0 flex items-center justify-center text-brand-muted/30 text-xs">Thumbnail Placeholder</div>
+                            <img src="https://picsum.photos/600/400?random=2" alt="Inventory Dashboard" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300 filter grayscale group-hover:grayscale-0">
+                        </div>
+                        <div class="p-5 flex flex-col flex-grow space-y-3">
+                            <span class="text-[10px] font-semibold uppercase tracking-wider text-accent-blue bg-accent-blue/5 px-2 py-0.5 rounded w-fit">Dashboard</span>
+                            <h3 class="text-lg font-semibold text-brand-dark leading-snug">Realtime Inventory Dashboard</h3>
+                            <p class="text-xs text-brand-muted line-clamp-2">Visualisasi stok pergudangan real-time dengan integrasi scanner barcode dan push notification via WebSocket.</p>
+                            <div class="flex flex-wrap gap-1.5 pt-2">
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-100 rounded text-brand-dark font-medium">Laravel Octane</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-100 rounded text-brand-dark font-medium">VueJS</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-100 rounded text-brand-dark font-medium">Redis</span>
+                            </div>
+                            <a href="./portfolio/detail.html" class="text-xs font-medium text-brand-dark inline-flex items-center pt-4 mt-auto group-hover:text-accent-blue transition-colors">
+                                View Case Study <span class="ml-1 group-hover:translate-x-1 transition-transform">→</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Card 3: HRIS Platform -->
+                    <article class="group bg-white border border-brand-border rounded-card overflow-hidden hover:shadow-soft-hover hover:border-brand-dark/30 transition-all flex flex-col">
+                        <div class="aspect-video w-full bg-gray-100 relative overflow-hidden">
+                            <div class="absolute inset-0 flex items-center justify-center text-brand-muted/30 text-xs">Thumbnail Placeholder</div>
+                            <img src="https://picsum.photos/600/400?random=3" alt="HRIS Platform" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300 filter grayscale group-hover:grayscale-0">
+                        </div>
+                        <div class="p-5 flex flex-col flex-grow space-y-3">
+                            <span class="text-[10px] font-semibold uppercase tracking-wider text-accent-pink bg-accent-pink/5 px-2 py-0.5 rounded w-fit">SaaS App</span>
+                            <h3 class="text-lg font-semibold text-brand-dark leading-snug">SaaS HRIS Platform</h3>
+                            <p class="text-xs text-brand-muted line-clamp-2">Sistem manajemen performa karyawan, absensi geofencing, kalkulasi payroll otomatis berstandar perpajakan lokal.</p>
+                            <div class="flex flex-wrap gap-1.5 pt-2">
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-100 rounded text-brand-dark font-medium">Laravel Multi-tenant</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-100 rounded text-brand-dark font-medium">AlpineJS</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-100 rounded text-brand-dark font-medium">MySQL</span>
+                            </div>
+                            <a href="./portfolio/detail.html" class="text-xs font-medium text-brand-dark inline-flex items-center pt-4 mt-auto group-hover:text-accent-pink transition-colors">
+                                View Case Study <span class="ml-1 group-hover:translate-x-1 transition-transform">→</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Card 4: Finance Reporting App -->
+                    <article class="group bg-white border border-brand-border rounded-card overflow-hidden hover:shadow-soft-hover hover:border-brand-dark/30 transition-all flex flex-col">
+                        <div class="aspect-video w-full bg-gray-100 relative overflow-hidden">
+                            <div class="absolute inset-0 flex items-center justify-center text-brand-muted/30 text-xs">Thumbnail Placeholder</div>
+                            <img src="https://picsum.photos/600/400?random=4" alt="Finance Reporting App" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300 filter grayscale group-hover:grayscale-0">
+                        </div>
+                        <div class="p-5 flex flex-col flex-grow space-y-3">
+                            <span class="text-[10px] font-semibold uppercase tracking-wider text-accent-green bg-accent-green/5 px-2 py-0.5 rounded w-fit">Finance</span>
+                            <h3 class="text-lg font-semibold text-brand-dark leading-snug">Finance Reporting Architecture</h3>
+                            <p class="text-xs text-brand-muted line-clamp-2">Engine kalkulasi laporan rugi-laba perusahaan dengan enkripsi data transaksi tingkat tinggi dan audit log end-to-end.</p>
+                            <div class="flex flex-wrap gap-1.5 pt-2">
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-100 rounded text-brand-dark font-medium">PHP 8.3</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-100 rounded text-brand-dark font-medium">Laravel Eloquent</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-100 rounded text-brand-dark font-medium">Tailwind</span>
+                            </div>
+                            <a href="./portfolio/detail.html" class="text-xs font-medium text-brand-dark inline-flex items-center pt-4 mt-auto group-hover:text-accent-green transition-colors">
+                                View Case Study <span class="ml-1 group-hover:translate-x-1 transition-transform">→</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Card 5: Company Profile CMS -->
+                    <article class="group bg-white border border-brand-border rounded-card overflow-hidden hover:shadow-soft-hover hover:border-brand-dark/30 transition-all flex flex-col">
+                        <div class="aspect-video w-full bg-gray-100 relative overflow-hidden">
+                            <div class="absolute inset-0 flex items-center justify-center text-brand-muted/30 text-xs">Thumbnail Placeholder</div>
+                            <img src="https://picsum.photos/600/400?random=5" alt="Company Profile CMS" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300 filter grayscale group-hover:grayscale-0">
+                        </div>
+                        <div class="p-5 flex flex-col flex-grow space-y-3">
+                            <span class="text-[10px] font-semibold uppercase tracking-wider text-accent-orange bg-accent-orange/5 px-2 py-0.5 rounded w-fit">CMS</span>
+                            <h3 class="text-lg font-semibold text-brand-dark leading-snug">High-Performance Profile CMS</h3>
+                            <p class="text-xs text-brand-muted line-clamp-2">Content Management System modular yang dioptimalkan khusus untuk SEO, pemuatan gambar cepat, dan *low latency*.</p>
+                            <div class="flex flex-wrap gap-1.5 pt-2">
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-100 rounded text-brand-dark font-medium">FilamentCMS</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-100 rounded text-brand-dark font-medium">Tailwind</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-100 rounded text-brand-dark font-medium">SQLite</span>
+                            </div>
+                            <a href="./portfolio/detail.html" class="text-xs font-medium text-brand-dark inline-flex items-center pt-4 mt-auto group-hover:text-accent-orange transition-colors">
+                                View Case Study <span class="ml-1 group-hover:translate-x-1 transition-transform">→</span>
+                            </a>
+                        </div>
+                    </article>
+
+                    <!-- Card 6: API Integration Platform -->
+                    <article class="group bg-white border border-brand-border rounded-card overflow-hidden hover:shadow-soft-hover hover:border-brand-dark/30 transition-all flex flex-col">
+                        <div class="aspect-video w-full bg-gray-100 relative overflow-hidden">
+                            <div class="absolute inset-0 flex items-center justify-center text-brand-muted/30 text-xs">Thumbnail Placeholder</div>
+                            <img src="https://picsum.photos/600/400?random=6" alt="API Integration Platform" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300 filter grayscale group-hover:grayscale-0">
+                        </div>
+                        <div class="p-5 flex flex-col flex-grow space-y-3">
+                            <span class="text-[10px] font-semibold uppercase tracking-wider text-accent-purple bg-accent-purple/5 px-2 py-0.5 rounded w-fit">Backend Integrations</span>
+                            <h3 class="text-lg font-semibold text-brand-dark leading-snug">Omnichannel API Hub</h3>
+                            <p class="text-xs text-brand-muted line-clamp-2">Pusat integrasi API yang menjembatani web e-commerce dengan ekspedisi pihak ketiga dan gerbang pembayaran nasional.</p>
+                            <div class="flex flex-wrap gap-1.5 pt-2">
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-100 rounded text-brand-dark font-medium">Laravel API</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-100 rounded text-brand-dark font-medium">Redis Queue</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-gray-100 rounded text-brand-dark font-medium">Webhooks</span>
+                            </div>
+                            <a href="./portfolio/detail.html" class="text-xs font-medium text-brand-dark inline-flex items-center pt-4 mt-auto group-hover:text-accent-purple transition-colors">
+                                View Case Study <span class="ml-1 group-hover:translate-x-1 transition-transform">→</span>
+                            </a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- 7. WORKING METHOD SECTION                  -->
+        <!-- ========================================== -->
+        <section id="workflow" class="py-20 bg-white border-t border-brand-border">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+                
+                <!-- Left: Illustration Placeholder Frame -->
+                <div class="md:col-span-5 sticky top-24">
+                    <div class="border border-brand-border p-6 rounded-card bg-gray-50/50 space-y-4 shadow-soft">
+                        <div class="aspect-[4/3] w-full bg-white border border-brand-border rounded flex items-center justify-center text-brand-muted text-xs">
+                            
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-brand-dark">Arsitektur Terarah & Terukur</h4>
+                            <p class="text-xs text-brand-muted mt-1">Mengurangi redundansi kode serta menghindari bottleneck database semenjak hari pertama proyek dimulai.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Content Timeline -->
+                <div class="md:col-span-7 space-y-8">
+                    <div class="space-y-3">
+                        <span class="text-xs font-semibold text-accent-pink uppercase tracking-wider">How I Work</span>
+                        <h2 class="text-3xl font-semibold tracking-tight text-brand-dark">A structured process to ship reliable products</h2>
+                    </div>
+
+                    <!-- Steps List -->
+                    <div class="relative pl-6 border-l border-brand-border space-y-10 mt-8">
+                        
+                        <!-- Step 1 -->
+                        <div class="relative">
+                            <span class="absolute -left-[35px] top-0 flex items-center justify-center w-6 h-6 text-xs font-medium bg-white text-brand-dark border border-brand-border rounded-full">01</span>
+                            <h3 class="text-base font-semibold text-brand-dark">Discovery & Requirement Mapping</h3>
+                            <p class="text-sm text-brand-muted mt-1.5 leading-relaxed">
+                                Bedah kebutuhan bisnis klien untuk menetapkan fungsionalitas sistem informasi, kebutuhan user role, cakupan skalabilitas, serta penentuan timeline rilis yang masuk akal.
+                            </p>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="relative">
+                            <span class="absolute -left-[35px] top-0 flex items-center justify-center w-6 h-6 text-xs font-medium bg-white text-brand-dark border border-brand-border rounded-full">02</span>
+                            <h3 class="text-base font-semibold text-brand-dark">Database & Architecture Planning</h3>
+                            <p class="text-sm text-brand-muted mt-1.5 leading-relaxed">
+                                Merancang skema Entity-Relationship Diagram (ERD), normalisasi data, pendefinisian relasi tabel, indeks kolom penting, serta menetapkan API design pattern yang bersih.
+                            </p>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="relative">
+                            <span class="absolute -left-[35px] top-0 flex items-center justify-center w-6 h-6 text-xs font-medium bg-white text-brand-dark border border-brand-border rounded-full">03</span>
+                            <h3 class="text-base font-semibold text-brand-dark">Clean Implementation</h3>
+                            <p class="text-sm text-brand-muted mt-1.5 leading-relaxed">
+                                Penulisan kode berbasis standar PSR-12, pemanfaatan Service Classes, Form Requests, Observers, serta pemisahan logika bisnis yang rigid dari controller agar project mudah di-maintain jangka panjang.
+                            </p>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="relative">
+                            <span class="absolute -left-[35px] top-0 flex items-center justify-center w-6 h-6 text-xs font-medium bg-white text-brand-dark border border-brand-border rounded-full">04</span>
+                            <h3 class="text-base font-semibold text-brand-dark">Testing & Optimization</h3>
+                            <p class="text-sm text-brand-muted mt-1.5 leading-relaxed">
+                                Menjalankan PHPUnit testing, penanganan N+1 query menggunakan eager loading, serta optimasi caching data menggunakan Redis guna memangkas *response time* aplikasi.
+                            </p>
+                        </div>
+
+                        <!-- Step 5 -->
+                        <div class="relative">
+                            <span class="absolute -left-[35px] top-0 flex items-center justify-center w-6 h-6 text-xs font-medium bg-white text-brand-dark border border-brand-border rounded-full">05</span>
+                            <h3 class="text-base font-semibold text-brand-dark">Deployment & Maintenance</h3>
+                            <p class="text-sm text-brand-muted mt-1.5 leading-relaxed">
+                                Mengotomatisasi siklus deploy melalui CI/CD pipeline, konfigurasi server Nginx via Laravel Forge, serta integrasi logging error real-time untuk memastikan *high-availability*.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- 8. BLOG / ARTICLES SECTION                 -->
+        <!-- ========================================== -->
+        <section id="blog" class="py-20 bg-white border-t border-brand-border">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16 space-y-3">
+                    <span class="text-xs font-semibold text-accent-blue uppercase tracking-wider">Technical Writing</span>
+                    <h2 class="text-3xl font-semibold tracking-tight text-brand-dark">Insights from engineering trenches</h2>
+                    <p class="text-brand-muted text-sm md:text-base">Berbagi pengalaman empiris seputar optimasi performa framework, rancangan sistem backend, serta dokumentasi best practice.</p>
+                </div>
+
+                                <div class="flex justify-center mb-12">
+                    <a href="./articles/index.html" class="inline-flex items-center justify-center px-5 py-3 bg-white text-brand-dark border border-brand-border text-sm font-medium rounded-button hover:bg-gray-50 transition-all">
+                        Lihat semua artikel
+                    </a>
+                </div>
+
+                <!-- Grid Articles -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- Article 1 -->
+                    <article class="group flex flex-col space-y-3">
+                        <div class="aspect-[16/10] bg-gray-100 rounded-card overflow-hidden border border-brand-border">
+                            <img src="https://picsum.photos/600/380?random=11" alt="Laravel Performance Optimization" class="w-full h-full object-cover group-hover:scale-[1.01] transition-transform duration-300 filter grayscale group-hover:grayscale-0">
+                        </div>
+                        <div class="flex items-center space-x-2 text-xs text-brand-muted pt-1">
+                            <span>Optimization</span>
+                            <span>•</span>
+                            <time datetime="2026-05-10">May 10, 2026</time>
+                        </div>
+                        <h3 class="text-base font-semibold text-brand-dark leading-snug group-hover:text-accent-purple transition-colors">
+                            <a href="./articles/detail.html">Deep Dive: Laravel Performance Optimization on High Traffic API Platforms</a>
+                        </h3>
+                        <p class="text-xs text-brand-muted line-clamp-2 leading-relaxed">
+                            Panduan komprehensif mengkonfigurasi Laravel Octane, database pooling, dan strategi chunking data untuk meminimalkan beban memori server.
+                        </p>
+                        <a href="./articles/detail.html" class="text-xs font-medium text-brand-dark inline-flex items-center pt-2 group-hover:underline">
+                            Read Article <span class="ml-1">→</span>
+                        </a>
+                    </article>
+
+                    <!-- Article 2 -->
+                    <article class="group flex flex-col space-y-3">
+                        <div class="aspect-[16/10] bg-gray-100 rounded-card overflow-hidden border border-brand-border">
+                            <img src="https://picsum.photos/600/380?random=12" alt="Database Schema" class="w-full h-full object-cover group-hover:scale-[1.01] transition-transform duration-300 filter grayscale group-hover:grayscale-0">
+                        </div>
+                        <div class="flex items-center space-x-2 text-xs text-brand-muted pt-1">
+                            <span>Database Architecture</span>
+                            <span>•</span>
+                            <time datetime="2026-04-22">Apr 22, 2026</time>
+                        </div>
+                        <h3 class="text-base font-semibold text-brand-dark leading-snug group-hover:text-accent-blue transition-colors">
+                            <a href="./articles/detail.html">Designing Maintainable Database Schemas For E-commerce Scaling</a>
+                        </h3>
+                        <p class="text-xs text-brand-muted line-clamp-2 leading-relaxed">
+                            Menghindari jebakan arsitektur database relasional, cara tepat mendesain composite index, dan kapan waktu ideal menggunakan skema denormalisasi.
+                        </p>
+                        <a href="./articles/detail.html" class="text-xs font-medium text-brand-dark inline-flex items-center pt-2 group-hover:underline">
+                            Read Article <span class="ml-1">→</span>
+                        </a>
+                    </article>
+
+                    <!-- Article 3 -->
+                    <article class="group flex flex-col space-y-3">
+                        <div class="aspect-[16/10] bg-gray-100 rounded-card overflow-hidden border border-brand-border">
+                            <img src="https://picsum.photos/600/380?random=13" alt="Secure Dashboard" class="w-full h-full object-cover group-hover:scale-[1.01] transition-transform duration-300 filter grayscale group-hover:grayscale-0">
+                        </div>
+                        <div class="flex items-center space-x-2 text-xs text-brand-muted pt-1">
+                            <span>Security</span>
+                            <span>•</span>
+                            <time datetime="2026-03-15">Mar 15, 2026</time>
+                        </div>
+                        <h3 class="text-base font-semibold text-brand-dark leading-snug group-hover:text-accent-pink transition-colors">
+                            <a href="./articles/detail.html">Building Secure Admin Dashboards: RBAC Best Practices in Core Laravel</a>
+                        </h3>
+                        <p class="text-xs text-brand-muted line-clamp-2 leading-relaxed">
+                            Menerapkan Role-Based Access Control secara aman menggunakan native Gates dan Policies, dilengkapi mitigasi celah keamanan IDOR.
+                        </p>
+                        <a href="./articles/detail.html" class="text-xs font-medium text-brand-dark inline-flex items-center pt-2 group-hover:underline">
+                            Read Article <span class="ml-1">→</span>
+                        </a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- 9. CTA SECTION                             -->
+        <!-- ========================================== -->
+        <section id="contact" class="py-16 bg-white px-6">
+            <div class="max-w-7xl mx-auto bg-brand-dark rounded-card text-white p-8 md:p-16 relative overflow-hidden shadow-soft">
+                <!-- Background Accent Shapes inside CTA -->
+                <div class="absolute -top-12 -right-12 w-44 h-44 bg-accent-purple/10 rounded-full blur-2xl"></div>
+                <div class="absolute -bottom-8 left-1/3 w-32 h-32 bg-accent-pink/10 rounded-full blur-xl"></div>
+                
+                <div class="max-w-2xl relative z-10 space-y-6">
+                    <span class="inline-block text-[10px] font-semibold uppercase tracking-widest text-accent-green bg-accent-green/10 border border-accent-green/20 px-2 py-0.5 rounded">
+                        Let's work together
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight leading-[1.2]">
+                        Need a reliable engineer to turn your idea into a scalable web application?
+                    </h2>
+                    <p class="text-sm md:text-base text-gray-400 max-w-lg leading-relaxed">
+                        Konsultasikan kebutuhan sistem informasi, migrasi database legacy, atau kustomisasi web core platform Anda secara profesional bersama saya.
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="mailto:hello@aryadwiputra.com" class="inline-flex items-center justify-center px-6 py-3 bg-white text-brand-dark text-sm font-medium rounded-button hover:bg-opacity-95 transition-all font-semibold">
+                            Start a Project
+                        </a>
+                        <a href="./about/index.html" class="inline-flex items-center justify-center px-6 py-3 bg-transparent text-white border border-gray-700 text-sm font-medium rounded-button hover:bg-gray-800 transition-all">
+                            Tentang Saya
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- ========================================== -->
+    <!-- 10. FOOTER PROFESSIONAL                    -->
+    <!-- ========================================== -->
+    <footer class="bg-white border-t border-brand-border py-12 md:py-16">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+            
+            <!-- Column 1: Brand Intro -->
+            <div class="md:col-span-4 space-y-4">
+                <a href="./index.html" class="text-base font-semibold tracking-tight text-brand-dark">
+                    arya<span class="text-accent-purple">dwiputra</span>
+                </a>
+                <p class="text-xs text-brand-muted leading-relaxed max-w-xs">
+                    Senior Laravel Engineer yang berfokus membangun produk digital berkualitas tinggi berbasis arsitektur server-side handal dan antarmuka interaktif modern.
+                </p>
+            </div>
+
+            <!-- Column 2: Navigation Links -->
+            <div class="md:col-span-2 space-y-3">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-brand-dark">Navigation</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="./index.html" class="text-brand-muted hover:text-brand-dark transition-colors">Home</a></li>
+                    <li><a href="./portfolio/index.html" class="text-brand-muted hover:text-brand-dark transition-colors">Portfolio</a></li>
+                    <li><a href="./articles/index.html" class="text-brand-muted hover:text-brand-dark transition-colors">Artikel</a></li>
+                    <li><a href="./about/index.html" class="text-brand-muted hover:text-brand-dark transition-colors">Tentang</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Services -->
+            <div class="md:col-span-3 space-y-3">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-brand-dark">Services</h4>
+                <ul class="space-y-2 text-xs text-brand-muted">
+                    <li>Backend API Development</li>
+                    <li>Database Engineering & Profiling</li>
+                    <li>Custom System Integration</li>
+                    <li>Fullstack App Architecture</li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Social / Contacts -->
+            <div class="md:col-span-3 space-y-3">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-brand-dark">Connect</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="https://github.com" target="_blank" rel="noopener" class="text-brand-muted hover:text-brand-dark transition-colors inline-flex items-center">GitHub</a></li>
+                    <li><a href="https://linkedin.com" target="_blank" rel="noopener" class="text-brand-muted hover:text-brand-dark transition-colors inline-flex items-center">LinkedIn</a></li>
+                    <li><a href="mailto:hello@aryadwiputra.com" class="text-brand-muted hover:text-brand-dark transition-colors">hello@aryadwiputra.com</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Copyright Note -->
+        <div class="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-brand-border flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-brand-muted">
+            <p>&copy; 2026 Arya Dwi Putra. All rights reserved.</p>
+            <p class="text-gray-400">Designed with modern minimalistic layout guidelines.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

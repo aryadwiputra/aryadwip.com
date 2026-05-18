@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak — Arya Dwi Putra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        brand: { dark: '#080808', muted: '#5a5a5a', border: '#d8d8d8' },
+                        accent: { purple: '#7a3dff', pink: '#ed52cb', blue: '#3b89ff', orange: '#ff6b00', green: '#00d722' }
+                    },
+                    boxShadow: {
+                        soft: '0 2px 4px rgba(0,0,0,0.02), 0 10px 30px rgba(0,0,0,0.04)',
+                        'soft-hover': '0 4px 12px rgba(0,0,0,0.05), 0 20px 40px rgba(0,0,0,0.08)'
+                    },
+                    borderRadius: { button: '4px', card: '8px' }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #080808; -webkit-font-smoothing: antialiased; }
+        *:focus-visible { outline: 2px solid #7a3dff; outline-offset: 2px; }
+        
+        /* Custom form styling for sleek premium look */
+        .form-input-premium {
+            width: 100%;
+            height: 44px;
+            padding: 0 16px;
+            font-size: 0.875rem;
+            color: #080808;
+            background-color: #ffffff;
+            border: 1px solid #d8d8d8;
+            border-radius: 4px;
+            transition: all 0.2s ease-in-out;
+        }
+        .form-input-premium:focus {
+            border-color: #080808;
+            outline: none;
+            box-shadow: 0 0 0 1px #080808;
+        }
+        .form-textarea-premium {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 0.875rem;
+            color: #080808;
+            background-color: #ffffff;
+            border: 1px solid #d8d8d8;
+            border-radius: 4px;
+            transition: all 0.2s ease-in-out;
+            resize: vertical;
+        }
+        .form-textarea-premium:focus {
+            border-color: #080808;
+            outline: none;
+            box-shadow: 0 0 0 1px #080808;
+        }
+    </style>
+</head>
+<body class="pb-20 md:pb-0">
+    <!-- NAVBAR DESKTOP -->
+    <header class="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-brand-border hidden md:block">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="../index.html" class="text-base font-semibold tracking-tight text-brand-dark hover:opacity-80 transition-opacity">arya<span class="text-accent-purple">dwiputra</span></a>
+            <nav class="flex items-center space-x-8">
+                <a href="../index.html" class="text-sm font-medium text-brand-muted hover:text-brand-dark transition-colors">Home</a>
+                <a href="../portfolio/index.html" class="text-sm font-medium text-brand-muted hover:text-brand-dark transition-colors">Portfolio</a>
+                <a href="../articles/index.html" class="text-sm font-medium text-brand-muted hover:text-brand-dark transition-colors">Artikel</a>
+                <a href="../about/index.html" class="text-sm font-medium text-brand-muted hover:text-brand-dark transition-colors">Tentang</a>
+                <a href="./index.html" class="text-sm font-medium text-brand-dark hover:text-accent-purple transition-colors">Kontak</a>
+            </nav>
+            <a href="mailto:hello@aryadwiputra.com" class="inline-flex items-center justify-center px-4 py-2 bg-brand-dark text-white text-sm font-medium rounded-button hover:bg-opacity-90 transition-all shadow-soft">Let's Talk</a>
+        </div>
+    </header>
+
+    <!-- BOTTOM BAR MOBILE -->
+    <nav class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-brand-border px-4 py-2.5 md:hidden shadow-[0_-4px_12px_rgba(0,0,0,0.03)]">
+        <div class="grid grid-cols-4 justify-items-center items-center">
+            <a href="../index.html" class="flex flex-col items-center space-y-1 text-brand-muted hover:text-brand-dark"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg><span class="text-[10px] font-medium tracking-wide">Home</span></a>
+            <a href="../portfolio/index.html" class="flex flex-col items-center space-y-1 text-brand-muted hover:text-brand-dark"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg><span class="text-[10px] font-medium tracking-wide">Portfolio</span></a>
+            <a href="../articles/index.html" class="flex flex-col items-center space-y-1 text-brand-muted hover:text-brand-dark"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg><span class="text-[10px] font-medium tracking-wide">Artikel</span></a>
+            <a href="./index.html" class="flex flex-col items-center space-y-1 text-brand-dark"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg><span class="text-[10px] font-medium tracking-wide">Kontak</span></a>
+        </div>
+    </nav>
+
+    <!-- ========================================== -->
+    <!-- REVAMPED MAIN CONTENT SECTIONS             -->
+    <!-- ========================================== -->
+    <main>
+        <!-- 1. INTRO / HERO SECTION -->
+        <section class="border-b border-brand-border bg-white">
+            <div class="max-w-7xl mx-auto px-6 py-16 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                
+                <!-- Left Title Narrative -->
+                <div class="lg:col-span-8 space-y-5">
+                    <span class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-accent-green bg-accent-green/5 px-2.5 py-1 rounded">
+                        <span class="w-1.5 h-1.5 rounded-full bg-accent-green"></span> Get In Touch
+                    </span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] text-brand-dark">
+                        Mari bangun arsitektur sistem digital yang andal & tepat guna.
+                    </h1>
+                    <p class="text-base md:text-lg text-brand-muted max-w-2xl leading-relaxed">
+                        Terbuka untuk kolaborasi pengerjaan proyek baru, peninjauan performa kueri (*database audit*), stabilisasi sistem monolitik legacy, ataupun sekadar sesi konsultasi pemetaan ruang lingkup kerja MVP.
+                    </p>
+                </div>
+
+                <!-- Right Quick Context Indicators -->
+                <div class="lg:col-span-4 w-full lg:mt-6">
+                    <div class="bg-gray-50 border border-brand-border p-6 rounded-card shadow-soft grid grid-cols-2 gap-x-4 gap-y-5">
+                        <div class="col-span-2 border-b border-brand-border/60 pb-2">
+                            <span class="text-[11px] font-semibold tracking-widest uppercase text-brand-dark/40">Ketersediaan Kerja</span>
+                        </div>
+                        <div>
+                            <span class="block text-xl font-semibold text-brand-dark tracking-tight">24-48 Jam</span>
+                            <span class="text-[11px] text-brand-muted mt-0.5 block leading-tight">Estimasi tanggapan awal</span>
+                        </div>
+                        <div>
+                            <span class="block text-xl font-semibold text-brand-dark tracking-tight">Remote</span>
+                            <span class="text-[11px] text-brand-muted mt-0.5 block leading-tight">Kolaborasi lintas batas zona</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 2. TWO-COLUMN INQUIRY MODULE (FORM + INFO SIDEBAR) -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Left: Premium Conversational Intake Form -->
+                <div class="lg:col-span-7">
+                    <form id="contact-form" class="space-y-6">
+                        
+                        <!-- Row 1: Identity Info -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div class="space-y-2">
+                                <label for="name" class="text-xs font-semibold uppercase tracking-wider text-brand-dark/70">Nama Lengkap <span class="text-accent-pink">*</span></label>
+                                <input id="name" required name="name" type="text" class="form-input-premium" placeholder="Nama Anda">
+                            </div>
+                            <div class="space-y-2">
+                                <label for="email" class="text-xs font-semibold uppercase tracking-wider text-brand-dark/70">Alamat Email <span class="text-accent-pink">*</span></label>
+                                <input id="email" required name="email" type="email" class="form-input-premium" placeholder="email@perusahaan.com">
+                            </div>
+                        </div>
+
+                        <!-- Row 2: Company & Budget Context -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div class="space-y-2">
+                                <label for="company" class="text-xs font-semibold uppercase tracking-wider text-brand-dark/70">Perusahaan / Tim</label>
+                                <input id="company" name="company" type="text" class="form-input-premium" placeholder="Nama instansi (opsional)">
+                            </div>
+                            <div class="space-y-2">
+                                <label for="budget" class="text-xs font-semibold uppercase tracking-wider text-brand-dark/70">Estimasi Skala Budget</label>
+                                <select id="budget" name="budget" class="form-input-premium bg-white">
+                                    <option value="">Pilih rentang kisaran budget</option>
+                                    <option value="small">&lt; Rp15 Juta</option>
+                                    <option value="medium">Rp15 – Rp35 Juta</option>
+                                    <option value="large">Rp35 – Rp75 Juta</option>
+                                    <option value="enterprise">&gt; Rp75 Juta</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Row 3: Focus Tag / Interactive Project Selector -->
+                        <div class="space-y-2.5">
+                            <label class="text-xs font-semibold uppercase tracking-wider text-brand-dark/70 block">Jenis Kebutuhan Sistem</label>
+                            <div class="flex flex-wrap gap-2">
+                                <label class="cursor-pointer">
+                                    <input type="checkbox" name="interest" value="audit" class="peer sr-only">
+                                    <span class="inline-flex h-9 items-center px-4 rounded-button border border-brand-border text-xs font-medium text-brand-dark bg-white peer-checked:bg-brand-dark peer-checked:text-white peer-checked:border-brand-dark transition-all">Audit Backend & Query</span>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="checkbox" name="interest" value="dashboard" class="peer sr-only">
+                                    <span class="inline-flex h-9 items-center px-4 rounded-button border border-brand-border text-xs font-medium text-brand-dark bg-white peer-checked:bg-brand-dark peer-checked:text-white peer-checked:border-brand-dark transition-all">Internal Dashboard App</span>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="checkbox" name="interest" value="api" class="peer sr-only">
+                                    <span class="inline-flex h-9 items-center px-4 rounded-button border border-brand-border text-xs font-medium text-brand-dark bg-white peer-checked:bg-brand-dark peer-checked:text-white peer-checked:border-brand-dark transition-all">Integrasi API Hub</span>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="checkbox" name="interest" value="fullstack" class="peer sr-only">
+                                    <span class="inline-flex h-9 items-center px-4 rounded-button border border-brand-border text-xs font-medium text-brand-dark bg-white peer-checked:bg-brand-dark peer-checked:text-white peer-checked:border-brand-dark transition-all">Fullstack SaaS Architecture</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Row 4: Core Detailed Message -->
+                        <div class="space-y-2">
+                            <label class="text-xs font-semibold uppercase tracking-wider text-brand-dark/70 block">Detail Singkat Proyek</label>
+                            <textarea id="message" required name="message" rows="5" class="form-textarea-premium" placeholder="Ceritakan deskripsi tantangan teknis, tenggat waktu (*deadline*), atau hasil akhir sistem yang ingin Anda capai bersama saya..."></textarea>
+                        </div>
+
+                        <!-- Submit Wrapper -->
+                        <div class="pt-2 space-y-4">
+                            <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center px-6 h-12 bg-brand-dark text-white text-xs font-semibold rounded-button hover:bg-opacity-90 transition-all shadow-soft cursor-pointer">
+                                Kirim Inquiry Project
+                            </button>
+                            
+                            <!-- Status Dynamic Placeholder Notification -->
+                            <div id="form-status-box" class="hidden p-4 rounded-button border text-xs transition-all duration-300">
+                                <p id="form-status-text"></p>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+                <!-- Right: Direct Channels & Map Embed Component -->
+                <div class="lg:col-span-5 space-y-6 lg:sticky lg:top-24 w-full">
+                    
+                    <!-- Direct channels card -->
+                    <div class="border border-brand-border p-6 rounded-card bg-white space-y-5 shadow-soft">
+                        <h3 class="text-sm font-semibold text-brand-dark border-b border-brand-border pb-3">Saluran Komunikasi Langsung</h3>
+                        
+                        <div class="space-y-3.5 text-xs">
+                            <div>
+                                <span class="block text-[10px] uppercase tracking-widest text-brand-muted font-medium">Korespondensi Email Utama</span>
+                                <a href="mailto:hello@aryadwiputra.com" class="text-brand-dark font-medium text-sm hover:text-accent-purple transition-colors block mt-0.5">hello@aryadwiputra.com</a>
+                            </div>
+                            <div>
+                                <span class="block text-[10px] uppercase tracking-widest text-brand-muted font-medium">Lokasi Kerja</span>
+                                <span class="text-brand-dark font-medium block mt-0.5">Indonesia &bull; Global Remote Coordination Ready</span>
+                            </div>
+                            <div>
+                                <span class="block text-[10px] uppercase tracking-widest text-brand-muted font-medium">Jam Koordinasi Efektif</span>
+                                <span class="text-brand-dark font-medium block mt-0.5">Senin – Jumat, 09.00 – 18.00 WIB</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Grayscale Embedded Geolocation Map Box -->
+                    <div class="rounded-card border border-brand-border overflow-hidden shadow-soft aspect-[4/3] w-full bg-gray-50 relative group">
+                        <iframe title="Lokasi Arya Dwi Putra" src="https://www.google.com/maps?q=Jakarta%20Indonesia&z=10&output=embed" width="100%" h-full height="100%" style="border:0; filter: grayscale(100%) contrast(1.1) opacity(0.85);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+    <!-- ========================================== -->
+
+    <!-- FOOTER PROFESSIONAL -->
+    <footer class="bg-white border-t border-brand-border py-12 md:py-16">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+            <div class="md:col-span-4 space-y-4">
+                <a href="../index.html" class="text-base font-semibold tracking-tight text-brand-dark">arya<span class="text-accent-purple">dwiputra</span></a>
+                <p class="text-xs text-brand-muted leading-relaxed max-w-xs">Senior Laravel Engineer yang berfokus membangun produk digital berkualitas tinggi berbasis arsitektur server-side handal dan antarmuka interaktif modern.</p>
+            </div>
+            <div class="md:col-span-2 space-y-3">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-brand-dark">Navigation</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="../index.html" class="text-brand-muted hover:text-brand-dark transition-colors">Home</a></li>
+                    <li><a href="../portfolio/index.html" class="text-brand-muted hover:text-brand-dark transition-colors">Portfolio</a></li>
+                    <li><a href="../articles/index.html" class="text-brand-muted hover:text-brand-dark transition-colors">Artikel</a></li>
+                    <li><a href="../about/index.html" class="text-brand-muted hover:text-brand-dark transition-colors">Tentang</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-3 space-y-3">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-brand-dark">Services</h4>
+                <ul class="space-y-2 text-xs text-brand-muted">
+                    <li>Backend API Development</li>
+                    <li>Database Engineering & Profiling</li>
+                    <li>Custom System Integration</li>
+                    <li>Fullstack App Architecture</li>
+                </ul>
+            </div>
+            <div class="md:col-span-3 space-y-3">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-brand-dark">Connect</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="https://github.com" target="_blank" rel="noopener" class="text-brand-muted hover:text-brand-dark transition-colors inline-flex items-center">GitHub</a></li>
+                    <li><a href="https://linkedin.com" target="_blank" rel="noopener" class="text-brand-muted hover:text-brand-dark transition-colors inline-flex items-center">LinkedIn</a></li>
+                    <li><a href="mailto:hello@aryadwiputra.com" class="text-brand-muted hover:text-brand-dark transition-colors">hello@aryadwiputra.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-brand-border flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-brand-muted">
+            <p>&copy; 2026 Arya Dwi Putra. All rights reserved.</p>
+            <p class="text-gray-400">Designed with modern minimalistic layout guidelines.</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE FORM HANDLER INJECTION -->
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+            
+            const statusBox = document.getElementById('form-status-box');
+            const statusText = document.getElementById('form-status-text');
+            
+            // Perform basic semantic UI response changes
+            if (statusBox && statusText) {
+                statusBox.classList.remove('hidden', 'bg-red-50', 'border-red-200', 'text-red-700');
+                statusBox.classList.add('block', 'bg-green-50', 'border-green-200', 'text-green-800');
+                
+                statusText.innerHTML = '<strong>Inquiry berhasil disimulasikan!</strong> Struktur parameter input form (Nama, Email, Perusahaan, Budget, Tag Minat, & Pesan) sudah valid sesuai standar data transfer. Anda tinggal memetakannya ke `ContactController` di backend Laravel nanti.';
+                
+                // Clear input safely
+                document.getElementById('contact-form').reset();
+            }
+        });
+    </script>
+</body>
+</html>

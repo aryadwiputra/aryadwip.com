@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Saya — Arya Dwi Putra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#080808',
+                            muted: '#5a5a5a',
+                            border: '#d8d8d8',
+                        },
+                        accent: {
+                            purple: '#7a3dff',
+                            pink: '#ed52cb',
+                            blue: '#3b89ff',
+                            orange: '#ff6b00',
+                            green: '#00d722',
+                        }
+                    },
+                    boxShadow: {
+                        soft: '0 2px 4px rgba(0,0,0,0.02), 0 10px 30px rgba(0,0,0,0.04)',
+                        'soft-hover': '0 4px 12px rgba(0,0,0,0.04), 0 20px 40px rgba(0,0,0,0.08)',
+                    },
+                    borderRadius: {
+                        button: '4px',
+                        card: '8px',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #080808;
+            -webkit-font-smoothing: antialiased;
+        }
+        *:focus-visible {
+            outline: 2px solid #7a3dff;
+            outline-offset: 2px;
+        }
+        @keyframes drift {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(2deg); }
+        }
+        .animate-drift { animation: drift 6s ease-in-out infinite; }
+    </style>
+</head>
+<body class="pb-20 md:pb-0">
+    <!-- NAVBAR DESKTOP -->
+    <header class="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-brand-border hidden md:block">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="../index.html" class="text-base font-semibold tracking-tight text-brand-dark hover:opacity-80 transition-opacity">
+                arya<span class="text-accent-purple">dwiputra</span>
+            </a>
+            <nav class="flex items-center space-x-8">
+                <a href="../index.html" class="text-sm font-medium text-brand-muted hover:text-brand-dark transition-colors">Home</a>
+                <a href="../portfolio/index.html" class="text-sm font-medium text-brand-muted hover:text-brand-dark transition-colors">Portfolio</a>
+                <a href="../articles/index.html" class="text-sm font-medium text-brand-muted hover:text-brand-dark transition-colors">Artikel</a>
+                <a href="./index.html" class="text-sm font-medium text-brand-dark hover:text-accent-purple transition-colors">Tentang</a>
+                <a href="../contact/index.html" class="text-sm font-medium text-brand-muted hover:text-brand-dark transition-colors">Kontak</a>
+            </nav>
+            <a href="../contact/index.html" class="inline-flex items-center justify-center px-4 py-2 bg-brand-dark text-white text-sm font-medium rounded-button hover:bg-opacity-90 transition-all shadow-soft">
+                Let's Talk
+            </a>
+        </div>
+    </header>
+
+    <!-- BOTTOM BAR MOBILE -->
+    <nav class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-brand-border px-4 py-2.5 md:hidden shadow-[0_-4px_12px_rgba(0,0,0,0.03)]">
+        <div class="grid grid-cols-4 justify-items-center items-center">
+            <a href="../index.html" class="flex flex-col items-center space-y-1 text-brand-muted hover:text-brand-dark">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                <span class="text-[10px] font-medium tracking-wide">Home</span>
+            </a>
+            <a href="../portfolio/index.html" class="flex flex-col items-center space-y-1 text-brand-muted hover:text-brand-dark">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+                <span class="text-[10px] font-medium tracking-wide">Portfolio</span>
+            </a>
+            <a href="../articles/index.html" class="flex flex-col items-center space-y-1 text-brand-muted hover:text-brand-dark">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+                <span class="text-[10px] font-medium tracking-wide">Artikel</span>
+            </a>
+            <a href="./index.html" class="flex flex-col items-center space-y-1 text-brand-dark">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+                <span class="text-[10px] font-medium tracking-wide">Kontak</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ========================================== -->
+    <!-- REVAMPED MAIN CONTENT SECTIONS             -->
+    <!-- ========================================== -->
+    <main>
+        <!-- 1. HERO / INTRODUCTION SECTION -->
+        <section class="relative overflow-hidden bg-white pt-16 pb-20 md:pt-24 md:pb-28 border-b border-brand-border">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                <!-- Left Narrative Content -->
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-accent-purple bg-accent-purple/5 px-3 py-1 rounded">
+                        <span class="w-1.5 h-1.5 rounded-full bg-accent-purple"></span> About Me
+                    </span>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] text-brand-dark">
+                        Saya membantu bisnis merapikan arsitektur sistem digital agar siap bertumbuh secara massal.
+                    </h1>
+                    <p class="text-base md:text-lg text-brand-muted max-w-2xl leading-relaxed">
+                        Fokus utama saya bertumpu pada *backend engineering* tangguh berbasis **Laravel**, manajemen performa data relasional, serta pengiriman solusi *end-to-end* pragmatis yang menjembatani kebutuhan logis bisnis dengan operasional harian tim.
+                    </p>
+                </div>
+
+                <!-- Right Premium Minimal Frame Picture -->
+                <div class="lg:col-span-5 flex justify-center lg:justify-end">
+                    <div class="bg-white p-4 rounded-card border border-brand-border shadow-soft max-w-[320px] md:max-w-sm w-full animate-drift">
+                        <div class="aspect-square w-full bg-gray-50 rounded-card overflow-hidden border border-brand-border/60 relative">
+                            <div class="absolute inset-0 flex items-center justify-center text-brand-muted/20 text-xs font-mono">Profile Placeholder</div>
+                            <img src="../assets/arya-dwi-putra.png" alt="Arya Dwi Putra" class="w-full h-full object-cover mix-blend-multiply filter grayscale opacity-95 relative z-10">
+                        </div>
+                        <div class="mt-4 flex items-center justify-between">
+                            <div>
+                                <h2 class="text-base font-semibold text-brand-dark">Arya Dwi Putra</h2>
+                                <p class="text-xs text-brand-muted mt-0.5">Senior Laravel Engineer &bull; Fullstack Delivery</p>
+                            </div>
+                            <span class="w-2 h-2 rounded-full bg-accent-green"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 2. PHILOSOPHY & WORK STYLE SECTION -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Left: Philosophical Narrative -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="space-y-2">
+                        <span class="text-xs font-semibold text-accent-blue uppercase tracking-wider block">Filosofi Kerja</span>
+                        <h2 class="text-3xl font-semibold tracking-tight text-brand-dark">Pragmatisme terstruktur untuk ketahanan software</h2>
+                    </div>
+                    <p class="text-sm md:text-base text-brand-muted leading-relaxed">
+                        Saya percaya kode yang baik bukan sekadar baris pemrograman yang cepat selesai dibangun, melainkan ekosistem logic yang mudah dipahami tim, terdokumentasi dengan jernih, serta memiliki kelenturan arsitektur saat skala bisnis berkembang pesat.
+                    </p>
+                    <p class="text-sm md:text-base text-brand-muted leading-relaxed">
+                        Menjaga kenyamanan bekerja di persimpangan alur operasional *stakeholder*, kedalaman optimasi *database indexing*, hingga kerapian performa rendering client-side adalah komitmen utama saya. Pendekatan saya murni berbasis solusi nyata: menghindari *over-engineering* yang melelahkan namun tetap memprioritaskan keamanan serta kecepatan siklus rilis.
+                    </p>
+                </div>
+
+                <!-- Right: High-End Value Matrix Cards -->
+                <div class="lg:col-span-5 w-full">
+                    <div class="bg-gray-50/60 rounded-card border border-brand-border p-6 md:p-8 space-y-6 shadow-soft">
+                        <h3 class="text-xs uppercase tracking-widest font-semibold text-brand-dark/40 border-b border-brand-border pb-3">Prinsip Rekayasa</h3>
+                        
+                        <div class="space-y-4">
+                            <!-- Principle 1 -->
+                            <div class="flex gap-3 items-start">
+                                <span class="w-1.5 h-1.5 rounded-full bg-accent-purple mt-2 shrink-0"></span>
+                                <p class="text-sm text-brand-muted leading-normal">
+                                    <strong class="text-brand-dark font-medium">Domain-Driven Orientation:</strong> Memetakan logika pemrograman dari fondasi proses bisnis nyata, bukan sekadar pelunasan daftar fitur.
+                                </p>
+                            </div>
+                            <!-- Principle 2 -->
+                            <div class="flex gap-3 items-start">
+                                <span class="w-1.5 h-1.5 rounded-full bg-accent-pink mt-2 shrink-0"></span>
+                                <p class="text-sm text-brand-muted leading-normal">
+                                    <strong class="text-brand-dark font-medium">Maintainability First:</strong> Mengedepankan struktur rancangan modular dan penulisan kode yang mudah didelegasikan antartim.
+                                </p>
+                            </div>
+                            <!-- Principle 3 -->
+                            <div class="flex gap-3 items-start">
+                                <span class="w-1.5 h-1.5 rounded-full bg-accent-orange mt-2 shrink-0"></span>
+                                <p class="text-sm text-brand-muted leading-normal">
+                                    <strong class="text-brand-dark font-medium">Clear Communication:</strong> Memecahkan kebuntuan teknis yang rumit menjadi opsi solusi taktis yang mudah dipahami manajerial.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. PREMIUM TIMELINE / CAREER EXPERIENCES SECTION -->
+        <section class="py-16 md:py-24 border-y border-brand-border bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="max-w-3xl mb-12 space-y-3">
+                    <span class="inline-flex items-center justify-center px-2.5 py-1 bg-accent-blue/5 text-accent-blue text-xs font-semibold uppercase tracking-widest rounded">
+                        Riwayat Karir
+                    </span>
+                    <h2 class="text-3xl md:text-4xl font-semibold tracking-tight text-brand-dark">
+                        Jalur rekam jejak profesional dalam industri rekayasa perangkat lunak
+                    </h2>
+                </div>
+
+                <!-- Timeline List Tree -->
+                <div class="space-y-5 relative pl-4 md:pl-0">
+                    
+                    <!-- Job Card 1 -->
+                    <div class="bg-white border border-brand-border p-6 md:p-8 rounded-card hover:shadow-soft hover:border-brand-dark/20 transition-all group relative">
+                        <div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
+                            <div class="flex gap-4 items-start">
+                                <!-- Logo Badge Placeholder -->
+                                <div class="w-10 h-10 rounded border border-brand-border bg-gray-50 flex items-center justify-center text-xs font-mono font-semibold tracking-wider text-brand-muted shrink-0">B2B</div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-brand-dark leading-tight group-hover:text-accent-purple transition-colors">Senior Backend Engineer</h3>
+                                    <p class="text-xs text-brand-muted mt-1 font-medium">Perusahaan Teknologi B2B Hub &bull; Kontrak Enterprise</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-mono font-semibold tracking-wider text-brand-muted bg-gray-50 border border-brand-border/60 px-2.5 py-1 rounded w-fit h-fit md:order-2">
+                                2024 — Sekarang
+                            </span>
+                        </div>
+                        <p class="mt-4 text-sm text-brand-muted leading-relaxed max-w-4xl">
+                            Memimpin tim rekayasa untuk inisiasi stabilisasi core platform internal, melakukan arsitektur ulang skema modul Laravel masif yang rentan kolaps, mengoptimalkan pipeline redis queue, serta mengamankan sinkronisasi database mutasi data lintas divisi operasional.
+                        </p>
+                    </div>
+
+                    <!-- Job Card 2 -->
+                    <div class="bg-white border border-brand-border p-6 md:p-8 rounded-card hover:shadow-soft hover:border-brand-dark/20 transition-all group relative">
+                        <div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
+                            <div class="flex gap-4 items-start">
+                                <div class="w-10 h-10 rounded border border-brand-border bg-gray-50 flex items-center justify-center text-xs font-mono font-semibold tracking-wider text-brand-muted">DSG</div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-brand-dark leading-tight group-hover:text-accent-blue transition-colors">Fullstack Engineer</h3>
+                                    <p class="text-xs text-brand-muted mt-1 font-medium">Digital Agency & Software House Studio</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-mono font-semibold tracking-wider text-brand-muted bg-gray-50 border border-brand-border/60 px-2.5 py-1 rounded w-fit h-fit md:order-2">
+                                2021 — 2024
+                            </span>
+                        </div>
+                        <p class="mt-4 text-sm text-brand-muted leading-relaxed max-w-4xl">
+                            Bertanggung jawab penuh dalam delivery dashboard analitik interaktif, integrasi eksternal RESTful API pihak ketiga, penanganan webhook, serta merancang antarmuka kustom web aplikasi dengan performa retensi memori ringan.
+                        </p>
+                    </div>
+
+                    <!-- Job Card 3 -->
+                    <div class="bg-white border border-brand-border p-6 md:p-8 rounded-card hover:shadow-soft hover:border-brand-dark/20 transition-all group relative">
+                        <div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
+                            <div class="flex gap-4 items-start">
+                                <div class="w-10 h-10 rounded border border-brand-border bg-gray-50 flex items-center justify-center text-xs font-mono font-semibold tracking-wider text-brand-muted">AGC</div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-brand-dark leading-tight group-hover:text-accent-pink transition-colors">Web Developer</h3>
+                                    <p class="text-xs text-brand-muted mt-1 font-medium">Digital Solution Agency & Product Team</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-mono font-semibold tracking-wider text-brand-muted bg-gray-50 border border-brand-border/60 px-2.5 py-1 rounded w-fit h-fit md:order-2">
+                                2019 — 2021
+                            </span>
+                        </div>
+                        <p class="mt-4 text-sm text-brand-muted leading-relaxed max-w-4xl">
+                            Membangun fondasi aplikasi berbasis web, modul CMS kustom, dan optimalisasi kerangka fungsional dasar database relasional sembari memperdalam implementasi bersih antarmuka administrasi internal.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. CAPABILITIES PILLARS SECTION -->
+        <section class="py-16 md:py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Pillar 1 -->
+                    <div class="rounded-card border border-brand-border p-6 md:p-8 hover:border-brand-dark transition-colors flex flex-col justify-between group">
+                        <div class="space-y-4">
+                            <span class="text-[10px] font-semibold uppercase tracking-widest text-accent-purple bg-accent-purple/5 px-2.5 py-1 rounded w-fit block">
+                                Core Stack
+                            </span>
+                            <h3 class="text-xl font-semibold tracking-tight text-brand-dark group-hover:text-accent-purple transition-colors">Laravel Ecosystem</h3>
+                            <p class="text-xs leading-relaxed text-brand-muted">
+                                Penguasaan ekosistem penuh framework Laravel: RESTful/GraphQL API Architecture, optimalisasi Task Scheduling, Redis Queue Processing, Event Listeners, Enforce Form Requests, serta unit testing solid memakai PHPUnit/Pest.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 2 -->
+                    <div class="rounded-card border border-brand-border p-6 md:p-8 hover:border-brand-dark transition-colors flex flex-col justify-between group">
+                        <div class="space-y-4">
+                            <span class="text-[10px] font-semibold uppercase tracking-widest text-accent-blue bg-accent-blue/5 px-2.5 py-1 rounded w-fit block">
+                                Data Thinking
+                            </span>
+                            <h3 class="text-xl font-semibold tracking-tight text-brand-dark group-hover:text-accent-blue transition-colors">Relational Database Hub</h3>
+                            <p class="text-xs leading-relaxed text-brand-muted">
+                                Perancangan database ERD yang clean melalui kaidah normalisasi ketat, eliminasi bottleneck performa query N+1 via Eager Loading terarah, optimasi komposit indeks MySQL/PostgreSQL, serta isolasi arsitektur log mutasi data transaksi.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Pillar 3 -->
+                    <div class="rounded-card border border-brand-border p-6 md:p-8 hover:border-brand-dark transition-colors flex flex-col justify-between group">
+                        <div class="space-y-4">
+                            <span class="text-[10px] font-semibold uppercase tracking-widest text-accent-green bg-accent-green/5 px-2.5 py-1 rounded w-fit block">
+                                Working Style
+                            </span>
+                            <h3 class="text-xl font-semibold tracking-tight text-brand-dark group-hover:text-accent-green transition-colors">Pragmatic Delivery</h3>
+                            <p class="text-xs leading-relaxed text-brand-muted">
+                                Saya menerapkan ritme kerja terukur yang tenang, komunikatif, transparan, serta mengutamakan dokumentasi modular komprehensif agar siklus maintenance sistem pasca-release tetap stabil dan minim kejutan teknis.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. FINAL TRUST CONTEXT CTA SECTION -->
+        <section class="py-16 md:py-20 bg-brand-dark text-white relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-accent-purple/10 rounded-full blur-[100px] pointer-events-none"></div>
+            
+            <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-8 space-y-3">
+                    <span class="inline-block text-[10px] font-semibold uppercase tracking-widest text-accent-green bg-accent-green/10 border border-accent-green/20 px-2.5 py-0.5 rounded">
+                        Available for Engineering Roles
+                    </span>
+                    <h2 class="text-2xl md:text-4xl font-semibold tracking-tight leading-[1.2]">
+                        Mencari engineer komunikatif yang andal menangani sistem digital kompleks?
+                    </h2>
+                    <p class="text-sm text-gray-400 max-w-3xl leading-relaxed">
+                        Mari diskusikan rencana penambahan modul backend baru, audit optimasi performa server, pengembangan sistem informasi pergudangan, atau kustomisasi arsitektur software Anda secara matang.
+                    </p>
+                </div>
+                <div class="lg:col-span-4 flex lg:justify-end">
+                    <a href="../contact/index.html" class="w-full sm:w-auto inline-flex items-center justify-center px-6 h-12 bg-white text-brand-dark text-xs font-semibold rounded-button hover:bg-gray-50 transition-all shadow-soft">
+                        Mulai Diskusi Teknis
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- ========================================== -->
+
+    <!-- FOOTER PROFESSIONAL -->
+    <footer class="bg-white border-t border-brand-border py-12 md:py-16">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+            <div class="md:col-span-4 space-y-4">
+                <a href="../index.html" class="text-base font-semibold tracking-tight text-brand-dark">arya<span class="text-accent-purple">dwiputra</span></a>
+                <p class="text-xs text-brand-muted leading-relaxed max-w-xs">Senior Laravel Engineer yang berfokus membangun produk digital berkualitas tinggi berbasis arsitektur server-side handal dan antarmuka interaktif modern.</p>
+            </div>
+            <div class="md:col-span-2 space-y-3">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-brand-dark">Navigation</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="../index.html" class="text-brand-muted hover:text-brand-dark transition-colors">Home</a></li>
+                    <li><a href="../portfolio/index.html" class="text-brand-muted hover:text-brand-dark transition-colors">Portfolio</a></li>
+                    <li><a href="../articles/index.html" class="text-brand-muted hover:text-brand-dark transition-colors">Artikel</a></li>
+                    <li><a href="./index.html" class="text-brand-muted hover:text-brand-dark transition-colors">Tentang</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-3 space-y-3">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-brand-dark">Services</h4>
+                <ul class="space-y-2 text-xs text-brand-muted">
+                    <li>Backend API Development</li>
+                    <li>Database Engineering & Profiling</li>
+                    <li>Custom System Integration</li>
+                    <li>Fullstack App Architecture</li>
+                </ul>
+            </div>
+            <div class="md:col-span-3 space-y-3">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-brand-dark">Connect</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="https://github.com" target="_blank" rel="noopener" class="text-brand-muted hover:text-brand-dark transition-colors inline-flex items-center">GitHub</a></li>
+                    <li><a href="https://linkedin.com" target="_blank" rel="noopener" class="text-brand-muted hover:text-brand-dark transition-colors inline-flex items-center">LinkedIn</a></li>
+                    <li><a href="mailto:hello@aryadwiputra.com" class="text-brand-muted hover:text-brand-dark transition-colors">hello@aryadwiputra.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-12 pt-6 border-t border-brand-border flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] text-brand-muted">
+            <p>&copy; 2026 Arya Dwi Putra. All rights reserved.</p>
+            <p class="text-gray-400">Designed with modern minimalistic layout guidelines.</p>
+        </div>
+    </footer>
+</body>
+</html>
