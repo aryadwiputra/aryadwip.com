@@ -1,25 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aryadwiputra.com"),
   title: {
-    default: "Arya Dwi Putra — Senior Laravel Engineer",
-    template: "%s — Arya Dwi Putra",
+    default: "Arya Dwi Putra",
+    template: "%s",
   },
-  description:
-    "Portfolio engineer berfokus pada Laravel, arsitektur backend, dashboard admin, dan aplikasi web siap produksi.",
+  description: "Portfolio website Arya Dwi Putra.",
 };
 
 export default function RootLayout({
@@ -28,11 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="id"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="id" className="scroll-smooth">
+      <body className={`${inter.variable} pb-20 md:pb-0`}>{children}</body>
     </html>
   );
 }
