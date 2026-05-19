@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" className="scroll-smooth">
-      <body className={`${inter.variable} pb-20 md:pb-0`}><Navbar /><MobileBottomBar />{children}<Footer /></body>
+      <body suppressHydrationWarning className={`${inter.variable} pb-20 md:pb-0`}><Navbar /><MobileBottomBar />{children}<Footer /></body>
     </html>
   );
 }
