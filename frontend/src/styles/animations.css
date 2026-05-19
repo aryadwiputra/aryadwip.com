@@ -1,0 +1,98 @@
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes float-slow-home {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+@keyframes float-delayed-home {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(12px) rotate(-8deg);
+  }
+}
+
+.animate-float-1 {
+  animation: float-slow-home 6s ease-in-out infinite;
+}
+
+.animate-float-2 {
+  animation: float-delayed-home 7s ease-in-out infinite;
+}
+
+.animate-float-3 {
+  animation: float-slow-home 5s ease-in-out infinite 1s;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+.animate-drift {
+  animation: drift 6s ease-in-out infinite;
+}
+
+@keyframes portfolio-float-slow {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(3deg);
+  }
+}
+
+@keyframes portfolio-float-delayed {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(10px) rotate(-5deg);
+  }
+}
+
+.portfolio-floating .animate-float-1 {
+  animation: portfolio-float-slow 7s ease-in-out infinite;
+}
+
+.portfolio-floating .animate-float-2 {
+  animation: portfolio-float-delayed 6s ease-in-out infinite;
+}
