@@ -1,6 +1,143 @@
 import Link from "next/link";
-import { CopyArticleLink } from "@/features/artikel/components/CopyArticleLink";
-import type { ArticleItem } from "@/features/artikel/types";
+import { CopyArticleLink } from "@/features/articles/components/CopyArticleLink";
+import type { ArticleItem } from "@/features/articles/types";
+
+function renderMarkdownBlocks(content: string) {
+  const lines = content.split("\n");
+  const blocks: Array<
+    | { type: "heading"; level: 2 | 3; text: string }
+    | { type: "paragraph"; text: string }
+    | { type: "list"; items: string[] }
+    | { type: "code"; code: string }
+    | { type: "divider" }
+  > = [];
+
+  let paragraphBuffer: string[] = [];
+  let listBuffer: string[] = [];
+  let codeBuffer: string[] = [];
+  let inCode = false;
+
+  const flushParagraph = () => {
+    if (paragraphBuffer.length) {
+      blocks.push({ type: "paragraph", text: paragraphBuffer.join(" ").trim() });
+      paragraphBuffer = [];
+    }
+  };
+
+  const flushList = () => {
+    if (listBuffer.length) {
+      blocks.push({ type: "list", items: [...listBuffer] });
+      listBuffer = [];
+    }
+  };
+
+  const flushCode = () => {
+    if (codeBuffer.length) {
+      blocks.push({ type: "code", code: codeBuffer.join("\n") });
+      codeBuffer = [];
+    }
+  };
+
+  for (const rawLine of lines) {
+    const line = rawLine.trim();
+
+    if (line.startsWith("```")) {
+      flushParagraph();
+      flushList();
+      if (inCode) {
+        flushCode();
+        inCode = false;
+      } else {
+        inCode = true;
+      }
+      continue;
+    }
+
+    if (inCode) {
+      codeBuffer.push(rawLine);
+      continue;
+    }
+
+    if (!line) {
+      flushParagraph();
+      flushList();
+      continue;
+    }
+
+    if (line === "---") {
+      flushParagraph();
+      flushList();
+      blocks.push({ type: "divider" });
+      continue;
+    }
+
+    if (line.startsWith("### ")) {
+      flushParagraph();
+      flushList();
+      blocks.push({ type: "heading", level: 3, text: line.replace(/^###\s+/, "") });
+      continue;
+    }
+
+    if (line.startsWith("## ")) {
+      flushParagraph();
+      flushList();
+      blocks.push({ type: "heading", level: 2, text: line.replace(/^##\s+/, "") });
+      continue;
+    }
+
+    if (line.startsWith("- ")) {
+      flushParagraph();
+      listBuffer.push(line.replace(/^-\s+/, ""));
+      continue;
+    }
+
+    paragraphBuffer.push(line);
+  }
+
+  flushParagraph();
+  flushList();
+  flushCode();
+
+  return blocks.map((block, index) => {
+    if (block.type === "heading") {
+      if (block.level === 2) {
+        return <h2 key={index} className="pt-6 text-xl font-semibold tracking-tight text-brand-dark md:text-2xl">{block.text}</h2>;
+      }
+
+      return <h3 key={index} className="pt-3 text-lg font-semibold tracking-tight text-brand-dark md:text-xl">{block.text}</h3>;
+    }
+
+    if (block.type === "list") {
+      return (
+        <ul key={index} className="my-2 space-y-3 pl-1 text-sm text-brand-muted">
+          {block.items.map((item) => (
+            <li key={item} className="flex items-start gap-3">
+              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-purple"></span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      );
+    }
+
+    if (block.type === "code") {
+      return (
+        <div key={index} className="my-6 overflow-hidden rounded-card border border-brand-border shadow-soft">
+          <div className="border-b border-brand-border bg-gray-50 px-4 py-2 text-xs font-mono text-brand-muted">
+            Code Example
+          </div>
+          <pre className="overflow-x-auto bg-white p-4 text-[13px] leading-relaxed text-brand-dark"><code>{block.code}</code></pre>
+        </div>
+      );
+    }
+
+    if (block.type === "divider") {
+      return <div key={index} className="my-8 h-px w-full bg-brand-border/60" />;
+    }
+
+    return <p key={index} className="text-base leading-relaxed text-brand-muted">{block.text}</p>;
+  });
+}
 
 export function ArticleHeroSection({ item }: { item: ArticleItem }) {
   return (
@@ -9,13 +146,13 @@ export function ArticleHeroSection({ item }: { item: ArticleItem }) {
         <nav className="mb-6 flex items-center gap-2 text-[11px] font-medium uppercase tracking-widest text-brand-muted">
           <Link href="/" className="transition-colors hover:text-brand-dark">Beranda</Link>
           <span className="text-brand-border">/</span>
-          <Link href="/artikel" className="transition-colors hover:text-brand-dark">Artikel</Link>
+          <Link href="/articles" className="transition-colors hover:text-brand-dark">Articles</Link>
           <span className="text-brand-border">/</span>
           <span className="text-brand-dark">Detail</span>
         </nav>
         <div className="space-y-5">
-          <span className="inline-flex items-center gap-1.5 rounded bg-accent-purple/5 px-2.5 py-1 text-xs font-semibold uppercase tracking-widest text-accent-purple">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent-purple"></span> {item.heroLabel}
+          <span className={`inline-flex items-center gap-1.5 rounded px-2.5 py-1 text-xs font-semibold uppercase tracking-widest ${item.categoryBadgeClassName}`}>
+            <span className="h-1.5 w-1.5 rounded-full bg-current"></span> {item.heroLabel}
           </span>
           <h1 className="text-3xl font-semibold leading-[1.15] tracking-tight text-brand-dark md:text-5xl lg:text-6xl">
             {item.title}
@@ -41,64 +178,18 @@ export function ArticleHeroSection({ item }: { item: ArticleItem }) {
 export function ArticleContentSection({ item }: { item: ArticleItem }) {
   return (
     <section className="bg-white py-12 md:py-16">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 items-start lg:grid-cols-12">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-12 px-6 lg:grid-cols-12">
         <div className="mx-auto w-full max-w-2xl space-y-6 text-brand-dark lg:col-span-8 lg:mx-0">
-          <p className="border-l-2 border-brand-dark py-1 pl-4 text-lg italic font-normal leading-relaxed tracking-normal text-brand-muted md:text-xl">
+          <p className="border-l-2 border-brand-dark py-1 pl-4 text-lg font-normal italic leading-relaxed tracking-normal text-brand-muted md:text-xl">
             {item.detail.standfirst}
           </p>
 
           <div className="relative my-8 flex aspect-[16/9] w-full items-center justify-center overflow-hidden rounded-card border border-brand-border bg-gradient-to-br from-gray-50 via-white to-gray-50 shadow-soft">
             <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:3rem_3rem] opacity-60"></div>
-            <span className="z-10 text-xs font-mono text-brand-muted/40">{item.detail.featureGraphicLabel}</span>
+            <span className="z-10 text-center text-xs font-mono text-brand-muted/40">{item.detail.featureGraphicLabel}</span>
           </div>
 
-          {item.detail.introParagraphs.map((paragraph) => (
-            <p key={paragraph} className="text-base leading-relaxed text-brand-muted">{paragraph}</p>
-          ))}
-
-          <h2 className="pt-6 text-xl font-semibold tracking-tight text-brand-dark md:text-2xl">{item.detail.signalsTitle}</h2>
-          <p className="text-base leading-relaxed text-brand-muted">{item.detail.signalsIntro}</p>
-
-          <ul className="my-4 space-y-3.5 pl-1 text-sm text-brand-muted">
-            {item.detail.signals.map((signal) => (
-              <li key={signal.title} className="flex items-start gap-3">
-                <span className={`mt-2 h-1.5 w-1.5 shrink-0 rounded-full ${signal.bulletClassName}`}></span>
-                <span><strong className="font-medium text-brand-dark">{signal.title}</strong> {signal.description}</span>
-              </li>
-            ))}
-          </ul>
-
-          <blockquote className="my-8 rounded-r-card border-y border-r border-l-4 border-brand-border/40 border-l-accent-purple bg-gray-50/50 py-4 pl-5 pr-4 text-base italic leading-relaxed text-brand-muted">
-            &ldquo;{item.detail.quote}&rdquo;
-          </blockquote>
-
-          <p className="text-base leading-relaxed text-brand-muted">{item.detail.midParagraph}</p>
-
-          <h2 className="pt-6 text-xl font-semibold tracking-tight text-brand-dark md:text-2xl">{item.detail.strategyTitle}</h2>
-          <p className="text-base leading-relaxed text-brand-muted">{item.detail.strategyParagraph}</p>
-
-          <div className="my-6 overflow-hidden rounded-card border border-brand-border shadow-soft">
-            <div className="flex items-center justify-between border-b border-brand-border bg-gray-50 px-4 py-2 text-xs font-mono text-brand-muted">
-              <span>{item.detail.codeTitle}</span>
-              <span className="text-[10px] uppercase tracking-wider">{item.detail.codeMeta}</span>
-            </div>
-            <pre className="overflow-x-auto bg-white p-4 text-[13px] leading-relaxed text-brand-dark"><code>{item.detail.codeBlock}</code></pre>
-          </div>
-
-          <p className="text-base leading-relaxed text-brand-muted">{item.detail.closingParagraph}</p>
-
-          <div className="mt-12 space-y-3 rounded-card border border-brand-border bg-gray-50 p-6 md:p-8">
-            <span className="inline-flex items-center gap-1.5 rounded border border-accent-green/20 bg-accent-green/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest text-accent-green">
-              {item.detail.consultationLabel}
-            </span>
-            <h3 className="text-xl font-semibold tracking-tight text-brand-dark">{item.detail.consultationTitle}</h3>
-            <p className="text-xs leading-relaxed text-brand-muted md:text-sm">{item.detail.consultationDescription}</p>
-            <div className="pt-2">
-              <Link href="/kontak" className="inline-flex items-center justify-center rounded-button bg-brand-dark px-4 py-2 text-xs font-semibold text-white shadow-soft transition-all hover:bg-opacity-90">
-                {item.detail.consultationButtonLabel}
-              </Link>
-            </div>
-          </div>
+          {renderMarkdownBlocks(item.detail.content)}
         </div>
 
         <aside className="w-full space-y-8 lg:col-span-4 lg:sticky lg:top-24">
@@ -144,18 +235,18 @@ export function ArticleBottomCTASection({ relatedItems }: { relatedItems: Articl
         <div className="mb-10 flex flex-col justify-between gap-4 border-b border-brand-border/60 pb-4 sm:flex-row sm:items-end">
           <div className="space-y-1">
             <span className="block text-xs font-semibold uppercase tracking-wider text-accent-blue">Kelanjutan Bacaan</span>
-            <h2 className="text-2xl font-semibold tracking-tight text-brand-dark">Artikel teknis terkait lainnya</h2>
+            <h2 className="text-2xl font-semibold tracking-tight text-brand-dark">Artikel teknis lain yang masih nyambung</h2>
           </div>
-          <Link href="/artikel" className="group inline-flex items-center gap-1 whitespace-nowrap text-xs font-semibold text-brand-dark transition-colors hover:text-accent-purple">
+          <Link href="/articles" className="group inline-flex items-center gap-1 whitespace-nowrap text-xs font-semibold text-brand-dark transition-colors hover:text-accent-purple">
             Lihat semua tulisan <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
           </Link>
         </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {relatedItems.map((item) => (
-            <Link key={item.slug} href={`/artikel/${item.slug}`} className="group flex flex-col justify-between rounded-card border border-brand-border bg-white p-5 transition-all hover:border-brand-dark/20 hover:shadow-soft">
+            <Link key={item.slug} href={`/articles/${item.slug}`} className="group flex flex-col justify-between rounded-card border border-brand-border bg-white p-5 transition-all hover:border-brand-dark/20 hover:shadow-soft">
               <div className="space-y-2.5">
-                <span className={`block w-fit rounded px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest ${item.categoryBadgeClassName}`}>{item.heroLabel}</span>
+                <span className={`block w-fit rounded px-2 py-0.5 text-[10px] font-semibold uppercase tracking-widest ${item.categoryBadgeClassName}`}>{item.categoryLabel}</span>
                 <h3 className={`text-base font-semibold leading-snug text-brand-dark transition-colors ${item.hoverAccentClassName}`}>{item.title}</h3>
               </div>
               <span className="mt-6 inline-flex items-center border-t border-dashed border-brand-border/40 pt-4 text-[11px] font-medium text-brand-muted">

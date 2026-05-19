@@ -5,8 +5,12 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import { getArticleFilters, getArticleItems } from "@/features/artikel/utils";
-import type { ArticleFilterKey, ArticleItem } from "@/features/artikel/types";
+import type { ArticleFilter, ArticleFilterKey, ArticleItem } from "@/features/articles/types";
+
+type ArticleListingClientProps = {
+  items: ArticleItem[];
+  filters: ArticleFilter[];
+};
 
 function ArticleCard({ item }: { item: ArticleItem }) {
   return (
@@ -14,12 +18,12 @@ function ArticleCard({ item }: { item: ArticleItem }) {
       <div className="space-y-4">
         <div className="flex items-center justify-between text-xs">
           <span className={`rounded px-2.5 py-0.5 font-semibold uppercase tracking-widest ${item.categoryBadgeClassName}`}>
-            {item.categoryLabel}
+            {item.categoryLabel} • {item.readingTime}
           </span>
           <time className="font-mono text-brand-muted" dateTime={item.dateIso}>{item.date}</time>
         </div>
         <h2 className={`text-2xl font-semibold leading-snug tracking-tight text-brand-dark transition-colors ${item.hoverAccentClassName}`}>
-          <Link href={`/artikel/${item.slug}`}>{item.title}</Link>
+          <Link href={`/articles/${item.slug}`}>{item.title}</Link>
         </h2>
         <p className="line-clamp-3 text-sm leading-relaxed text-brand-muted">{item.summary}</p>
       </div>
@@ -29,8 +33,8 @@ function ArticleCard({ item }: { item: ArticleItem }) {
             <span key={tag} className="rounded border border-brand-border bg-gray-50 px-2 py-0.5 text-[10px] text-brand-dark">{tag}</span>
           ))}
         </div>
-        <Link href={`/artikel/${item.slug}`} className={`inline-flex items-center text-xs font-semibold text-brand-dark transition-colors ${item.hoverAccentClassName}`}>
-          Baca artikel <span className="ml-1.5 transition-transform group-hover:translate-x-1">→</span>
+        <Link href={`/articles/${item.slug}`} className={`inline-flex items-center text-xs font-semibold text-brand-dark transition-colors ${item.hoverAccentClassName}`}>
+          Read article <span className="ml-1.5 transition-transform group-hover:translate-x-1">→</span>
         </Link>
       </div>
     </Card>
@@ -57,9 +61,7 @@ function ArticlesPageCta() {
   );
 }
 
-export function ArticleListingClient() {
-  const items = getArticleItems();
-  const filters = getArticleFilters();
+export function ArticleListingClient({ items, filters }: ArticleListingClientProps) {
   const [activeFilter, setActiveFilter] = useState<ArticleFilterKey>("all");
   const [search, setSearch] = useState("");
 
