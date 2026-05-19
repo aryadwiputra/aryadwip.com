@@ -1,5 +1,54 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { PortfolioItem } from "@/features/portfolio/types";
+
+function renderContentBlocks(content: string) {
+  const normalized = content.replace(/\r\n/g, "\n").trim();
+
+  if (!normalized) {
+    return (
+      <p className="text-sm leading-relaxed text-brand-muted md:text-[15px]">
+        Detail implementasi lengkap belum tersedia di dump lama, tapi ringkasan proyek di sidebar tetap sudah diambil dari data asli portfolio.
+      </p>
+    );
+  }
+
+  const blocks = normalized.split(/\n{2,}/).map((block) => block.trim()).filter(Boolean);
+
+  return blocks.map((block, index) => {
+    if (block.startsWith("## ")) {
+      return (
+        <h3 key={`${block}-${index}`} className="text-lg font-semibold tracking-tight text-brand-dark md:text-xl">
+          {block.replace(/^##\s+/, "")}
+        </h3>
+      );
+    }
+
+    if (block.startsWith("- ")) {
+      const items = block
+        .split("\n")
+        .map((line) => line.replace(/^- /, "").trim())
+        .filter(Boolean);
+
+      return (
+        <ul key={`${block}-${index}`} className="space-y-2 text-sm leading-relaxed text-brand-muted md:text-[15px]">
+          {items.map((item) => (
+            <li key={item} className="flex gap-2">
+              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-purple"></span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      );
+    }
+
+    return (
+      <p key={`${block}-${index}`} className="text-sm leading-relaxed text-brand-muted md:text-[15px]">
+        {block}
+      </p>
+    );
+  });
+}
 
 export function PortfolioDetailHeroSection({ item }: { item: PortfolioItem }) {
   return (
@@ -45,13 +94,13 @@ export function PortfolioDetailHeroSection({ item }: { item: PortfolioItem }) {
                   <p className="mt-0.5 font-mono text-[11px] font-semibold text-brand-dark">{item.detail.info.techStackSummary}</p>
                 </div>
                 <div className="col-span-2">
-                  <p className="text-[10px] uppercase tracking-wider text-brand-muted">Cakupan Domain Backend</p>
+                  <p className="text-[10px] uppercase tracking-wider text-brand-muted">Cakupan Domain</p>
                   <p className="mt-0.5 font-semibold text-brand-dark">{item.detail.info.domainScope}</p>
                 </div>
               </div>
               <div className="pt-2">
                 <Link
-                  href="/kontak"
+                  href="/contact"
                   className="inline-flex h-10 w-full items-center justify-center rounded-button bg-brand-dark px-4 text-center text-xs font-semibold text-white shadow-soft transition-all hover:bg-opacity-90"
                 >
                   Konsultasikan Kebutuhan Serupa
@@ -73,73 +122,35 @@ export function PortfolioDetailContentSection({ item }: { item: PortfolioItem })
           <article className="space-y-5">
             <div className="flex items-center gap-3">
               <span className="h-1.5 w-1.5 rounded-full bg-accent-purple"></span>
-              <h2 className="text-xl font-semibold tracking-tight text-brand-dark md:text-2xl">{item.detail.challengeTitle}</h2>
+              <h2 className="text-xl font-semibold tracking-tight text-brand-dark md:text-2xl">{item.detail.contentTitle}</h2>
             </div>
-            <div className="space-y-4 text-sm leading-relaxed text-brand-muted md:text-[15px]">
-              {item.detail.challengeBody.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
+            <div className="space-y-4">{renderContentBlocks(item.detail.content)}</div>
           </article>
 
           <article className="space-y-5">
             <div className="flex items-center gap-3">
               <span className="h-1.5 w-1.5 rounded-full bg-accent-blue"></span>
-              <h2 className="text-xl font-semibold tracking-tight text-brand-dark md:text-2xl">{item.detail.solutionTitle}</h2>
-            </div>
-            <div className="space-y-4 text-sm leading-relaxed text-brand-muted md:text-[15px]">
-              {item.detail.solutionBody.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-          </article>
-
-          <article className="space-y-5">
-            <div className="flex items-center gap-3">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent-purple"></span>
-              <h2 className="text-xl font-semibold tracking-tight text-brand-dark md:text-2xl">{item.detail.executionTitle}</h2>
-            </div>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-              {item.detail.executionSteps.map((step) => (
-                <div key={step.title} className="space-y-2 rounded-card border border-brand-border bg-white p-5 transition-colors hover:border-brand-dark">
-                  <p className={`text-[10px] font-mono font-semibold uppercase tracking-widest ${step.eyebrowClassName}`}>{step.eyebrow}</p>
-                  <h4 className="text-sm font-semibold text-brand-dark">{step.title}</h4>
-                  <p className="text-xs leading-relaxed text-brand-muted">{step.description}</p>
-                </div>
-              ))}
-            </div>
-          </article>
-
-          <article className="space-y-5">
-            <div className="flex items-center gap-3">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent-green"></span>
-              <h2 className="text-xl font-semibold tracking-tight text-brand-dark md:text-2xl">{item.detail.impactTitle}</h2>
-            </div>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-              {item.detail.impactItems.map((impactItem) => (
-                <div key={impactItem.label} className="rounded-card border border-brand-border bg-gray-50/50 p-5">
-                  <p className="text-3xl font-semibold tracking-tight text-brand-dark">{impactItem.value}</p>
-                  <p className="mt-1.5 text-xs font-medium uppercase tracking-wide text-brand-muted">{impactItem.label}</p>
-                  <p className="mt-1 text-xs leading-normal text-brand-muted">{impactItem.description}</p>
-                </div>
-              ))}
-            </div>
-          </article>
-
-          <article className="space-y-4">
-            <div className="flex items-center gap-3">
-              <span className="h-1.5 w-1.5 rounded-full bg-accent-orange"></span>
-              <h2 className="text-xl font-semibold tracking-tight text-brand-dark md:text-2xl">{item.detail.documentationTitle}</h2>
+              <h2 className="text-xl font-semibold tracking-tight text-brand-dark md:text-2xl">{item.detail.galleryTitle}</h2>
             </div>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {item.detail.documentationPlaceholders.map((placeholder) => (
+              {item.detail.galleryItems.length > 0 ? item.detail.galleryItems.map((galleryItem) => (
                 <div
-                  key={placeholder}
-                  className="flex aspect-[4/3] items-center justify-center rounded-card border border-brand-border bg-gray-50 p-4 text-center font-mono text-[10px] text-brand-muted/40"
+                  key={`${galleryItem.label}-${galleryItem.alt}`}
+                  className="relative flex aspect-[4/3] overflow-hidden rounded-card border border-brand-border bg-gray-50"
                 >
-                  {placeholder}
+                  {galleryItem.src ? (
+                    <Image src={galleryItem.src} alt={galleryItem.alt} fill className="object-cover" sizes="(min-width: 1024px) 33vw, 50vw" />
+                  ) : (
+                    <div className="flex w-full items-center justify-center px-6 text-center font-mono text-[10px] text-brand-muted/40">
+                      {galleryItem.label}
+                    </div>
+                  )}
                 </div>
-              ))}
+              )) : (
+                <div className="flex aspect-[4/3] items-center justify-center rounded-card border border-dashed border-brand-border bg-gray-50 p-6 text-center font-mono text-[10px] text-brand-muted/40">
+                  Screenshot project belum tersedia di frontend ini
+                </div>
+              )}
             </div>
           </article>
         </div>
@@ -152,7 +163,7 @@ export function PortfolioDetailContentSection({ item }: { item: PortfolioItem })
             <p className="text-xs leading-relaxed text-brand-muted">{item.detail.sidebarDescription}</p>
             <ul className="space-y-2.5 pt-2 text-xs text-brand-muted">
               {item.detail.sidebarPoints.map((point) => (
-                <li key={point.title} className="flex items-start gap-2">
+                <li key={`${point.title}-${point.description}`} className="flex items-start gap-2">
                   <span className={`shrink-0 font-mono ${point.bulletClassName}`}>&bull;</span>
                   <span>
                     <strong className="font-medium text-brand-dark">{point.title}</strong> {point.description}
@@ -178,16 +189,16 @@ export function PortfolioDetailPagerSection({
     <section className="border-y border-brand-border bg-white py-12">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 sm:flex-row">
         <Link href={previousHref} className="group inline-flex items-center gap-1 text-xs font-semibold text-brand-muted transition-colors hover:text-brand-dark">
-          <span className="transition-transform group-hover:-translate-x-1">&larr;</span> Project Sebelumnya
+          <span className="transition-transform group-hover:-translate-x-1">&larr;</span> Proyek Sebelumnya
         </Link>
         <Link
-          href="/kontak"
+          href="/contact"
           className="inline-flex h-11 w-full items-center justify-center rounded-button bg-brand-dark px-6 text-center text-xs font-semibold text-white shadow-soft transition-all hover:bg-opacity-90 sm:w-auto"
         >
           Butuh Solusi Arsitektur Serupa? Mari Berdiskusi
         </Link>
         <Link href={nextHref} className="group inline-flex items-center gap-1 text-xs font-semibold text-brand-muted transition-colors hover:text-brand-dark">
-          Project Berikutnya <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
+          Proyek Berikutnya <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
         </Link>
       </div>
     </section>

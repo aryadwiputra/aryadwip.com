@@ -5,18 +5,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import { getPortfolioFilters, getPortfolioItems } from "@/features/portfolio/utils";
-import type { PortfolioFilterKey, PortfolioItem } from "@/features/portfolio/types";
+import type { PortfolioFilter, PortfolioFilterKey, PortfolioItem } from "@/features/portfolio/types";
 
 function PortfolioFilterBar({
   activeFilter,
+  filters,
   onChange,
 }: {
   activeFilter: PortfolioFilterKey;
+  filters: PortfolioFilter[];
   onChange: (filter: PortfolioFilterKey) => void;
 }) {
-  const filters = getPortfolioFilters();
-
   return (
     <section className="sticky top-16 z-40 border-b border-brand-border bg-white/80 py-4 backdrop-blur-md transition-all">
       <div className="no-scrollbar mx-auto flex max-w-7xl items-center justify-between gap-4 overflow-x-auto px-6">
@@ -43,16 +42,19 @@ function PortfolioCard({ item }: { item: PortfolioItem }) {
   return (
     <Card as="article" className="group flex flex-col overflow-hidden transition-all hover:border-brand-dark/30 hover:shadow-soft-hover">
       <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-brand-border bg-gray-50">
-        <div className="absolute inset-0 flex items-center justify-center text-center font-mono text-xs text-brand-muted/20">
-          Image Placeholder [600x375]
-        </div>
-        <Image
-          src={item.image}
-          alt={item.imageAlt}
-          fill
-          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-          className="h-full w-full object-cover opacity-90 mix-blend-multiply transition-all duration-300 filter grayscale group-hover:scale-[1.01] group-hover:grayscale-0"
-        />
+        {item.image ? (
+          <Image
+            src={item.image}
+            alt={item.imageAlt}
+            fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+            className="h-full w-full object-cover opacity-95 transition-all duration-300 group-hover:scale-[1.01]"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center bg-[linear-gradient(135deg,rgba(128,90,213,0.05),rgba(59,130,246,0.04))] px-6 text-center font-mono text-xs text-brand-muted/40">
+            Tampilan belum tersedia
+          </div>
+        )}
       </div>
       <div className="flex flex-grow flex-col space-y-3.5 p-6">
         <div className="flex items-center justify-between">
@@ -82,9 +84,14 @@ function PortfolioCard({ item }: { item: PortfolioItem }) {
   );
 }
 
-export function PortfolioListingClient() {
+export function PortfolioListingClient({
+  items,
+  filters,
+}: {
+  items: PortfolioItem[];
+  filters: PortfolioFilter[];
+}) {
   const [activeFilter, setActiveFilter] = useState<PortfolioFilterKey>("all");
-  const items = getPortfolioItems();
 
   const filteredItems = useMemo(() => {
     if (activeFilter === "all") {
@@ -96,7 +103,7 @@ export function PortfolioListingClient() {
 
   return (
     <>
-      <PortfolioFilterBar activeFilter={activeFilter} onChange={setActiveFilter} />
+      <PortfolioFilterBar activeFilter={activeFilter} filters={filters} onChange={setActiveFilter} />
       <section className="bg-white py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
