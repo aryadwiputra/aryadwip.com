@@ -36,6 +36,7 @@ const articleAccentMap: Record<string, { badge: string; hover: string; filter: A
 function normalizeContent(content: string | null) {
   return (content ?? "")
     .replace(/\r\n/g, "\n")
+    .replace(/\r/g, "\n")
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1")
     .replace(/\*\*(.*?)\*\*/g, "$1")
     .replace(/\*(.*?)\*/g, "$1")

@@ -136,7 +136,7 @@ function parseSqlTuple(tuple: string) {
 
     if (inString) {
       if (escaped) {
-        current += char;
+        current += `\\${char}`;
         escaped = false;
       } else if (char === "\\") {
         escaped = true;
