@@ -17,27 +17,33 @@ export function AboutPageHero() {
           </p>
         </div>
 
-        <div className="flex justify-center lg:col-span-5 lg:justify-end">
-          <div className="w-full max-w-[320px] rounded-card border border-brand-border bg-white p-4 shadow-soft animate-drift md:max-w-sm">
-            <div className="relative aspect-square w-full overflow-hidden rounded-card border border-brand-border/60 bg-gray-50">
-              <div className="absolute inset-0 flex items-center justify-center font-mono text-xs text-brand-muted/20">
-                Profile Placeholder
+        <div className="relative flex justify-center lg:col-span-5 lg:justify-end">
+          <div className="relative w-full max-w-[320px] animate-drift md:max-w-sm">
+            <div className="absolute inset-x-4 bottom-5 top-5 rounded-[2.25rem] bg-gradient-to-br from-accent-purple/8 via-accent-blue/4 to-accent-pink/8 md:hidden"></div>
+            <div className="absolute inset-x-6 bottom-8 top-10 hidden rounded-[2.75rem] bg-gradient-to-br from-accent-purple/10 via-accent-blue/5 to-accent-pink/10 blur-2xl md:block"></div>
+            <div className="absolute -left-5 top-10 hidden h-32 w-32 rounded-full bg-accent-purple/8 blur-2xl md:block"></div>
+            <div className="absolute -right-6 bottom-14 hidden h-36 w-36 rounded-full bg-accent-blue/8 blur-2xl md:block"></div>
+
+            <div className="relative overflow-hidden rounded-[2.25rem] shadow-[0_18px_45px_rgba(15,23,42,0.12)] md:rounded-[2.5rem] md:shadow-[0_30px_80px_rgba(15,23,42,0.16)]">
+              <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2.25rem] bg-gradient-to-br from-gray-50 via-white to-gray-100 md:rounded-[2.5rem]">
+                <Image
+                  src="/assets/images/arya-dwi-putra.png"
+                  alt="Arya Dwi Putra"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 384px, (min-width: 768px) 360px, 288px"
+                  className="h-full w-full object-cover object-center"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.18),transparent_45%),linear-gradient(to_top,rgba(15,23,42,0.08),transparent_35%)]"></div>
               </div>
-              <Image
-                src="/assets/images/arya-dwi-putra.png"
-                alt="Arya Dwi Putra"
-                fill
-                priority
-                sizes="(min-width: 1024px) 384px, 320px"
-                className="relative z-10 object-cover opacity-95 grayscale mix-blend-multiply"
-              />
             </div>
-            <div className="mt-4 flex items-center justify-between">
-              <div>
-                <h2 className="text-base font-semibold text-brand-dark">Arya Dwi Putra</h2>
-                <p className="mt-0.5 text-xs text-brand-muted">Senior Laravel Engineer &bull; Fullstack Delivery</p>
-              </div>
+
+            <div className="absolute -bottom-4 right-4 inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/95 px-4 py-2 shadow-[0_10px_24px_rgba(15,23,42,0.08)] md:border-white/60 md:bg-white/90 md:shadow-[0_12px_30px_rgba(15,23,42,0.10)] md:backdrop-blur">
               <span className="h-2 w-2 rounded-full bg-accent-green"></span>
+              <div>
+                <h2 className="text-[11px] font-semibold text-brand-dark">Arya Dwi Putra</h2>
+                <p className="text-[10px] text-brand-muted">Senior Laravel Engineer &bull; Fullstack Delivery</p>
+              </div>
             </div>
           </div>
         </div>

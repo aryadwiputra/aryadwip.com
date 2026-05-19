@@ -96,3 +96,15 @@
 .portfolio-floating .animate-float-2 {
   animation: portfolio-float-delayed 6s ease-in-out infinite;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-float-1,
+  .animate-float-2,
+  .animate-float-3,
+  .animate-drift,
+  .portfolio-floating .animate-float-1,
+  .portfolio-floating .animate-float-2 {
+    animation: none !important;
+  }
+}
