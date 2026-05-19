@@ -11,7 +11,7 @@ export function HeroSection() {
           <p className="text-base md:text-lg text-brand-muted max-w-xl leading-relaxed">Dengan Laravel sebagai fondasi utama, saya terbiasa menangani arsitektur API, optimasi database, serta integrasi sistem untuk kebutuhan operasional yang lebih kompleks.</p>
           <div className="flex flex-wrap gap-4 pt-2">
             <Link href="/portfolio" className="inline-flex items-center justify-center px-6 py-3 bg-brand-dark text-white text-sm font-medium rounded-button hover:bg-opacity-90 transition-all shadow-soft">Lihat Portofolio</Link>
-            <Link href="/kontak" className="inline-flex items-center justify-center px-6 py-3 bg-white text-brand-dark border border-brand-border text-sm font-medium rounded-button hover:bg-gray-50 transition-all">Hubungi Saya</Link>
+            <Link href="/contact" className="inline-flex items-center justify-center px-6 py-3 bg-white text-brand-dark border border-brand-border text-sm font-medium rounded-button hover:bg-gray-50 transition-all">Hubungi Saya</Link>
           </div>
           <div className="grid grid-cols-3 gap-4 pt-10 border-t border-brand-border max-w-lg">
             <div><p className="text-2xl font-semibold text-brand-dark">6+ Years</p><p className="text-xs text-brand-muted mt-1">Experience</p></div>

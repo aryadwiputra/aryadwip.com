@@ -1,4 +1,4 @@
-import { ContactFormClient } from "@/components/sections/kontak/ContactFormClient";
+import { ContactFormClient } from "@/components/sections/contact/ContactFormClient";
 
 export function ContactPageSection() {
   return (

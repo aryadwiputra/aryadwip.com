@@ -5,9 +5,9 @@ import {
   AboutPageExpertise,
   AboutPageHero,
   AboutPagePhilosophy,
-} from "@/components/sections/tentang/AboutSections";
+} from "@/components/sections/about/AboutSections";
 
-export const metadata: Metadata = { title: "Tentang Saya — Arya Dwi Putra" };
+export const metadata: Metadata = { title: "About — Arya Dwi Putra" };
 
 export default function Page() {
   return (

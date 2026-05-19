@@ -20,11 +20,11 @@ export function CTASection() {
           </div>
           <div className="lg:col-span-4 flex lg:justify-end">
             <div className="flex flex-col sm:flex-row lg:flex-col gap-3 w-full lg:w-auto">
-              <Button href="/kontak" variant="secondary" size="md" className="font-semibold">
+              <Button href="/contact" variant="secondary" size="md" className="font-semibold">
                 Mulai Diskusi
               </Button>
-              <Button href="/tentang" variant="ghost" size="md" className="border border-gray-700 text-white hover:bg-gray-800 hover:text-white">
-                Tentang Saya
+              <Button href="/about" variant="ghost" size="md" className="border border-gray-700 text-white hover:bg-gray-800 hover:text-white">
+                About Me
               </Button>
             </div>
           </div>

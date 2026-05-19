@@ -245,7 +245,7 @@ export function AboutPageCta() {
         </div>
         <div className="flex lg:col-span-4 lg:justify-end">
           <Link
-            href="/kontak"
+            href="/contact"
             className="inline-flex h-12 w-full items-center justify-center rounded-button bg-white px-6 text-xs font-semibold text-brand-dark shadow-soft transition-all hover:bg-gray-50 sm:w-auto"
           >
             Mulai Diskusi Teknis

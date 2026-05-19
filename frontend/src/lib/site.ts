@@ -8,9 +8,9 @@ export const siteConfig = {
 export const siteNavItems = [
   { key: "home", href: "/", label: "Beranda" },
   { key: "portfolio", href: "/portfolio", label: "Portfolio" },
-  { key: "articles", href: "/artikel", label: "Artikel" },
-  { key: "about", href: "/tentang", label: "Tentang" },
-  { key: "contact", href: "/kontak", label: "Kontak" },
+  { key: "articles", href: "/articles", label: "Articles" },
+  { key: "about", href: "/about", label: "About" },
+  { key: "contact", href: "/contact", label: "Contact" },
 ] as const;
 
 export function getActiveSiteSection(pathname: string | null | undefined): SiteSection {
@@ -22,15 +22,15 @@ export function getActiveSiteSection(pathname: string | null | undefined): SiteS
     return "portfolio";
   }
 
-  if (pathname.startsWith("/artikel")) {
+  if (pathname.startsWith("/articles")) {
     return "articles";
   }
 
-  if (pathname.startsWith("/tentang")) {
+  if (pathname.startsWith("/about")) {
     return "about";
   }
 
-  if (pathname.startsWith("/kontak")) {
+  if (pathname.startsWith("/contact")) {
     return "contact";
   }
 

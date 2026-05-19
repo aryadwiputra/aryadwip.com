@@ -36,7 +36,7 @@ export function Navbar() {
             );
           })}
         </nav>
-        <Button href="/kontak" size="sm" className="px-4 py-2 text-sm">
+        <Button href="/contact" size="sm" className="px-4 py-2 text-sm">
           Yuk Ngobrol
         </Button>
       </Container>

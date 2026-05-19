@@ -19,8 +19,8 @@ export function Footer() {
           <ul className="space-y-2 text-xs">
             <li><Link href="/" className="text-brand-muted transition-colors hover:text-brand-dark">Beranda</Link></li>
             <li><Link href="/portfolio" className="text-brand-muted transition-colors hover:text-brand-dark">Portfolio</Link></li>
-            <li><Link href="/artikel" className="text-brand-muted transition-colors hover:text-brand-dark">Artikel</Link></li>
-            <li><Link href="/tentang" className="text-brand-muted transition-colors hover:text-brand-dark">Tentang</Link></li>
+            <li><Link href="/articles" className="text-brand-muted transition-colors hover:text-brand-dark">Articles</Link></li>
+            <li><Link href="/about" className="text-brand-muted transition-colors hover:text-brand-dark">About</Link></li>
           </ul>
         </div>
         <div className="space-y-3 md:col-span-3">
