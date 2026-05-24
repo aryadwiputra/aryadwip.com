@@ -2,10 +2,10 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { PortfolioListingClient } from "@/features/portfolio/components/PortfolioListingClient";
-import { getPortfolioFilters, getPortfolioItems } from "@/features/portfolio/utils";
+import { getPortfolioFilters, getPortfolioListingItems } from "@/features/portfolio/utils";
 
 export function PortfolioPageHero() {
-  const items = getPortfolioItems();
+  const items = getPortfolioListingItems();
   const featuredCount = items.filter((item) => item.isFeatured).length;
 
   return (
@@ -40,8 +40,8 @@ export function PortfolioPageHero() {
                 <span className="mt-1 block text-[11px] text-brand-muted">Core Backend</span>
               </div>
               <div>
-                <span className="mt-1 block w-fit rounded bg-accent-green/5 px-2 py-0.5 text-xs font-semibold text-accent-green">Berbasis SQL</span>
-                <span className="mt-1 block text-[11px] text-brand-muted">Sumber dari DB lama</span>
+                <span className="mt-1 block w-fit rounded bg-accent-green/5 px-2 py-0.5 text-xs font-semibold text-accent-green">Kurasi Manual</span>
+                <span className="mt-1 block text-[11px] text-brand-muted">Sumber dari data proyek terpilih</span>
               </div>
             </div>
           </Card>
@@ -76,7 +76,7 @@ function PortfolioCtaSection() {
 }
 
 export function PortfolioListingSection() {
-  const items = getPortfolioItems();
+  const items = getPortfolioListingItems();
   const filters = getPortfolioFilters();
 
   return (

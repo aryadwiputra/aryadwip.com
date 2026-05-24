@@ -1,6 +1,7 @@
 import "server-only";
 
 import { getPortfolioFiltersDefinition, mapRawPortfolioToItem } from "@/features/portfolio/mappers";
+import { getMarkdownPortfolioItems } from "@/features/portfolio/markdown-data";
 import { rawClients, rawPortfolioGalleries, rawPortfolios } from "@/features/portfolio/raw-data";
 import type { PortfolioFilterKey, RawPortfolioGallery } from "@/features/portfolio/types";
 
@@ -13,12 +14,26 @@ for (const gallery of rawPortfolioGalleries) {
   galleriesByPortfolioId.set(gallery.portfolioId, items);
 }
 
-const portfolioItems = rawPortfolios.map((portfolio) =>
+const sqlPortfolioItems = rawPortfolios.map((portfolio) =>
   mapRawPortfolioToItem(portfolio, portfolio.clientId ? clientById.get(portfolio.clientId) : undefined, galleriesByPortfolioId.get(portfolio.id) ?? []),
+);
+
+const markdownPortfolioItems = getMarkdownPortfolioItems();
+
+const portfolioItems = [...markdownPortfolioItems, ...sqlPortfolioItems].sort(
+  (left, right) => left.sortOrder - right.sortOrder || left.title.localeCompare(right.title),
+);
+
+const portfolioListingItems = [...markdownPortfolioItems].sort(
+  (left, right) => left.sortOrder - right.sortOrder || left.title.localeCompare(right.title),
 );
 
 export function getPortfolioItems() {
   return portfolioItems;
+}
+
+export function getPortfolioListingItems() {
+  return portfolioListingItems;
 }
 
 export function getPortfolioFilters() {
@@ -26,7 +41,7 @@ export function getPortfolioFilters() {
 }
 
 export function getFeaturedPortfolioItems(limit = 6) {
-  return portfolioItems.filter((item) => item.isFeatured).slice(0, limit);
+  return portfolioListingItems.filter((item) => item.isFeatured).slice(0, limit);
 }
 
 export function getPortfolioBySlug(slug: string) {
