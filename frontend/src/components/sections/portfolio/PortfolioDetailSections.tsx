@@ -1,6 +1,26 @@
-import Image from "next/image";
 import Link from "next/link";
+import { PortfolioGalleryLightbox } from "@/features/portfolio/components/PortfolioGalleryLightbox";
 import type { PortfolioItem } from "@/features/portfolio/types";
+
+function renderInlineMarkdown(text: string) {
+  const normalized = text.replace(/\*\*(.*?)\*\*/g, "$1").replace(/\*(.*?)\*/g, "$1");
+  const parts = normalized.split(/(`[^`]+`)/g).filter(Boolean);
+
+  return parts.map((part, index) => {
+    if (part.startsWith("`") && part.endsWith("`")) {
+      return (
+        <code
+          key={`${part}-${index}`}
+          className="rounded bg-gray-100 px-1.5 py-0.5 font-mono text-[0.92em] text-brand-dark"
+        >
+          {part.slice(1, -1)}
+        </code>
+      );
+    }
+
+    return <span key={`${part}-${index}`}>{part}</span>;
+  });
+}
 
 function renderContentBlocks(content: string) {
   const normalized = content.replace(/\r\n/g, "\n").trim();
@@ -13,38 +33,151 @@ function renderContentBlocks(content: string) {
     );
   }
 
-  const blocks = normalized.split(/\n{2,}/).map((block) => block.trim()).filter(Boolean);
+  const lines = normalized.split("\n");
+  const blocks: Array<
+    | { type: "heading"; level: 2 | 3; text: string }
+    | { type: "paragraph"; text: string }
+    | { type: "list"; items: string[] }
+    | { type: "code"; code: string }
+    | { type: "divider" }
+  > = [];
+
+  let paragraphBuffer: string[] = [];
+  let listBuffer: string[] = [];
+  let codeBuffer: string[] = [];
+  let inCode = false;
+
+  const flushParagraph = () => {
+    if (paragraphBuffer.length) {
+      blocks.push({ type: "paragraph", text: paragraphBuffer.join(" ").trim() });
+      paragraphBuffer = [];
+    }
+  };
+
+  const flushList = () => {
+    if (listBuffer.length) {
+      blocks.push({ type: "list", items: [...listBuffer] });
+      listBuffer = [];
+    }
+  };
+
+  const flushCode = () => {
+    if (codeBuffer.length) {
+      blocks.push({ type: "code", code: codeBuffer.join("\n") });
+      codeBuffer = [];
+    }
+  };
+
+  for (const rawLine of lines) {
+    const line = rawLine.trim();
+
+    if (line.startsWith("```")) {
+      flushParagraph();
+      flushList();
+      if (inCode) {
+        flushCode();
+        inCode = false;
+      } else {
+        inCode = true;
+      }
+      continue;
+    }
+
+    if (inCode) {
+      codeBuffer.push(rawLine);
+      continue;
+    }
+
+    if (!line) {
+      flushParagraph();
+      flushList();
+      continue;
+    }
+
+    if (line === "---") {
+      flushParagraph();
+      flushList();
+      blocks.push({ type: "divider" });
+      continue;
+    }
+
+    if (line.startsWith("### ")) {
+      flushParagraph();
+      flushList();
+      blocks.push({ type: "heading", level: 3, text: line.replace(/^###\s+/, "") });
+      continue;
+    }
+
+    if (line.startsWith("## ")) {
+      flushParagraph();
+      flushList();
+      blocks.push({ type: "heading", level: 2, text: line.replace(/^##\s+/, "") });
+      continue;
+    }
+
+    if (line.startsWith("- ")) {
+      flushParagraph();
+      listBuffer.push(line.replace(/^-\s+/, ""));
+      continue;
+    }
+
+    paragraphBuffer.push(line);
+  }
+
+  flushParagraph();
+  flushList();
+  flushCode();
 
   return blocks.map((block, index) => {
-    if (block.startsWith("## ")) {
+    if (block.type === "heading") {
+      if (block.level === 2) {
+        return (
+          <h3 key={index} className="pt-6 text-lg font-semibold tracking-tight text-brand-dark md:text-xl">
+            {renderInlineMarkdown(block.text)}
+          </h3>
+        );
+      }
+
       return (
-        <h3 key={`${block}-${index}`} className="text-lg font-semibold tracking-tight text-brand-dark md:text-xl">
-          {block.replace(/^##\s+/, "")}
-        </h3>
+        <h4 key={index} className="pt-2 text-base font-semibold tracking-tight text-brand-dark md:text-lg">
+          {renderInlineMarkdown(block.text)}
+        </h4>
       );
     }
 
-    if (block.startsWith("- ")) {
-      const items = block
-        .split("\n")
-        .map((line) => line.replace(/^- /, "").trim())
-        .filter(Boolean);
-
+    if (block.type === "list") {
       return (
-        <ul key={`${block}-${index}`} className="space-y-2 text-sm leading-relaxed text-brand-muted md:text-[15px]">
-          {items.map((item) => (
+        <ul key={index} className="space-y-2 text-sm leading-relaxed text-brand-muted md:text-[15px]">
+          {block.items.map((item) => (
             <li key={item} className="flex gap-2">
               <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-purple"></span>
-              <span>{item}</span>
+              <span>{renderInlineMarkdown(item)}</span>
             </li>
           ))}
         </ul>
       );
     }
 
+    if (block.type === "code") {
+      return (
+        <div key={index} className="overflow-hidden rounded-card border border-brand-border shadow-soft">
+          <div className="border-b border-brand-border bg-gray-50 px-4 py-2 text-xs font-mono text-brand-muted">
+            Code Snippet
+          </div>
+          <pre className="overflow-x-auto bg-white p-4 text-[13px] leading-relaxed text-brand-dark">
+            <code>{block.code}</code>
+          </pre>
+        </div>
+      );
+    }
+
+    if (block.type === "divider") {
+      return <div key={index} className="my-2 h-px w-full bg-brand-border/60" />;
+    }
+
     return (
-      <p key={`${block}-${index}`} className="text-sm leading-relaxed text-brand-muted md:text-[15px]">
-        {block}
+      <p key={index} className="text-sm leading-relaxed text-brand-muted md:text-[15px]">
+        {renderInlineMarkdown(block.text)}
       </p>
     );
   });
@@ -132,26 +265,13 @@ export function PortfolioDetailContentSection({ item }: { item: PortfolioItem })
               <span className="h-1.5 w-1.5 rounded-full bg-accent-blue"></span>
               <h2 className="text-xl font-semibold tracking-tight text-brand-dark md:text-2xl">{item.detail.galleryTitle}</h2>
             </div>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {item.detail.galleryItems.length > 0 ? item.detail.galleryItems.map((galleryItem) => (
-                <div
-                  key={`${galleryItem.label}-${galleryItem.alt}`}
-                  className="relative flex aspect-[4/3] overflow-hidden rounded-card border border-brand-border bg-gray-50"
-                >
-                  {galleryItem.src ? (
-                    <Image src={galleryItem.src} alt={galleryItem.alt} fill className="object-cover" sizes="(min-width: 1024px) 33vw, 50vw" />
-                  ) : (
-                    <div className="flex w-full items-center justify-center px-6 text-center font-mono text-[10px] text-brand-muted/40">
-                      {galleryItem.label}
-                    </div>
-                  )}
-                </div>
-              )) : (
+            {item.detail.galleryItems.length > 0 ? (
+              <PortfolioGalleryLightbox items={item.detail.galleryItems} title={item.detail.title} />
+            ) : (
                 <div className="flex aspect-[4/3] items-center justify-center rounded-card border border-dashed border-brand-border bg-gray-50 p-6 text-center font-mono text-[10px] text-brand-muted/40">
                   Screenshot project belum tersedia di frontend ini
                 </div>
               )}
-            </div>
           </article>
         </div>
 
