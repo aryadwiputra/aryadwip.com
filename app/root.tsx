@@ -11,18 +11,10 @@ import type { Route } from "./+types/root";
 import { SITE } from "~/lib/portfolio-data";
 import "./app.css";
 
+// Inter di-self-host via @fontsource-variable/inter (diimport di app.css)
+// sehingga tidak ada request render-blocking ke fonts.googleapis.com.
 export const links: Route.LinksFunction = () => [
   { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
 ];
 
 // HTML must never be cached: stale documents reference asset hashes that no
