@@ -5,3 +5,10 @@ export function formatDate(iso: string) {
     year: "numeric",
   });
 }
+
+export function formatMonthYear(iso: string) {
+  return new Date(iso + "T00:00:00").toLocaleDateString("id-ID", {
+    month: "short",
+    year: "numeric",
+  });
+}
