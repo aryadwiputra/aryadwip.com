@@ -1,0 +1,33 @@
+# aryadwip.com — React Router production server (Bun)
+#
+# Pasang di VPS:
+#   sudo cp deploy/aryadwip.service /etc/systemd/system/aryadwip.service
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now aryadwip
+#
+# Pastikan user yang dipakai (www-data) punya akses baca ke direktori aplikasi:
+#   sudo chown -R www-data:www-data /var/www/aryadwip.com
+
+[Unit]
+Description=aryadwip.com — React Router (Bun) production server
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/aryadwip.com
+Environment=NODE_ENV=production
+Environment=PORT=3000
+ExecStart=/usr/bin/bun run start
+Restart=always
+RestartSec=5
+
+# Hardening ringan
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ReadOnlyPaths=/var/www/aryadwip.com/build
+
+[Install]
+WantedBy=multi-user.target
