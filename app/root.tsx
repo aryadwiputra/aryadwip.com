@@ -25,6 +25,16 @@ export const links: Route.LinksFunction = () => [
   },
 ];
 
+// HTML must never be cached: stale documents reference asset hashes that no
+// longer exist after a new build is deployed (causing 404s like the one this
+// prevents). Hashed static assets under /assets are cached immutably by the
+// server, so disabling HTML caching has no performance downside.
+export function headers() {
+  return {
+    "Cache-Control": "no-cache, no-store, must-revalidate",
+  };
+}
+
 const PERSON_SCHEMA = {
   "@context": "https://schema.org",
   "@type": "Person",
