@@ -1,5 +1,6 @@
 export const SITE = {
   name: "Arya Dwi Putra",
+  url: "https://aryadwip.com",
   title: "Backend Engineer & Tech Lead",
   tagline: "Backend engineer. Arsitek sistem. Tech lead. 6+ tahun di backend Laravel — API architecture, database design, infrastructure.",
   bio: "Tech Lead dan Senior Backend Engineer dengan pengalaman 6+ tahun di ekosistem Laravel (versi 5 sampai 13). Spesialisasi di arsitektur sistem, backend, database design, API integration, dan infrastructure planning.",
