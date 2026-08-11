@@ -13,6 +13,12 @@ export const SITE = {
   linkedin: "https://www.linkedin.com/in/aryadwiputra/",
 };
 
+export const STATS = [
+  { value: "6+", label: "Tahun pengalaman di ekosistem Laravel", short: "Tahun Backend" },
+  { value: "20+", label: "Proyek backend & sistem dikerjakan", short: "Proyek Selesai" },
+  { value: "4+", label: "Industri yang pernah dilayani", short: "Industri" },
+];
+
 export const NAV_ITEMS = [
   { label: "Pengalaman", href: "#pengalaman" },
   { label: "Keahlian", href: "#keahlian" },

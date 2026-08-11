@@ -11,7 +11,12 @@ export default function ContactCTA() {
         style={{ backgroundImage: "radial-gradient(circle, black 1px, transparent 1px)", backgroundSize: "32px 32px" }}
       />
       <div className="relative max-w-3xl mx-auto text-center space-y-6">
-        <h2 className="text-3xl md:text-5xl font-bold">Mari Diskusikan Proyek Anda</h2>
+        <span className="inline-block bg-dark text-primary text-sm font-semibold px-3 py-1 font-mono">
+          {"// "}KONTAK
+        </span>
+        <h2 className="text-3xl md:text-5xl font-black tracking-tight">
+          Mari Diskusikan Proyek Anda
+        </h2>
         <p className="text-lg md:text-xl leading-relaxed">
           Butuh backend engineer, tech lead, atau konsultan arsitektur sistem? 
           Saya siap membantu mewujudkan solusi teknis yang scalable dan maintainable.

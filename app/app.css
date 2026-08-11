@@ -32,6 +32,8 @@
   --color-primary: #ffe17c;
   --color-dark: #171e19;
   --color-muted: #b7c6c2;
+  --color-pink: #ff90e8;
+  --color-blue: #8ec5fc;
   --animate-marquee: marquee 30s linear infinite;
   --animate-float: float 4s ease-in-out infinite;
 }
