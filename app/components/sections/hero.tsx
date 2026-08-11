@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { SITE } from "~/lib/portfolio-data";
 
 const TECH_RING = [
@@ -56,26 +57,25 @@ export default function Hero() {
           <span className="inline-block bg-dark text-primary text-sm font-semibold px-3 py-1">
             Laravel Ecosystem • 6+ Tahun
           </span>
-          <h1
-            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
-            dangerouslySetInnerHTML={{ __html: "Backend Engineer<br>&amp; Tech Lead" }}
-          />
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            Backend Engineer<br /> &amp; Tech Lead
+          </h1>
           <p className="text-lg md:text-xl leading-relaxed max-w-lg">
             {SITE.tagline}
           </p>
           <div className="flex flex-wrap gap-4">
             <a
-              href="#portfolio"
+              href="#proyek"
               className="bg-dark text-primary font-semibold px-6 py-3 text-sm hover:opacity-90 transition-opacity"
             >
               Lihat Portfolio
             </a>
-            <a
-              href={`mailto:${SITE.email}`}
+            <Link
+              to="/kontak"
               className="border-2 border-dark text-dark font-semibold px-6 py-3 text-sm hover:bg-dark hover:text-primary transition-colors"
             >
               Hubungi Saya
-            </a>
+            </Link>
           </div>
           <div className="flex items-center gap-4 pt-4">
             <div className="flex -space-x-2">
@@ -88,7 +88,7 @@ export default function Hero() {
             <span className="text-sm font-medium">Dipercaya oleh instansi pemerintah &amp; korporasi</span>
           </div>
         </div>
-        <div className="hidden md:block">
+        <div className="w-full">
           <HeroVisual />
         </div>
       </div>
