@@ -17,7 +17,7 @@ export default function Features() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {FEATURES.map((feature) => (
             <div key={feature.title} className="bg-white border-2 border-black p-6 space-y-3 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-shadow">
-              <img src={feature.icon} alt={feature.title} className="w-8 h-8" />
+              <img src={feature.icon} alt={feature.title} width={32} height={32} loading="lazy" className="w-8 h-8" />
               <h3 className="font-bold text-lg">{feature.title}</h3>
               <p className="text-gray-600 text-sm leading-relaxed">{feature.desc}</p>
             </div>

@@ -32,13 +32,24 @@ function HeroVisual() {
             className="absolute -translate-x-1/2 -translate-y-1/2 bg-white border-2 border-dark p-1.5 rounded-lg shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
             style={{ top: `${top}%`, left: `${left}%` }}
           >
-            <img src={tech.icon} alt={tech.name} className="w-5 h-5 md:w-6 md:h-6" />
+            <img src={tech.icon} alt={tech.name} width={24} height={24} className="w-5 h-5 md:w-6 md:h-6" />
           </div>
         );
       })}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[44%] aspect-square animate-[spin_15s_linear_infinite]">
         <div className="w-full h-full rounded-full border-2 border-dark bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
-          <img src="/images/arya-dwi-putra.png" alt={SITE.name} className="w-full h-full object-cover" />
+          <picture>
+            <source srcSet="/images/arya-dwi-putra.webp" type="image/webp" />
+            <img
+              src="/images/arya-dwi-putra.png"
+              alt={SITE.name}
+              width={448}
+              height={508}
+              fetchPriority="high"
+              decoding="async"
+              className="w-full h-full object-cover"
+            />
+          </picture>
         </div>
       </div>
     </div>
@@ -81,7 +92,7 @@ export default function Hero() {
             <div className="flex -space-x-2">
               {['/logos/clients/logo-lpsk.png', '/logos/clients/wifiku-logo.png', '/logos/clients/citanusa.png'].map((src) => (
                 <div key={src} className="w-9 h-9 rounded-full border-2 border-dark bg-white overflow-hidden">
-                  <img src={src} alt="" className="w-full h-full object-cover" />
+                  <img src={src} alt="" width={36} height={36} loading="lazy" className="w-full h-full object-cover" />
                 </div>
               ))}
             </div>
