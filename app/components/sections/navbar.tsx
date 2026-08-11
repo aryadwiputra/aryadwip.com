@@ -4,8 +4,10 @@ import { NAV_ITEMS } from "~/lib/portfolio-data";
 export default function Navbar() {
   const { pathname } = useLocation();
   const onHome = pathname === "/";
-  // Anchor sections live on the home page; prefix with "/" when elsewhere.
-  const anchorHref = (href: string) => (onHome ? href : `/${href}`);
+  // Anchor sections (#…) live on the home page; prefix with "/" when elsewhere.
+  // Full route paths (/layanan, …) are used as-is.
+  const anchorHref = (href: string) =>
+    href.startsWith("#") ? (onHome ? href : `/${href}`) : href;
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-primary border-b-2 border-black">

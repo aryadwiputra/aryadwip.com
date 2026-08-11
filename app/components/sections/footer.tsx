@@ -1,9 +1,10 @@
-import { SITE, NAV_ITEMS } from "~/lib/portfolio-data";
+import { Link } from "react-router";
+import { SITE, NAV_ITEMS, SERVICES, ARTICLES } from "~/lib/portfolio-data";
 
 export default function Footer() {
   return (
     <footer className="bg-dark text-primary py-16 px-6">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-10">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-10">
         <div className="space-y-4">
           <p className="font-bold text-lg">{SITE.name}</p>
           <p className="text-primary/60 text-sm leading-relaxed">
@@ -27,10 +28,16 @@ export default function Footer() {
         <div className="space-y-3">
           <p className="font-bold">Navigasi</p>
           {NAV_ITEMS.map((item) => (
-            <a key={item.href} href={item.href} className="block text-primary/60 text-sm hover:text-primary transition-colors">
+            <Link key={item.href} to={item.href} className="block text-primary/60 text-sm hover:text-primary transition-colors">
               {item.label}
-            </a>
+            </Link>
           ))}
+          <Link to="/faq" className="block text-primary/60 text-sm hover:text-primary transition-colors">
+            FAQ
+          </Link>
+          <Link to="/testimoni" className="block text-primary/60 text-sm hover:text-primary transition-colors">
+            Testimoni
+          </Link>
         </div>
         <div className="space-y-3">
           <p className="font-bold">Kontak</p>
@@ -41,10 +48,20 @@ export default function Footer() {
         </div>
         <div className="space-y-3">
           <p className="font-bold">Layanan</p>
-          <p className="text-primary/60 text-sm">Laravel Development</p>
-          <p className="text-primary/60 text-sm">System Architecture</p>
-          <p className="text-primary/60 text-sm">API Integration</p>
-          <p className="text-primary/60 text-sm">Technical Consulting</p>
+          {SERVICES.slice(0, 4).map((s) => (
+            <Link key={s.id} to="/layanan" className="block text-primary/60 text-sm hover:text-primary transition-colors">
+              {s.title}
+            </Link>
+          ))}
+          <Link to="/layanan" className="block text-sm font-semibold underline underline-offset-4">
+            Lihat Semua Layanan →
+          </Link>
+          <p className="font-bold pt-3">Artikel Terbaru</p>
+          {ARTICLES.slice(0, 2).map((a) => (
+            <Link key={a.slug} to={`/artikel/${a.slug}`} className="block text-primary/60 text-sm hover:text-primary transition-colors leading-snug">
+              {a.title}
+            </Link>
+          ))}
         </div>
       </div>
       <div className="max-w-7xl mx-auto mt-12 pt-6 border-t border-primary/20 text-center text-primary/40 text-sm">

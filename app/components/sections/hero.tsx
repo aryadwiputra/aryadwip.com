@@ -162,6 +162,14 @@ export default function Hero() {
               Hubungi Saya
             </Link>
           </div>
+          <div className="pt-1">
+            <Link
+              to="/layanan"
+              className="text-sm font-semibold underline underline-offset-4 hover:text-gray-700"
+            >
+              Lihat Layanan Jasa →
+            </Link>
+          </div>
           <div className="grid grid-cols-3 border-2 border-black bg-white divide-x-2 divide-black">
             {STATS.map((stat) => (
               <div key={stat.short} className="p-3 text-center">

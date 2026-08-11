@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { PROJECTS } from "~/lib/portfolio-data";
 
 import Reveal from "~/components/reveal";
@@ -54,10 +55,16 @@ export default function BentoProjects() {
                     <p className="text-xs text-gray-500 font-mono leading-relaxed">
                       {project.stack}
                     </p>
+                    <Link
+                      to={`/proyek/${project.slug}`}
+                      className="inline-block text-sm font-semibold underline underline-offset-4 hover:text-gray-600"
+                    >
+                      Baca Studi Kasus →
+                    </Link>
                     {"repo" in project && project.repo && (
                       <a
                         href={project.repo}
-                        className="inline-block text-sm font-semibold underline underline-offset-4 hover:text-gray-600"
+                        className="block text-sm font-semibold underline underline-offset-4 hover:text-gray-600"
                       >
                         Lihat Repository →
                       </a>
