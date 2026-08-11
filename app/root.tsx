@@ -43,6 +43,14 @@ const PERSON_SCHEMA = {
   sameAs: [SITE.github, SITE.linkedin],
 };
 
+const WEBSITE_SCHEMA = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: `${SITE.name} — ${SITE.title}`,
+  url: SITE.url,
+  inLanguage: "id",
+};
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="id">
@@ -53,6 +61,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_SCHEMA) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(WEBSITE_SCHEMA) }}
         />
         <Meta />
         <Links />
