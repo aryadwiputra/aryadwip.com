@@ -18,8 +18,8 @@ export default function ContactCTA() {
           Mari Diskusikan Proyek Anda
         </h2>
         <p className="text-lg md:text-xl leading-relaxed">
-          Butuh backend engineer, tech lead, atau konsultan arsitektur sistem? 
-          Saya siap membantu mewujudkan solusi teknis yang scalable dan maintainable.
+          Butuh software developer spesialis Laravel untuk proyek Anda?
+          Saya siap membantu mewujudkan solusi yang scalable dan maintainable.
         </p>
         <div className="flex flex-wrap justify-center gap-4 pt-4">
           <Link

@@ -10,7 +10,7 @@ export function meta({}: Route.MetaArgs) {
   return pageMeta({
     title: `Kontak — ${SITE.name}`,
     description:
-      "Hubungi Arya Dwi Putra — backend engineer & tech lead spesialis Laravel. Konsultasi arsitektur, API, dan infrastruktur untuk proyek Anda.",
+      "Hubungi Arya Dwi Putra — software developer spesialis Laravel. Konsultasi pembuatan aplikasi Laravel, API design, dan arsitektur untuk proyek Anda.",
     path: "/kontak",
   });
 }
@@ -148,9 +148,9 @@ export default function Contact() {
               Mari Diskusikan Proyek Anda
             </h1>
             <p className="text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
-              Butuh backend engineer, tech lead, atau konsultan arsitektur
-              sistem? Ceritakan kebutuhan Anda — saya siap membantu mewujudkan
-              solusi yang scalable dan maintainable.
+              Butuh software developer spesialis Laravel untuk proyek Anda?
+              Ceritakan kebutuhan Anda — dari pembuatan aplikasi, API design,
+              hingga arsitektur yang scalable dan maintainable.
             </p>
           </div>
         </section>

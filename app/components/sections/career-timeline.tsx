@@ -13,7 +13,7 @@ export default function CareerTimeline() {
             Pengalaman
           </h2>
           <p className="text-center text-gray-600 text-lg mb-12 max-w-xl mx-auto">
-            Perjalanan karir sebagai backend engineer.
+            Perjalanan karir sebagai software developer.
           </p>
           <div className="max-w-4xl mx-auto relative">
             {/* garis mobile: kiri */}

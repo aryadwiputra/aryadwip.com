@@ -1,9 +1,9 @@
 export const SITE = {
   name: "Arya Dwi Putra",
   url: "https://aryadwip.com",
-  title: "Backend Engineer & Tech Lead",
-  tagline: "Backend engineer. Arsitek sistem. Tech lead. 6+ tahun di backend Laravel — API architecture, database design, infrastructure.",
-  bio: "Tech Lead dan Senior Backend Engineer dengan pengalaman 6+ tahun di ekosistem Laravel (versi 5 sampai 13). Spesialisasi di arsitektur sistem, backend, database design, API integration, dan infrastructure planning.",
+  title: "Software Developer & Laravel Specialist",
+  tagline: "Software developer spesialis Laravel di Indonesia. 6+ tahun pengalaman membuat aplikasi & website Laravel — API design, database, dan arsitektur yang scalable.",
+  bio: "Software Developer dengan spesialisasi Laravel (Laravel 5–13) dan pengalaman 6+ tahun. Membangun aplikasi web end-to-end untuk klien Indonesia & global — perancangan API, database design, integrasi pihak ketiga, hingga deployment dan infrastruktur.",
   email: "aryaadwptr@gmail.com",
   phone: "+6285173202701", // format E.164 untuk JSON-LD/schema
   phoneDisplay: "0851-7320-2701", // format lokal untuk tampilan UI
@@ -14,8 +14,8 @@ export const SITE = {
 };
 
 export const STATS = [
-  { value: "6+", label: "Tahun pengalaman di ekosistem Laravel", short: "Tahun Backend" },
-  { value: "20+", label: "Proyek backend & sistem dikerjakan", short: "Proyek Selesai" },
+  { value: "6+", label: "Tahun pengalaman di ekosistem Laravel", short: "Tahun Laravel" },
+  { value: "20+", label: "Proyek aplikasi & sistem dikerjakan", short: "Proyek Selesai" },
   { value: "4+", label: "Industri yang pernah dilayani", short: "Industri" },
 ];
 

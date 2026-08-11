@@ -16,7 +16,7 @@ export function meta({}: Route.MetaArgs) {
   return pageMeta({
     title: `${SITE.name} — ${SITE.title}`,
     description:
-      "Backend engineer spesialis Laravel. 6+ tahun pengalaman di API architecture, database design, dan infrastructure planning.",
+      "Software developer spesialis Laravel di Indonesia. 6+ tahun pengalaman jasa pembuatan aplikasi & website Laravel — API design, database, dan arsitektur sistem.",
   });
 }
 

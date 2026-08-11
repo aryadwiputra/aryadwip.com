@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="space-y-4">
           <p className="font-bold text-lg">{SITE.name}</p>
           <p className="text-primary/60 text-sm leading-relaxed">
-            Backend engineer & tech lead. Laravel sejak versi 5.
+            Software developer spesialis Laravel. Laravel sejak versi 5.
           </p>
           <div className="flex gap-3">
             <a href={SITE.github} target="_blank" rel="noopener noreferrer" className="hover:text-primary/60 transition-colors">
@@ -41,7 +41,7 @@ export default function Footer() {
         </div>
         <div className="space-y-3">
           <p className="font-bold">Layanan</p>
-          <p className="text-primary/60 text-sm">Backend Development</p>
+          <p className="text-primary/60 text-sm">Laravel Development</p>
           <p className="text-primary/60 text-sm">System Architecture</p>
           <p className="text-primary/60 text-sm">API Integration</p>
           <p className="text-primary/60 text-sm">Technical Consulting</p>

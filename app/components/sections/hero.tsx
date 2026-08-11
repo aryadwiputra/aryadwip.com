@@ -26,7 +26,7 @@ function TerminalCard() {
           <span aria-hidden="true" className="w-2.5 h-2.5 rounded-full bg-primary border border-black" />
           <span aria-hidden="true" className="w-2.5 h-2.5 rounded-full bg-blue border border-black" />
           <span className="ml-2 font-mono text-[10px] tracking-wider truncate">
-            arya@backend ~
+            aryadwiputra@dev ~
           </span>
         </div>
         {/* body */}
@@ -137,12 +137,12 @@ export default function Hero() {
       <div className="relative max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <div className="space-y-6">
           <span className="inline-block bg-dark text-primary text-sm font-semibold px-3 py-1 font-mono">
-            {"// "}6+ TAHUN BACKEND · LARAVEL
+            {"// "}6+ TAHUN LARAVEL
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tight">
-            Backend Engineer{" "}
+            Software Developer{" "}
             <span className="bg-dark text-primary px-2 inline-block -rotate-1">
-              &amp; Tech Lead
+              &amp; Laravel Specialist
             </span>
           </h1>
           <p className="text-lg md:text-xl leading-relaxed max-w-lg">
