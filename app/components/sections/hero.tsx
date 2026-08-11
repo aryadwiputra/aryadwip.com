@@ -27,16 +27,25 @@ function HeroVisual() {
         const top = 50 + radius * Math.sin(angle);
         const left = 50 + radius * Math.cos(angle);
         return (
-          <div
-            key={tech.name}
-            className="absolute -translate-x-1/2 -translate-y-1/2 bg-white border-2 border-dark p-1.5 rounded-lg shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
-            style={{ top: `${top}%`, left: `${left}%` }}
-          >
-            <img src={tech.icon} alt={tech.name} width={24} height={24} className="w-5 h-5 md:w-6 md:h-6" />
+          <div key={tech.name} className="absolute" style={{ top: `${top}%`, left: `${left}%` }}>
+            {/* level 1: posisi ring (translate -50%, -50%) */}
+            <div className="-translate-x-1/2 -translate-y-1/2">
+              {/* level 2: animasi float idle (staggered delay) */}
+              <div className="animate-float" style={{ animationDelay: `${i * 0.5}s` }}>
+                {/* level 3: hover interaktif + tooltip */}
+                <div
+                  title={tech.name}
+                  aria-label={tech.name}
+                  className="bg-white border-2 border-dark p-1.5 rounded-lg shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-transform duration-200 hover:scale-110 hover:rotate-3 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                >
+                  <img src={tech.icon} alt="" width={24} height={24} className="w-5 h-5 md:w-6 md:h-6" />
+                </div>
+              </div>
+            </div>
           </div>
         );
       })}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[44%] aspect-square animate-[spin_15s_linear_infinite]">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[44%] aspect-square">
         <div className="w-full h-full rounded-full border-2 border-dark bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
           <picture>
             <source srcSet="/images/arya-dwi-putra.webp" type="image/webp" />

@@ -33,6 +33,7 @@
   --color-dark: #171e19;
   --color-muted: #b7c6c2;
   --animate-marquee: marquee 30s linear infinite;
+  --animate-float: float 4s ease-in-out infinite;
 }
 
 html {
@@ -46,4 +47,17 @@ body {
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(-4px); }
+  50% { transform: translateY(4px); }
+}
+
+/* Hormati preferensi pengguna yang menonaktifkan animasi */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-marquee {
+    animation: none;
+  }
 }
