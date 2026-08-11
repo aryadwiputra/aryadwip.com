@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { SITE } from "~/lib/portfolio-data";
 
 import Reveal from "~/components/reveal";
@@ -16,12 +17,12 @@ export default function ContactCTA() {
           Saya siap membantu mewujudkan solusi teknis yang scalable dan maintainable.
         </p>
         <div className="flex flex-wrap justify-center gap-4 pt-4">
-          <a
-            href={`mailto:${SITE.email}`}
+          <Link
+            to="/kontak"
             className="bg-dark text-primary font-semibold px-8 py-4 text-base hover:opacity-90 transition-opacity"
           >
-            Kirim Email
-          </a>
+            Buka Halaman Kontak
+          </Link>
           <a
             href={`https://wa.me/${SITE.wa}`}
             target="_blank"
