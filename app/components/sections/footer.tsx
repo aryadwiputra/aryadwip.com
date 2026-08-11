@@ -35,7 +35,7 @@ export default function Footer() {
         <div className="space-y-3">
           <p className="font-bold">Kontak</p>
           <p className="text-primary/60 text-sm">{SITE.email}</p>
-          <a href={`https://wa.me/${SITE.wa}`} target="_blank" rel="noopener noreferrer" className="text-primary/60 text-sm hover:text-primary transition-colors">{SITE.phone}</a>
+          <a href={`https://wa.me/${SITE.wa}`} target="_blank" rel="noopener noreferrer" className="text-primary/60 text-sm hover:text-primary transition-colors">{SITE.phoneDisplay}</a>
           <p className="text-primary/60 text-sm">{SITE.location}</p>
           <p className="text-primary/60 text-sm">Mon–Fri, 09:00–18:00 WIB</p>
         </div>

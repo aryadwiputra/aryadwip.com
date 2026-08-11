@@ -24,7 +24,7 @@ const CONTACT_INFO = [
   },
   {
     label: "WhatsApp",
-    value: SITE.phone,
+    value: SITE.phoneDisplay,
     href: `https://wa.me/${SITE.wa}`,
     desc: "Diskusi cepat untuk kebutuhan mendesak.",
   },

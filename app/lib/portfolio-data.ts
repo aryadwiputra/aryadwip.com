@@ -5,7 +5,8 @@ export const SITE = {
   tagline: "Backend engineer. Arsitek sistem. Tech lead. 6+ tahun di backend Laravel — API architecture, database design, infrastructure.",
   bio: "Tech Lead dan Senior Backend Engineer dengan pengalaman 6+ tahun di ekosistem Laravel (versi 5 sampai 13). Spesialisasi di arsitektur sistem, backend, database design, API integration, dan infrastructure planning.",
   email: "aryaadwptr@gmail.com",
-  phone: "+6285173202701",
+  phone: "+6285173202701", // format E.164 untuk JSON-LD/schema
+  phoneDisplay: "0851-7320-2701", // format lokal untuk tampilan UI
   wa: "6285173202701",
   location: "Bogor, Indonesia",
   github: "https://github.com/aryadwiputra/",
