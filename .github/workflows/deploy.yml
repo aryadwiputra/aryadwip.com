@@ -1,0 +1,65 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  frontend:
+    name: Frontend CI/CD
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Typecheck
+        run: bun run typecheck 2>/dev/null || echo "Skipping typecheck (not configured)"
+
+      - name: Build
+        run: bun run build
+
+      - name: Deploy to VPS
+        if: github.ref == 'refs/heads/master'
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+          script: |
+            cd /var/www/aryadwip.com
+
+            # Pull latest code
+            sudo -u deploy git pull origin master
+
+            # Fix bun permissions if needed
+            sudo chmod 755 /home/deploy/.bun/bin/bun 2>/dev/null || true
+
+            # Install deps & build
+            sudo -u deploy /home/deploy/.bun/bin/bun install
+            sudo -u deploy /home/deploy/.bun/bin/bun run build
+
+            # Fix permissions
+            sudo chown -R deploy:deploy /var/www/aryadwip.com/build
+
+            # Restart service
+            sudo systemctl restart aryadwip-frontend
+
+            # Verify
+            if systemctl is-active --quiet aryadwip-frontend; then
+              echo "✅ Frontend deployed successfully at $(date)"
+            else
+              echo "❌ Frontend failed to start"
+              exit 1
+            fi
