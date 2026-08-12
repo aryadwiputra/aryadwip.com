@@ -33,6 +33,7 @@ const PERSON_SCHEMA = {
   name: SITE.name,
   jobTitle: SITE.title,
   url: SITE.url,
+  image: `${SITE.url}/images/arya-dwi-putra.png`,
   email: `mailto:${SITE.email}`,
   telephone: SITE.phone,
   address: {

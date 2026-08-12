@@ -12,7 +12,13 @@ const PAGES = [
 ];
 
 export function loader() {
-  const lastmod = new Date().toISOString().split("T")[0];
+  // lastmod stabil: tanggal konten terbaru (artikel/proyek), bukan tanggal
+  // request — supaya Google tidak melihat sitemap berubah setiap hari.
+  const allDates = [
+    ...PROJECTS.map((p) => p.end_date ?? p.start_date),
+    ...ARTICLES.map((a) => a.date),
+  ].sort();
+  const lastmod = allDates[allDates.length - 1] ?? "2026-08-12";
 
   const dynamic = [
     ...PROJECTS.map((p) => ({

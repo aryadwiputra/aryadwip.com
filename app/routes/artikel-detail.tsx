@@ -37,9 +37,19 @@ export default function ArtikelDetail() {
     "@type": "Article",
     headline: article.title,
     description: article.excerpt,
+    image: `${SITE.url}/images/og-image.png`,
     datePublished: article.date,
+    dateModified: article.date,
     author: { "@type": "Person", name: SITE.name, url: SITE.url },
-    publisher: { "@type": "Person", name: SITE.name },
+    publisher: {
+      "@type": "Organization",
+      name: SITE.name,
+      url: SITE.url,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE.url}/images/og-image.png`,
+      },
+    },
     keywords: article.tags.join(", "),
     mainEntityOfPage: `${SITE.url}/artikel/${article.slug}`,
   };
