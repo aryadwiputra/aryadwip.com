@@ -11,6 +11,13 @@ export const SITE = {
   location: "Bogor, Indonesia",
   github: "https://github.com/aryadwiputra/",
   linkedin: "https://www.linkedin.com/in/aryadwiputra/",
+  product: {
+    name: "Marikoding",
+    url: "https://marikoding.com",
+    tagline: "Platform belajar coding Indonesia dengan e-book terstruktur",
+    description:
+      "Produk sendiri: platform belajar coding dengan 4 e-book PHP — dari fondasi, web development, modern PHP, sampai project-based. Dibangun dengan Bun/Hono + React Router SSR.",
+  },
 };
 
 export const STATS = [
@@ -150,6 +157,39 @@ export const SERVICES = [
 ];
 
 export const PROJECTS = [
+  {
+    slug: "marikoding",
+    title: "Marikoding.com",
+    tag: "Platform Belajar Coding",
+    summary:
+      "Produk sendiri: platform belajar coding Indonesia dengan kurikulum e-book PHP terstruktur — PHP Fondasi, PHP Web Development, Modern PHP, dan Project-Based PHP.",
+    stack: "Bun, Hono, React Router SSR, MySQL, Nginx",
+    role: "Founder & Developer",
+    start_date: "2026-06-01",
+    end_date: null,
+    case_study_label: "Produk Sendiri",
+    website: "https://marikoding.com",
+    repo: "https://github.com/aryadwiputra/marikoding.com",
+    challenge:
+      "Banyak developer pemula di Indonesia bingung memilih jalur belajar PHP yang terstruktur. Materi tersebar di berbagai sumber, tidak ada kurikulum yang runtut dari nol sampai project nyata. Tantangan: membangun platform e-book interaktif dengan quiz, progress tracking, dan content CMS berbasis file — sambil menjaga performa di VPS kecil (2GB).",
+    solution:
+      "Arsitektur Bun/Hono untuk API + React Router SSR untuk frontend. Konten e-book disimpan sebagai file markdown (file-based CMS) dengan script sync ke database — mudah ditulis tanpa admin panel berat. 4 e-book disusun sebagai roadmap: fondasi → web → modern PHP → project-based.",
+    features: [
+      "4 e-book PHP sebagai roadmap belajar terstruktur",
+      "Konten markdown dengan quiz interaktif per bab",
+      "File-based CMS: tulis markdown, sync otomatis ke DB",
+      "SSR React Router untuk SEO & performa",
+      "CI/CD GitHub Actions — push main = auto-deploy",
+      "Backend Bun/Hono yang hemat memory di VPS 2GB",
+    ],
+    outcome:
+      "Platform belajar coding dengan kurikulum runtut yang bisa diakses siapa saja. Menunjukkan kemampuan end-to-end: product thinking, content engineering, arsitektur, deployment, dan CI/CD.",
+    gallery: [
+      { src: "/images/projects/marikoding/1.png", alt: "Homepage Marikoding", label: "Landing page & daftar e-book" },
+      { src: "/images/projects/marikoding/2.png", alt: "Detail e-book PHP Fondasi", label: "Struktur kurikulum e-book" },
+      { src: "/images/projects/marikoding/3.png", alt: "Halaman materi & quiz", label: "Materi bab + quiz interaktif" },
+    ],
+  },
   {
     slug: "plannify",
     title: "Plannify",
