@@ -631,4 +631,44 @@ export const ARTICLES = [
       },
     ],
   },
+  {
+    slug: "membangun-marikoding-platform-belajar-coding",
+    title: "Membangun Marikoding: Platform Belajar Coding dari Nol",
+    excerpt:
+      "Dari ide sampai production: bagaimana saya membangun platform belajar coding dengan 4 e-book PHP, arsitektur Bun/Hono + SSR, file-based CMS, dan CI/CD di VPS 2GB.",
+    category: "Cerita",
+    date: "2026-08-12",
+    readTime: 8,
+    tags: ["Bun", "Hono", "Product", "DevOps"],
+    content: [
+      {
+        heading: "Kenapa membangun produk sendiri?",
+        paragraphs: [
+          "Sebagai developer yang sehari-hari mengerjakan proyek klien, saya ingin membuktikan satu hal: bisa membangun produk sendiri dari nol — bukan hanya mengerjakan requirement orang lain. Marikoding lahir dari masalah nyata: banyak developer pemula di Indonesia bingung memilih jalur belajar PHP yang terstruktur.",
+          "Materi tersebar di berbagai sumber, tidak ada kurikulum yang runtut dari nol sampai project nyata. Saya memutuskan membangun platform e-book interaktif dengan quiz per bab — dan menjadikannya produk yang bisa diakses siapa saja.",
+        ],
+      },
+      {
+        heading: "Arsitektur: hemat, tapi scalable",
+        paragraphs: [
+          "VPS saya hanya 2GB RAM, jadi setiap keputusan arsitektur harus hemat memory. Backend memakai Bun + Hono — runtime yang jauh lebih ringan dari Node.js untuk API. Frontend memakai React Router SSR untuk SEO dan performa.",
+          "Konten e-book disimpan sebagai file markdown (file-based CMS) dengan script sync ke database. Ini keputusan penting: menulis materi cukup dengan edit markdown, tanpa perlu membangun admin panel yang berat.",
+        ],
+      },
+      {
+        heading: "CI/CD: push main = auto-deploy",
+        paragraphs: [
+          "Pipeline GitHub Actions terhubung ke VPS: setiap push ke main langsung di-pull, di-install, di-build, dan service di-restart. Content sync ikut dijalankan agar e-book baru langsung muncul.",
+          "Hasilnya: rilis fitur dan konten jadi rutinitas yang aman dan cepat, bukan event yang menegangkan.",
+        ],
+      },
+      {
+        heading: "Pelajaran & hasil",
+        paragraphs: [
+          "Marikoding mengajarkan saya product thinking — bukan hanya 'gimana cara bikin fitur', tapi 'fitur apa yang benar-benar dibutuhkan pembelajar'. Sekarang platform ini punya 4 e-book PHP sebagai roadmap: PHP Fondasi (lengkap), PHP Web Development, Modern PHP, dan Project-Based PHP.",
+          "Bagi klien, ini bukti nyata bahwa saya bisa membawa produk dari ide sampai production — desain, arsitektur, konten, deployment, dan maintenance. Itu persis yang mereka butuhkan dari developer senior.",
+        ],
+      },
+    ],
+  },
 ];
