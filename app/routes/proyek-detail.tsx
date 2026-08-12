@@ -153,6 +153,16 @@ export default function ProyekDetail() {
 
             <Reveal>
               <div className="flex flex-wrap gap-4 pt-2">
+                {"website" in project && project.website && (
+                  <a
+                    href={project.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-dark text-primary font-semibold px-6 py-3 text-sm hover:opacity-90 transition-opacity"
+                  >
+                    Kunjungi Website →
+                  </a>
+                )}
                 {"repo" in project && project.repo && (
                   <a
                     href={project.repo}

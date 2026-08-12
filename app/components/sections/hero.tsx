@@ -136,9 +136,14 @@ export default function Hero() {
       />
       <div className="relative max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <div className="space-y-6">
-          <span className="inline-block bg-dark text-primary text-sm font-semibold px-3 py-1 font-mono">
-            {"// "}6+ TAHUN LARAVEL
-          </span>
+          <div className="flex flex-wrap gap-3">
+            <span className="inline-block bg-dark text-primary text-sm font-semibold px-3 py-1 font-mono">
+              {"// "}6+ TAHUN LARAVEL
+            </span>
+            <span className="inline-block bg-dark text-primary text-sm font-semibold px-3 py-1 font-mono">
+              {"// "}FOUNDER MARIKODING.COM
+            </span>
+          </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tight">
             Software Developer{" "}
             <span className="bg-dark text-primary px-2 inline-block -rotate-1">

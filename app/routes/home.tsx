@@ -8,6 +8,7 @@ import CareerTimeline from "~/components/sections/career-timeline";
 import Features from "~/components/sections/features";
 import HowIWork from "~/components/sections/how-i-work";
 import Testimonials from "~/components/sections/testimonials";
+import ProductShowcase from "~/components/sections/product-showcase";
 import BentoProjects from "~/components/sections/bento-projects";
 import ContactCTA from "~/components/sections/contact-cta";
 import Footer from "~/components/sections/footer";
@@ -30,6 +31,7 @@ export default function Home() {
       <Features />
       <HowIWork />
       <Testimonials />
+      <ProductShowcase />
       <BentoProjects />
       <ContactCTA />
       <Footer />

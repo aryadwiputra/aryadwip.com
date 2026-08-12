@@ -61,6 +61,16 @@ export default function BentoProjects() {
                     >
                       Baca Studi Kasus →
                     </Link>
+                    {"website" in project && project.website && (
+                      <a
+                        href={project.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block text-sm font-semibold underline underline-offset-4 hover:text-gray-600"
+                      >
+                        Kunjungi Website →
+                      </a>
+                    )}
                     {"repo" in project && project.repo && (
                       <a
                         href={project.repo}
