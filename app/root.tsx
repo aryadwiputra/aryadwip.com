@@ -41,6 +41,13 @@ const PERSON_SCHEMA = {
     addressCountry: "ID",
   },
   sameAs: [SITE.github, SITE.linkedin],
+  owns: {
+    "@type": "Brand",
+    name: SITE.product.name,
+    url: SITE.product.url,
+    slogan: SITE.product.tagline,
+  },
+  knowsAbout: ["PHP", "Laravel", "React", "Inertia.js", "MySQL", "Bun", "Hono"],
 };
 
 const WEBSITE_SCHEMA = {

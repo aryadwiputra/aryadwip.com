@@ -173,6 +173,36 @@ export default function Tentang() {
             </div>
           </div>
         </section>
+
+        <section className="bg-dark text-primary py-16 px-6 border-t-2 border-black">
+          <div className="max-w-4xl mx-auto text-center">
+            <span className="inline-block bg-primary text-dark text-sm font-semibold px-3 py-1 font-mono">
+              {"// "}PRODUK SAYA SENDIRI
+            </span>
+            <h2 className="text-3xl md:text-4xl font-black mt-4 mb-3 tracking-tight">
+              Saya juga membangun {SITE.product.name}
+            </h2>
+            <p className="text-primary/80 text-lg max-w-2xl mx-auto mb-6">
+              {SITE.product.description}
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a
+                href={SITE.product.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-primary text-dark font-semibold px-8 py-4 text-base hover:opacity-90 transition-opacity"
+              >
+                Kunjungi {SITE.product.name} →
+              </a>
+              <Link
+                to="/proyek/marikoding"
+                className="border-2 border-primary text-primary font-semibold px-8 py-4 text-base hover:bg-primary hover:text-dark transition-colors"
+              >
+                Baca Studi Kasus
+              </Link>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </>
