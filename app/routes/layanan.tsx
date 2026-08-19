@@ -9,14 +9,14 @@ import Reveal from "~/components/reveal";
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
-    title: `Layanan Jasa — ${SITE.name}`,
+    title: `Layanan Jasa | ${SITE.name}`,
     description:
       "Jasa pembuatan website & aplikasi Laravel di Indonesia: company profile, sistem informasi custom, e-commerce, API, maintenance, dan migrasi. Konsultasi gratis via WhatsApp.",
     path: "/layanan",
   });
 }
 
-const SERVICE_COLORS = ["bg-white", "bg-pink", "bg-white", "bg-blue", "bg-white", "bg-primary"];
+const SERVICE_COLORS = ["bg-white", "bg-sage", "bg-white", "bg-mustard", "bg-white", "bg-terracotta"];
 const SERVICE_ROTATE = ["-rotate-1", "rotate-1", "", "-rotate-1", "rotate-1", ""];
 
 const SERVICE_SCHEMA = {
@@ -47,7 +47,7 @@ export default function Layanan() {
           title={
             <>
               Jasa Pembuatan Website{" "}
-              <span className="bg-dark text-primary px-2 inline-block -rotate-1">
+              <span className="bg-dark text-paper px-2 inline-block -rotate-1">
                 &amp; Aplikasi Laravel
               </span>
             </>
@@ -71,7 +71,7 @@ export default function Layanan() {
                       loading="lazy"
                       className="w-8 h-8"
                     />
-                    <span className="text-xs font-bold bg-dark text-primary px-2 py-1 whitespace-nowrap">
+                    <span className="text-xs font-bold bg-dark text-paper px-2 py-1 whitespace-nowrap">
                       {service.price}
                     </span>
                   </div>
@@ -94,7 +94,7 @@ export default function Layanan() {
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-auto inline-block bg-dark text-primary text-center font-semibold px-4 py-3 text-sm hover:opacity-90 transition-opacity"
+                    className="mt-auto inline-block bg-dark text-paper text-center font-semibold px-4 py-3 text-sm hover:opacity-90 transition-opacity"
                   >
                     Tanya Layanan Ini →
                   </a>
@@ -108,12 +108,12 @@ export default function Layanan() {
           </p>
         </section>
 
-        <section className="bg-dark text-primary py-16 px-6 border-y-2 border-black">
+        <section className="bg-dark text-paper py-16 px-6 border-y-2 border-black">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-black text-center mb-4 tracking-tight">
               Cara Saya Bekerja
             </h2>
-            <p className="text-center text-primary/70 text-lg mb-12 max-w-xl mx-auto">
+            <p className="text-center text-paper/70 text-lg mb-12 max-w-xl mx-auto">
               Proses yang transparan dari awal hingga delivery.
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -122,18 +122,18 @@ export default function Layanan() {
                   key={step.step}
                   className="border-2 border-primary/30 p-8 space-y-3 hover:border-primary transition-colors"
                 >
-                  <span className="inline-flex w-12 h-12 items-center justify-center border-2 border-black font-black text-lg text-dark bg-primary">
+                  <span className="inline-flex w-12 h-12 items-center justify-center border-2 border-black font-black text-lg text-dark bg-terracotta">
                     {step.step}
                   </span>
                   <h3 className="font-bold">{step.title}</h3>
-                  <p className="text-primary/70 text-sm leading-relaxed">{step.desc}</p>
+                  <p className="text-paper/70 text-sm leading-relaxed">{step.desc}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="bg-primary py-16 px-6">
+        <section className="bg-paper py-16 px-6">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <h2 className="text-3xl md:text-4xl font-black tracking-tight">
               Punya Proyek dalam Pikiran?
@@ -144,7 +144,7 @@ export default function Layanan() {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 to="/kontak"
-                className="bg-dark text-primary font-semibold px-8 py-4 text-base hover:opacity-90 transition-opacity"
+                className="bg-dark text-paper font-semibold px-8 py-4 text-base hover:opacity-90 transition-opacity"
               >
                 Buka Halaman Kontak
               </Link>
@@ -152,7 +152,7 @@ export default function Layanan() {
                 href={`https://wa.me/${SITE.wa}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border-2 border-dark text-dark font-semibold px-8 py-4 text-base hover:bg-dark hover:text-primary transition-colors"
+                className="border-2 border-dark text-dark font-semibold px-8 py-4 text-base hover:bg-dark hover:text-paper transition-colors"
               >
                 WhatsApp
               </a>

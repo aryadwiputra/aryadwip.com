@@ -9,7 +9,7 @@ type PageHeroProps = {
 
 export default function PageHero({ eyebrow, title, description, crumb }: PageHeroProps) {
   return (
-    <section className="relative pt-32 pb-16 px-6 bg-primary border-b-2 border-black overflow-hidden">
+    <section className="relative pt-32 pb-16 px-6 bg-paper border-b-2 border-black overflow-hidden">
       <div
         className="absolute inset-0 opacity-10"
         style={{
@@ -33,7 +33,7 @@ export default function PageHero({ eyebrow, title, description, crumb }: PageHer
             )}
           </nav>
         )}
-        <span className="inline-block bg-dark text-primary text-sm font-semibold px-3 py-1 font-mono">
+        <span className="inline-block bg-dark text-paper text-sm font-semibold px-3 py-1 font-mono">
           {"// "}
           {eyebrow}
         </span>

@@ -19,7 +19,7 @@ export function meta({}: Route.MetaArgs) {
 
 function NotFoundContent() {
   return (
-    <main className="relative min-h-[70vh] pt-40 pb-28 px-6 bg-primary overflow-hidden">
+    <main className="relative min-h-[70vh] pt-40 pb-28 px-6 bg-paper overflow-hidden">
       <div
         className="absolute inset-0 opacity-10"
         style={{
@@ -28,7 +28,7 @@ function NotFoundContent() {
         }}
       />
       <div className="relative max-w-3xl mx-auto text-center space-y-8">
-        <div className="inline-block bg-dark text-primary font-black text-7xl md:text-9xl px-8 py-4 border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+        <div className="inline-block bg-dark text-paper font-black text-7xl md:text-9xl px-8 py-4 border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
           404
         </div>
         <div className="space-y-4">
@@ -43,13 +43,13 @@ function NotFoundContent() {
         <div className="flex flex-wrap justify-center gap-4">
           <Link
             to="/"
-            className="bg-dark text-primary font-semibold px-6 py-3 text-sm hover:opacity-90 transition-opacity"
+            className="bg-dark text-paper font-semibold px-6 py-3 text-sm hover:opacity-90 transition-opacity"
           >
             Kembali ke Beranda
           </Link>
           <Link
             to="/kontak"
-            className="border-2 border-dark text-dark font-semibold px-6 py-3 text-sm hover:bg-dark hover:text-primary transition-colors"
+            className="border-2 border-dark text-dark font-semibold px-6 py-3 text-sm hover:bg-dark hover:text-paper transition-colors"
           >
             Hubungi Saya
           </Link>

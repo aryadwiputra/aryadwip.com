@@ -63,16 +63,16 @@ export default function ProyekDetail() {
         <section className="bg-white py-16 px-6">
           <div className="max-w-4xl mx-auto space-y-10">
             <Reveal>
-              <div className="border-2 border-black p-6 md:p-8 bg-primary">
+              <div className="border-2 border-black p-6 md:p-8 bg-terracotta">
                 <div className="flex flex-wrap gap-2 mb-4">
-                  <span className="inline-block bg-dark text-primary text-xs font-semibold px-2 py-1">
+                  <span className="inline-block bg-dark text-paper text-xs font-semibold px-2 py-1">
                     {project.tag}
                   </span>
                   <span className="inline-block bg-white text-dark text-xs font-semibold px-2 py-1 border-2 border-black">
                     {project.case_study_label}
                   </span>
                   {"client_name" in project && project.client_name && (
-                    <span className="inline-block bg-blue text-dark text-xs font-semibold px-2 py-1 border-2 border-black">
+                    <span className="inline-block bg-mustard text-dark text-xs font-semibold px-2 py-1 border-2 border-black">
                       Klien: {project.client_name}
                     </span>
                   )}
@@ -97,8 +97,8 @@ export default function ProyekDetail() {
                   <h2 className="text-2xl font-black tracking-tight mb-4">Screenshot</h2>
                   <div className="grid sm:grid-cols-2 gap-4">
                     {project.gallery.map((g) => (
-                      <figure key={g.src} className="border-2 border-black bg-muted">
-                        <div className="aspect-video flex items-center justify-center bg-muted">
+                      <figure key={g.src} className="border-2 border-black bg-paper">
+                        <div className="aspect-video flex items-center justify-center bg-paper">
                           <span className="font-mono text-xs text-gray-500 px-4 text-center">
                             {g.src}
                           </span>
@@ -145,7 +145,7 @@ export default function ProyekDetail() {
             </Reveal>
 
             <Reveal>
-              <section className="border-2 border-black p-6 md:p-8 bg-blue">
+              <section className="border-2 border-black p-6 md:p-8 bg-mustard">
                 <h2 className="text-2xl font-black tracking-tight mb-3">Hasil</h2>
                 <p className="font-medium leading-relaxed">{project.outcome}</p>
               </section>
@@ -158,7 +158,7 @@ export default function ProyekDetail() {
                     href={project.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-dark text-primary font-semibold px-6 py-3 text-sm hover:opacity-90 transition-opacity"
+                    className="bg-dark text-paper font-semibold px-6 py-3 text-sm hover:opacity-90 transition-opacity"
                   >
                     Kunjungi Website →
                   </a>
@@ -168,14 +168,14 @@ export default function ProyekDetail() {
                     href={project.repo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-dark text-primary font-semibold px-6 py-3 text-sm hover:opacity-90 transition-opacity"
+                    className="bg-dark text-paper font-semibold px-6 py-3 text-sm hover:opacity-90 transition-opacity"
                   >
                     Lihat Repository →
                   </a>
                 )}
                 <Link
                   to="/kontak"
-                  className="border-2 border-dark text-dark font-semibold px-6 py-3 text-sm hover:bg-dark hover:text-primary transition-colors"
+                  className="border-2 border-dark text-dark font-semibold px-6 py-3 text-sm hover:bg-dark hover:text-paper transition-colors"
                 >
                   Kerjakan Proyek Serupa
                 </Link>

@@ -1,10 +1,12 @@
 import { Link } from "react-router";
 import { PROJECTS } from "~/lib/portfolio-data";
+import { formatMonthYear } from "~/lib/format";
 
 import Reveal from "~/components/reveal";
 
-const CARD_COLORS = ["bg-pink", "bg-blue", "bg-white", "bg-white", "bg-primary"];
-const CARD_ROTATE = ["rotate-1", "-rotate-1", "rotate-1", "-rotate-1", "rotate-1"];
+const CARD_COLORS = ["bg-mustard", "bg-sage", "bg-white", "bg-white", "bg-terracotta"];
+// Rotasi hanya di kartu featured (i===0) — grid lain rapi, aksen tetap playful.
+// Shadow hanya muncul saat hover — selektif, bukan semua elemen.
 
 export default function BentoProjects() {
   return (
@@ -14,7 +16,7 @@ export default function BentoProjects() {
         className="bg-white py-20 px-6 border-b-2 border-black"
       >
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-black text-center mb-4 tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-4 tracking-tight">
             Proyek
           </h2>
           <p className="text-center text-gray-600 text-lg mb-12 max-w-xl mx-auto">
@@ -23,24 +25,25 @@ export default function BentoProjects() {
           <div className="grid md:grid-cols-3 gap-6">
             {PROJECTS.map((project, i) => {
               const featured = i === 0;
-              const rotate =
-                i === 0
-                  ? "-rotate-1"
-                  : CARD_ROTATE[(i - 1) % CARD_ROTATE.length];
-              const bg =
-                i === 0 ? "bg-primary" : CARD_COLORS[(i - 1) % CARD_COLORS.length];
+              const rotate = featured ? "-rotate-1" : "";
+              const bg = featured
+                ? "bg-terracotta"
+                : CARD_COLORS[(i - 1) % CARD_COLORS.length];
+              const period = project.end_date
+                ? `${formatMonthYear(project.start_date)} – ${formatMonthYear(project.end_date)}`
+                : `${formatMonthYear(project.start_date)} – sekarang`;
               return (
                 <div
                   key={project.title}
                   className={`${bg} border-2 border-black p-6 space-y-4 flex flex-col ${rotate} ${
                     featured ? "md:col-span-2 md:row-span-2 md:p-8" : ""
-                  } hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-shadow`}
+                  } hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-shadow`}
                 >
-                  <span className="text-xs font-semibold bg-dark text-primary px-2 py-1 self-start">
+                  <span className="text-xs font-semibold bg-dark text-paper px-2 py-1 self-start">
                     {project.tag}
                   </span>
                   <h3
-                    className={`font-black tracking-tight ${
+                    className={`font-display font-bold tracking-tight ${
                       featured
                         ? "text-3xl md:text-4xl"
                         : "text-xl"
@@ -54,6 +57,9 @@ export default function BentoProjects() {
                   <div className="space-y-2">
                     <p className="text-xs text-gray-500 font-mono leading-relaxed">
                       {project.stack}
+                    </p>
+                    <p className="font-mono text-[11px] text-gray-500">
+                      {"// "}{period} · {project.case_study_label}
                     </p>
                     <Link
                       to={`/proyek/${project.slug}`}

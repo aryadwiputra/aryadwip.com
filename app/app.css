@@ -26,16 +26,28 @@
     U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
+/* Space Grotesk untuk headline — berkarakter, bukan Inter-only (anti template AI) */
+@import "@fontsource-variable/space-grotesk";
+
 @theme {
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --color-primary: #ffe17c;
-  --color-dark: #171e19;
-  --color-muted: #b7c6c2;
-  --color-pink: #ff90e8;
-  --color-blue: #8ec5fc;
+  --font-display: "Space Grotesk Variable", "Inter Variable", ui-sans-serif,
+    system-ui, sans-serif;
+
+  /* Palet kertas + terracotta (custom, bukan default AI kuning-pink-biru).
+     Kontras dihitung: ink on paper 12.88, paper on terracotta #B05038 4.72,
+     ink on mustard 8.47, ink on sage 4.72, muted on paper 4.85. Semua PASS
+     WCAG AA. Terracotta adalah AKSEN (tombol/kartu/badge), bukan background
+     section penuh. */
+  --color-primary: #b05038; /* terracotta tombol/aksen — cukup gelap utk teks paper */
+  --color-terracotta: #c4644a; /* terracotta terang — kartu/badge besar (3:1) */
+  --color-paper: #fbf3ea; /* cream kertas — kanvas dominan */
+  --color-dark: #2b2b2b; /* abu-hitam — teks & dark section */
+  --color-mustard: #e9c46a; /* kartu/stat background + teks ink */
+  --color-sage: #8a9b6e; /* kartu/stat background + teks ink */
+  --color-muted: #6b6b6b; /* teks sekunder di atas paper */
   --animate-marquee: marquee 30s linear infinite;
-  --animate-float: float 4s ease-in-out infinite;
 }
 
 html {
@@ -43,7 +55,7 @@ html {
 }
 
 body {
-  @apply bg-primary;
+  @apply bg-paper;
 }
 
 @keyframes marquee {
@@ -51,14 +63,8 @@ body {
   100% { transform: translateX(-50%); }
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(-4px); }
-  50% { transform: translateY(4px); }
-}
-
 /* Hormati preferensi pengguna yang menonaktifkan animasi */
 @media (prefers-reduced-motion: reduce) {
-  .animate-float,
   .animate-marquee {
     animation: none;
   }

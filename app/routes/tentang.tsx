@@ -9,7 +9,7 @@ import Reveal from "~/components/reveal";
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
-    title: `Tentang — ${SITE.name}`,
+    title: `Tentang | ${SITE.name}`,
     description:
       "Software developer spesialis Laravel di Indonesia dengan pengalaman 6+ tahun. Membangun aplikasi web end-to-end: API, database, integrasi, hingga deployment.",
     path: "/tentang",
@@ -26,7 +26,7 @@ export default function Tentang() {
           title={
             <>
               Software Developer{" "}
-              <span className="bg-dark text-primary px-2 inline-block -rotate-1">
+              <span className="bg-dark text-paper px-2 inline-block -rotate-1">
                 spesialis Laravel
               </span>
             </>
@@ -37,7 +37,7 @@ export default function Tentang() {
         <section className="bg-white py-16 px-6">
           <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-10 items-start">
             <Reveal className="lg:col-span-1">
-              <div className="bg-primary border-2 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+              <div className="bg-terracotta border-2 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
                 <div className="aspect-square overflow-hidden border-2 border-black">
                   <picture>
                     <source srcSet="/images/arya-dwi-putra.webp" type="image/webp" />
@@ -114,7 +114,7 @@ export default function Tentang() {
                   <h2 className="text-2xl font-black tracking-tight mb-4">Prinsip Kerja Saya</h2>
                   <div className="grid sm:grid-cols-3 gap-4">
                     {TESTIMONIALS.map((t) => (
-                      <div key={t.name} className="border-2 border-black p-4 bg-primary -rotate-1 hover:rotate-0 transition-transform">
+                      <div key={t.name} className="border-2 border-black p-4 bg-terracotta -rotate-1 hover:rotate-0 transition-transform">
                         <p className="text-sm font-bold">{t.name}</p>
                         <p className="text-[10px] uppercase tracking-wider text-gray-600">{t.role}</p>
                         <p className="text-sm text-gray-700 leading-relaxed mt-2">“{t.quote}”</p>
@@ -127,7 +127,7 @@ export default function Tentang() {
           </div>
         </section>
 
-        <section className="bg-primary py-16 px-6 border-t-2 border-black">
+        <section className="bg-paper py-16 px-6 border-t-2 border-black">
           <div className="max-w-7xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-black text-center mb-4 tracking-tight">
               Riwayat Pengalaman
@@ -136,7 +136,7 @@ export default function Tentang() {
               {EXPERIENCE.map((exp) => (
                 <Reveal key={exp.company + exp.period}>
                   <div className="border-2 border-black p-6 bg-white hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-shadow">
-                    <span className="inline-block bg-dark text-primary text-xs font-semibold px-2 py-1 mb-3">
+                    <span className="inline-block bg-dark text-paper text-xs font-semibold px-2 py-1 mb-3">
                       {exp.period}
                     </span>
                     <h3 className="text-xl font-bold">{exp.role}</h3>
@@ -160,13 +160,13 @@ export default function Tentang() {
             <div className="flex flex-wrap justify-center gap-4 pt-2">
               <Link
                 to="/layanan"
-                className="bg-dark text-primary font-semibold px-8 py-4 text-base hover:opacity-90 transition-opacity"
+                className="bg-dark text-paper font-semibold px-8 py-4 text-base hover:opacity-90 transition-opacity"
               >
                 Lihat Layanan
               </Link>
               <Link
                 to="/kontak"
-                className="border-2 border-dark text-dark font-semibold px-8 py-4 text-base hover:bg-dark hover:text-primary transition-colors"
+                className="border-2 border-dark text-dark font-semibold px-8 py-4 text-base hover:bg-dark hover:text-paper transition-colors"
               >
                 Hubungi Saya
               </Link>
@@ -174,15 +174,15 @@ export default function Tentang() {
           </div>
         </section>
 
-        <section className="bg-dark text-primary py-16 px-6 border-t-2 border-black">
+        <section className="bg-dark text-paper py-16 px-6 border-t-2 border-black">
           <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-block bg-primary text-dark text-sm font-semibold px-3 py-1 font-mono">
+            <span className="inline-block bg-terracotta text-paper text-sm font-semibold px-3 py-1 font-mono">
               {"// "}PRODUK SAYA SENDIRI
             </span>
             <h2 className="text-3xl md:text-4xl font-black mt-4 mb-3 tracking-tight">
               Saya juga membangun {SITE.product.name}
             </h2>
-            <p className="text-primary/80 text-lg max-w-2xl mx-auto mb-6">
+            <p className="text-paper/80 text-lg max-w-2xl mx-auto mb-6">
               {SITE.product.description}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
@@ -190,7 +190,7 @@ export default function Tentang() {
                 href={SITE.product.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-primary text-dark font-semibold px-8 py-4 text-base hover:opacity-90 transition-opacity"
+                className="bg-terracotta text-paper font-semibold px-8 py-4 text-base hover:opacity-90 transition-opacity"
               >
                 Kunjungi {SITE.product.name} →
               </a>

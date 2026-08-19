@@ -8,9 +8,9 @@ import Reveal from "~/components/reveal";
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
-    title: `Kontak — ${SITE.name}`,
+    title: `Kontak | ${SITE.name}`,
     description:
-      "Hubungi Arya Dwi Putra — software developer spesialis Laravel. Konsultasi pembuatan aplikasi Laravel, API design, dan arsitektur untuk proyek Anda.",
+      "Hubungi Arya Dwi Putra, software developer spesialis Laravel. Konsultasi pembuatan aplikasi Laravel, API design, dan arsitektur untuk proyek Anda.",
     path: "/kontak",
   });
 }
@@ -55,7 +55,7 @@ function ContactForm() {
     `Halo Arya, saya ${name}.\n\n${message || "(isi pesan di bawah)"}`
   )}`;
   const mailLink = `mailto:${SITE.email}?subject=${encodeURIComponent(
-    `Kolaborasi dari ${name} — aryadwip.com`
+    `Kolaborasi dari ${name} | aryadwip.com`
   )}&body=${encodeURIComponent(
     `Halo Arya, saya ${name}${form.email ? ` (${form.email})` : ""}.\n\n${message}`
   )}`;
@@ -108,19 +108,19 @@ function ContactForm() {
           href={waLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-dark text-primary font-semibold px-6 py-3 text-sm hover:opacity-90 transition-opacity"
+          className="bg-dark text-paper font-semibold px-6 py-3 text-sm hover:opacity-90 transition-opacity"
         >
           Kirim via WhatsApp
         </a>
         <a
           href={mailLink}
-          className="border-2 border-dark text-dark font-semibold px-6 py-3 text-sm hover:bg-dark hover:text-primary transition-colors"
+          className="border-2 border-dark text-dark font-semibold px-6 py-3 text-sm hover:bg-dark hover:text-paper transition-colors"
         >
           Kirim via Email
         </a>
       </div>
       <p className="text-xs text-gray-500">
-        Pesan Anda akan terbuka di WhatsApp / aplikasi email Anda — tanpa perlu server di sisi kami.
+        Pesan Anda akan terbuka di WhatsApp / aplikasi email Anda, tanpa perlu server di sisi kami.
       </p>
     </form>
   );
@@ -131,7 +131,7 @@ export default function Contact() {
     <>
       <Navbar />
       <main>
-        <section className="relative pt-32 pb-20 px-6 bg-primary overflow-hidden">
+        <section className="relative pt-32 pb-20 px-6 bg-paper overflow-hidden">
           <div
             className="absolute inset-0 opacity-10"
             style={{
@@ -141,7 +141,7 @@ export default function Contact() {
             }}
           />
           <div className="relative max-w-7xl mx-auto text-center space-y-6">
-            <span className="inline-block bg-dark text-primary text-sm font-semibold px-3 py-1">
+            <span className="inline-block bg-dark text-paper text-sm font-semibold px-3 py-1">
               Kontak
             </span>
             <h1 className="text-4xl md:text-5xl font-bold">
@@ -149,7 +149,7 @@ export default function Contact() {
             </h1>
             <p className="text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
               Butuh software developer spesialis Laravel untuk proyek Anda?
-              Ceritakan kebutuhan Anda — dari pembuatan aplikasi, API design,
+              Ceritakan kebutuhan Anda, dari pembuatan aplikasi, API design,
               hingga arsitektur yang scalable dan maintainable.
             </p>
           </div>
@@ -162,7 +162,7 @@ export default function Contact() {
               {CONTACT_INFO.map((info) => (
                 <div
                   key={info.label}
-                  className="bg-primary border-2 border-black p-5 space-y-1"
+                  className="bg-terracotta border-2 border-black p-5 space-y-1"
                 >
                   <p className="text-xs font-bold tracking-widest text-gray-600 uppercase">
                     {info.label}
@@ -191,7 +191,7 @@ export default function Contact() {
                   href={SITE.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="border-2 border-dark px-4 py-2 text-sm font-semibold hover:bg-dark hover:text-primary transition-colors"
+                  className="border-2 border-dark px-4 py-2 text-sm font-semibold hover:bg-dark hover:text-paper transition-colors"
                 >
                   GitHub
                 </a>
@@ -199,7 +199,7 @@ export default function Contact() {
                   href={SITE.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="border-2 border-dark px-4 py-2 text-sm font-semibold hover:bg-dark hover:text-primary transition-colors"
+                  className="border-2 border-dark px-4 py-2 text-sm font-semibold hover:bg-dark hover:text-paper transition-colors"
                 >
                   LinkedIn
                 </a>

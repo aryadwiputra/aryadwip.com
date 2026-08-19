@@ -3,17 +3,17 @@ import { FEATURES, STATS } from "~/lib/portfolio-data";
 import Reveal from "~/components/reveal";
 
 const STAT_CARDS = [
-  { ...STATS[0], color: "bg-pink", rotate: "-rotate-1" },
-  { ...STATS[1], color: "bg-blue", rotate: "rotate-1" },
+  { ...STATS[0], color: "bg-mustard", note: "// 2019–sekarang" },
+  { ...STATS[1], color: "bg-sage", note: "// klien & mandiri" },
 ];
-const SKILL_ROTATE = ["", "-rotate-1", "rotate-1"];
+// Rotasi hanya di 2 kartu stat (aksen), grid features tanpa rotasi (rapi).
 
 export default function Features() {
   return (
     <Reveal>
       <section
         id="keahlian"
-        className="relative py-20 px-6 bg-primary border-y-2 border-black overflow-hidden"
+        className="relative py-20 px-6 bg-paper border-y-2 border-black overflow-hidden"
       >
         <div
           className="absolute inset-0 opacity-10"
@@ -24,7 +24,7 @@ export default function Features() {
           }}
         />
         <div className="relative max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-black text-center mb-4 tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-center mb-4 tracking-tight">
             Keahlian
           </h2>
           <p className="text-center text-lg mb-12 max-w-xl mx-auto">
@@ -32,19 +32,26 @@ export default function Features() {
             Laravel.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {STAT_CARDS.map((stat) => (
+            {STAT_CARDS.map((stat, i) => (
               <div
                 key={stat.value}
-                className={`${stat.color} border-2 border-black p-6 flex flex-col justify-between ${stat.rotate} hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-shadow`}
+                className={`${stat.color} border-2 border-black p-6 flex flex-col justify-between shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] ${
+                  i % 2 === 0 ? "-rotate-1" : "rotate-1"
+                }`}
               >
-                <p className="font-black text-6xl leading-none">{stat.value}</p>
+                <p className="font-display font-bold text-6xl leading-none">
+                  {stat.value}
+                </p>
                 <p className="text-sm font-semibold mt-4">{stat.label}</p>
+                <p className="font-mono text-[11px] text-dark/50 mt-1">
+                  {stat.note}
+                </p>
               </div>
             ))}
             {FEATURES.map((feature, i) => (
               <div
                 key={feature.title}
-                className={`bg-white border-2 border-black p-6 space-y-3 ${SKILL_ROTATE[i % SKILL_ROTATE.length]} hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-shadow`}
+                className="bg-white border-2 border-black p-6 space-y-3 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-shadow"
               >
                 <img
                   src={feature.icon}

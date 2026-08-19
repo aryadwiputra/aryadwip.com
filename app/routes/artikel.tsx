@@ -54,7 +54,7 @@ export default function Artikel() {
                   }`}
                 >
                   <div className="flex flex-wrap items-center gap-3 mb-3 text-xs font-semibold">
-                    <span className="bg-dark text-primary px-2 py-1">{article.category}</span>
+                    <span className="bg-dark text-paper px-2 py-1">{article.category}</span>
                     <span className="text-gray-600">{formatDate(article.date)}</span>
                     <span className="text-gray-600">• {article.readTime} menit baca</span>
                   </div>

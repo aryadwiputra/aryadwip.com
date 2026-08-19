@@ -17,7 +17,7 @@ export function meta({}: Route.MetaArgs) {
   });
 }
 
-const CARD_COLORS = ["bg-primary", "bg-pink", "bg-blue", "bg-white", "bg-white", "bg-primary"];
+const CARD_COLORS = ["bg-terracotta", "bg-sage", "bg-mustard", "bg-white", "bg-white", "bg-terracotta"];
 const CARD_ROTATE = ["-rotate-1", "rotate-1", "-rotate-1", "rotate-1", "", "-rotate-1"];
 
 const ITEMLIST_SCHEMA = {
@@ -43,7 +43,7 @@ export default function Proyek() {
         <PageHero
           eyebrow="PORTOFOLIO"
           title="Proyek yang Pernah Saya Kerjakan"
-          description="Dari platform kolaborasi, sistem informasi instansi, hingga POS retail — semuanya dibangun dengan Laravel. Klik untuk melihat studi kasusnya."
+          description="Dari platform kolaborasi, sistem informasi instansi, hingga POS retail, semuanya dibangun dengan Laravel. Klik untuk melihat studi kasusnya."
         />
 
         <section className="bg-white py-16 px-6">
@@ -59,7 +59,7 @@ export default function Proyek() {
                     className={`block h-full border-2 border-black p-6 flex flex-col gap-3 ${CARD_COLORS[i % CARD_COLORS.length]} ${CARD_ROTATE[i % CARD_ROTATE.length]} hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-shadow`}
                   >
                     <div className="flex flex-wrap gap-2">
-                      <span className="text-xs font-semibold bg-dark text-primary px-2 py-1">
+                      <span className="text-xs font-semibold bg-dark text-paper px-2 py-1">
                         {project.tag}
                       </span>
                       <span className="text-xs font-semibold border-2 border-black px-2 py-1">

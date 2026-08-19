@@ -111,23 +111,23 @@ export default function ArtikelDetail() {
             </div>
 
             <Reveal>
-              <div className="mt-12 bg-primary border-2 border-black p-6 md:p-8 text-center">
+              <div className="mt-12 bg-terracotta border-2 border-black p-6 md:p-8 text-center">
                 <h2 className="text-2xl font-black tracking-tight mb-2">
                   Butuh Bantuan dengan Proyek Laravel?
                 </h2>
                 <p className="text-gray-700 mb-5">
-                  Saya siap membantu — konsultasi awal gratis via WhatsApp.
+                  Saya siap membantu, konsultasi awal gratis via WhatsApp.
                 </p>
                 <div className="flex flex-wrap justify-center gap-3">
                   <Link
                     to="/layanan"
-                    className="bg-dark text-primary font-semibold px-6 py-3 text-sm hover:opacity-90 transition-opacity"
+                    className="bg-dark text-paper font-semibold px-6 py-3 text-sm hover:opacity-90 transition-opacity"
                   >
                     Lihat Layanan
                   </Link>
                   <Link
                     to="/kontak"
-                    className="border-2 border-dark text-dark font-semibold px-6 py-3 text-sm hover:bg-dark hover:text-primary transition-colors"
+                    className="border-2 border-dark text-dark font-semibold px-6 py-3 text-sm hover:bg-dark hover:text-paper transition-colors"
                   >
                     Hubungi Saya
                   </Link>
@@ -144,7 +144,7 @@ export default function ArtikelDetail() {
                     to={`/artikel/${a.slug}`}
                     className="border-2 border-black p-5 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-shadow"
                   >
-                    <span className="text-xs font-semibold bg-dark text-primary px-2 py-1">
+                    <span className="text-xs font-semibold bg-dark text-paper px-2 py-1">
                       {a.category}
                     </span>
                     <p className="font-bold mt-3 leading-snug">{a.title}</p>

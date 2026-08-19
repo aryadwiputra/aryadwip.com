@@ -3,15 +3,15 @@ import { TESTIMONIALS } from "~/lib/portfolio-data";
 import Reveal from "~/components/reveal";
 
 const STICKERS = [
-  { bg: "bg-white", rotate: "rotate-2", tape: "bg-pink", star: "text-primary" },
-  { bg: "bg-pink", rotate: "-rotate-2", tape: "bg-blue", star: "text-dark" },
-  { bg: "bg-blue", rotate: "rotate-1", tape: "bg-primary", star: "text-dark" },
+  { bg: "bg-white", rotate: "rotate-2", tape: "bg-sage", star: "text-terracotta" },
+  { bg: "bg-sage", rotate: "-rotate-2", tape: "bg-mustard", star: "text-dark" },
+  { bg: "bg-mustard", rotate: "rotate-1", tape: "bg-terracotta", star: "text-dark" },
 ];
 
 export default function Testimonials() {
   return (
     <Reveal>
-      <section className="bg-muted py-20 px-6 border-b-2 border-black">
+      <section className="bg-paper py-20 px-6 border-b-2 border-black">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-black text-center mb-12 tracking-tight">
             Nilai yang Saya Bawa

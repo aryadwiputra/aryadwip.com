@@ -24,7 +24,7 @@ export default function Testimoni() {
         <PageHero
           eyebrow="TESTIMONI & KEPERCAYAAN"
           title="Apa yang Saya Jaga di Setiap Proyek"
-          description="Lebih dari sekadar kode — cara kerja, arsitektur, dan pengalaman production adalah yang membuat klien kembali dan merekomendasikan."
+          description="Lebih dari sekadar kode: cara kerja, arsitektur, dan pengalaman production adalah yang membuat klien kembali dan merekomendasikan."
         />
 
         <section className="bg-white py-16 px-6">
@@ -33,7 +33,7 @@ export default function Testimoni() {
               <Reveal key={t.name}>
                 <div
                   className={`h-full border-2 border-black p-6 md:p-8 flex flex-col gap-4 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] ${
-                    i % 3 === 0 ? "bg-primary" : i % 3 === 1 ? "bg-pink" : "bg-blue"
+                    i % 3 === 0 ? "bg-terracotta" : i % 3 === 1 ? "bg-sage" : "bg-mustard"
                   } ${i % 2 === 0 ? "rotate-1" : "-rotate-1"} hover:rotate-0 transition-transform`}
                 >
                   <div className="w-10 h-10 border-2 border-black bg-white flex items-center justify-center font-black">
@@ -48,37 +48,37 @@ export default function Testimoni() {
           </div>
         </section>
 
-        <section className="bg-dark text-primary py-16 px-6 border-y-2 border-black">
+        <section className="bg-dark text-paper py-16 px-6 border-y-2 border-black">
           <div className="max-w-3xl mx-auto text-center space-y-4">
             <h2 className="text-3xl md:text-4xl font-black tracking-tight">
               Dipercaya oleh Instansi &amp; Korporasi
             </h2>
-            <p className="text-primary/70 text-lg leading-relaxed">
-              Pernah mengerjakan proyek untuk {CLIENTS.join(", ")} — dari lembaga negara hingga
+            <p className="text-paper/70 text-lg leading-relaxed">
+              Pernah mengerjakan proyek untuk {CLIENTS.join(", ")}: dari lembaga negara hingga
               grup korporasi berskala nasional.
             </p>
           </div>
         </section>
 
-        <section className="bg-primary py-16 px-6">
+        <section className="bg-paper py-16 px-6">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <h2 className="text-3xl md:text-4xl font-black tracking-tight">
               Jadilah Klien Berikutnya
             </h2>
             <p className="text-lg leading-relaxed">
-              Ceritakan kebutuhan proyek Anda — saya akan menunjukkan bagaimana cara saya
+              Ceritakan kebutuhan proyek Anda, saya akan menunjukkan bagaimana cara saya
               bekerja dan apa yang bisa Anda harapkan.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 to="/kontak"
-                className="bg-dark text-primary font-semibold px-8 py-4 text-base hover:opacity-90 transition-opacity"
+                className="bg-dark text-paper font-semibold px-8 py-4 text-base hover:opacity-90 transition-opacity"
               >
                 Buka Halaman Kontak
               </Link>
               <Link
                 to="/proyek"
-                className="border-2 border-dark text-dark font-semibold px-8 py-4 text-base hover:bg-dark hover:text-primary transition-colors"
+                className="border-2 border-dark text-dark font-semibold px-8 py-4 text-base hover:bg-dark hover:text-paper transition-colors"
               >
                 Lihat Portofolio
               </Link>

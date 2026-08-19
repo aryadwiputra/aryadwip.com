@@ -1,37 +1,26 @@
 import { Link } from "react-router";
 import { SITE, STATS } from "~/lib/portfolio-data";
 
-const TECH_RING = [
-  { name: "Laravel", icon: "/icons/tech/laravel.svg" },
-  { name: "PHP", icon: "/icons/tech/php.svg" },
-  { name: "MySQL", icon: "/icons/tech/mysql.svg" },
-  { name: "PostgreSQL", icon: "/icons/tech/postgresql.svg" },
-  { name: "Redis", icon: "/icons/tech/redis.svg" },
-  { name: "Docker", icon: "/icons/tech/docker.svg" },
-  { name: "React", icon: "/icons/tech/react.svg" },
-  { name: "Tailwind", icon: "/icons/tech/tailwindcss.svg" },
-];
-
-function TerminalCard() {
+// Kartu Profil Developer — pengganti terminal window & tech ring (klise
+// template AI). Foto asli + info real, tetap neobrutalism (border 2px,
+// shadow solid, rotasi tipis). Foto manusia tidak bisa dipalsukan AI.
+function ProfileCard() {
   return (
-    <div
-      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[58%]"
-      role="img"
-      aria-label="Terminal Arya Dwi Putra — status open for projects"
-    >
-      <div className="bg-white border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
-        {/* window bar */}
-        <div className="bg-dark text-primary flex items-center gap-1.5 px-3 py-2 border-b-2 border-black">
-          <span aria-hidden="true" className="w-2.5 h-2.5 rounded-full bg-pink border border-black" />
-          <span aria-hidden="true" className="w-2.5 h-2.5 rounded-full bg-primary border border-black" />
-          <span aria-hidden="true" className="w-2.5 h-2.5 rounded-full bg-blue border border-black" />
-          <span className="ml-2 font-mono text-[10px] tracking-wider truncate">
-            aryadwiputra@dev ~
+    <div className="relative w-full max-w-md mx-auto">
+      {/* Kartu utama */}
+      <div className="relative border-2 border-black bg-white shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] rotate-1">
+        {/* header bar */}
+        <div className="bg-dark text-paper flex items-center justify-between px-4 py-2.5 border-b-2 border-black">
+          <span className="font-mono text-xs tracking-wider">
+            aryadwiputra@dev
+          </span>
+          <span className="font-mono text-[10px] text-paper/70">
+            // open for projects
           </span>
         </div>
-        {/* body */}
-        <div className="p-2">
-          <div className="relative aspect-square overflow-hidden border-2 border-black">
+        {/* foto */}
+        <div className="p-3">
+          <div className="border-2 border-black overflow-hidden">
             <picture>
               <source srcSet="/images/arya-dwi-putra.webp" type="image/webp" />
               <img
@@ -41,81 +30,34 @@ function TerminalCard() {
                 height={508}
                 fetchPriority="high"
                 decoding="async"
-                className="w-full h-full object-cover"
+                className="w-full h-auto object-cover"
               />
             </picture>
           </div>
-          <div className="mt-2 space-y-0.5 font-mono text-[10px] leading-snug">
-            <p className="truncate">
-              <span className="text-gray-400">$</span> whoami
-              <span className="text-gray-300"> → </span>
-              <span className="font-bold">arya-dwi-putra</span>
-            </p>
-            <p className="truncate">
-              <span className="text-gray-400">$</span> stack
-              <span className="text-gray-300"> → </span>
-              laravel · php · mysql
-            </p>
-            <p className="truncate">
-              <span className="text-gray-400">$</span> status
-              <span className="text-gray-300"> → </span>
-              <span className="font-bold text-green-700">OPEN FOR PROJECTS</span>
-            </p>
+          {/* info real */}
+          <div className="mt-3 px-1 pb-1 space-y-1.5">
+            <p className="font-bold text-lg leading-tight">{SITE.name}</p>
+            <p className="font-mono text-xs text-gray-600">{SITE.title}</p>
+            <div className="border-t-2 border-dashed border-black/20 pt-2 mt-2 space-y-1 font-mono text-[11px] leading-snug">
+              <p className="truncate">
+                <span className="text-gray-400">//</span> {SITE.location} · 6+ tahun
+              </p>
+              <p className="truncate">
+                <span className="text-gray-400">//</span> klien: LPSK · Wifiku · HATTI
+              </p>
+              <p className="truncate">
+                <span className="text-gray-400">//</span> stack: laravel · mysql · redis
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-}
-
-function HeroVisual() {
-  return (
-    <div className="relative w-full max-w-md mx-auto aspect-square bg-primary border-2 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] overflow-hidden">
-      <div
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, black 1px, transparent 1px)",
-          backgroundSize: "24px 24px",
-        }}
-      />
-      <div className="absolute inset-5 rounded-full border-2 border-dashed border-dark/15" />
-      <div className="absolute inset-12 rounded-full border border-dark/10" />
-      {TECH_RING.map((tech, i) => {
-        const angle = (i / TECH_RING.length) * 2 * Math.PI - Math.PI / 2;
-        const radius = 38;
-        const top = 50 + radius * Math.sin(angle);
-        const left = 50 + radius * Math.cos(angle);
-        return (
-          <div
-            key={tech.name}
-            className="absolute"
-            style={{ top: `${top}%`, left: `${left}%` }}
-          >
-            <div className="-translate-x-1/2 -translate-y-1/2">
-              <div
-                className="animate-float"
-                style={{ animationDelay: `${i * 0.5}s` }}
-              >
-                <div
-                  title={tech.name}
-                  aria-label={tech.name}
-                  className="bg-white border-2 border-dark p-1.5 rounded-lg shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-transform duration-200 hover:scale-110 hover:rotate-3 hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-                >
-                  <img
-                    src={tech.icon}
-                    alt=""
-                    width={24}
-                    height={24}
-                    className="w-5 h-5 md:w-6 md:h-6"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      })}
-      <TerminalCard />
+      {/* sticky note kecil — aksen terracotta */}
+      <div className="absolute -bottom-4 -right-3 bg-terracotta border-2 border-black px-3 py-2 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] -rotate-2">
+        <p className="font-mono text-[11px] font-bold text-paper">
+          founder: marikoding.com
+        </p>
+      </div>
     </div>
   );
 }
@@ -124,47 +66,46 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[640px] pt-32 pb-28 px-6 bg-primary overflow-hidden"
+      className="relative min-h-[640px] pt-32 pb-28 px-6 bg-paper overflow-hidden"
     >
       <div
         className="absolute inset-0 opacity-10"
         style={{
-          backgroundImage:
-            "radial-gradient(circle, black 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, black 1px, transparent 1px)",
           backgroundSize: "32px 32px",
         }}
       />
       <div className="relative max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
         <div className="space-y-6">
           <div className="flex flex-wrap gap-3">
-            <span className="inline-block bg-dark text-primary text-sm font-semibold px-3 py-1 font-mono">
+            <span className="inline-block bg-dark text-paper text-sm font-semibold px-3 py-1 font-mono">
               {"// "}6+ TAHUN LARAVEL
             </span>
-            <span className="inline-block bg-dark text-primary text-sm font-semibold px-3 py-1 font-mono">
+            <span className="inline-block bg-dark text-paper text-sm font-semibold px-3 py-1 font-mono">
               {"// "}FOUNDER MARIKODING.COM
             </span>
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.05] tracking-tight">
+          <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
             Software Developer{" "}
-            <span className="bg-dark text-primary px-2 inline-block -rotate-1">
+            <span className="bg-dark text-paper px-2 inline-block -rotate-1">
               &amp; Laravel Specialist
             </span>
           </h1>
-          <p className="text-lg md:text-xl leading-relaxed max-w-lg">
+          <p className="text-lg md:text-xl leading-relaxed max-w-lg text-dark/80">
             {SITE.tagline}
           </p>
           <div className="flex flex-wrap gap-4">
             <a
               href="#proyek"
-              className="bg-dark text-primary font-semibold px-6 py-3 text-sm hover:opacity-90 transition-opacity"
+              className="bg-dark text-paper font-semibold px-6 py-3 text-sm hover:opacity-90 transition-opacity shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
             >
-              Lihat Portfolio
+              Lihat Studi Kasus Proyek
             </a>
             <Link
               to="/kontak"
-              className="border-2 border-dark text-dark font-semibold px-6 py-3 text-sm hover:bg-dark hover:text-primary transition-colors"
+              className="border-2 border-dark text-dark font-semibold px-6 py-3 text-sm hover:bg-dark hover:text-paper transition-colors"
             >
-              Hubungi Saya
+              Diskusikan Proyek Anda
             </Link>
           </div>
           <div className="pt-1">
@@ -172,13 +113,14 @@ export default function Hero() {
               to="/layanan"
               className="text-sm font-semibold underline underline-offset-4 hover:text-gray-700"
             >
-              Lihat Layanan Jasa →
+              Lihat Layanan Jasa
             </Link>
           </div>
-          <div className="grid grid-cols-3 border-2 border-black bg-white divide-x-2 divide-black">
+          {/* Stats: angka + anotasi sumber */}
+          <div className="grid grid-cols-3 border-2 border-black bg-white divide-x-2 divide-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
             {STATS.map((stat) => (
               <div key={stat.short} className="p-3 text-center">
-                <p className="font-black text-2xl md:text-3xl leading-none">
+                <p className="font-display font-bold text-2xl md:text-3xl leading-none">
                   {stat.value}
                 </p>
                 <p className="text-[10px] uppercase tracking-wider text-gray-600 mt-1">
@@ -187,35 +129,9 @@ export default function Hero() {
               </div>
             ))}
           </div>
-          <div className="flex items-center gap-4 pt-2">
-            <div className="flex -space-x-2">
-              {[
-                "/logos/clients/logo-lpsk.png",
-                "/logos/clients/wifiku-logo.png",
-                "/logos/clients/citanusa.png",
-              ].map((src) => (
-                <div
-                  key={src}
-                  className="w-9 h-9 rounded-full border-2 border-dark bg-white overflow-hidden"
-                >
-                  <img
-                    src={src}
-                    alt=""
-                    width={36}
-                    height={36}
-                    loading="lazy"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              ))}
-            </div>
-            <span className="text-sm font-medium">
-              Dipercaya oleh instansi pemerintah &amp; korporasi
-            </span>
-          </div>
         </div>
         <div className="w-full">
-          <HeroVisual />
+          <ProfileCard />
         </div>
       </div>
     </section>

@@ -10,7 +10,7 @@ export default function Navbar() {
     href.startsWith("#") ? (onHome ? href : `/${href}`) : href;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-primary border-b-2 border-black">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-paper border-b-2 border-black">
       <div className="max-w-7xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
         <Link to="/" className="font-bold text-xl tracking-tight">
           aryadwip.com
@@ -24,7 +24,7 @@ export default function Navbar() {
         </div>
         <Link
           to="/kontak"
-          className="bg-dark text-primary px-5 py-3 font-semibold text-sm hover:opacity-90 transition-opacity hidden md:block"
+          className="bg-dark text-paper px-5 py-3 font-semibold text-sm hover:opacity-90 transition-opacity hidden md:block"
         >
           Hubungi Saya
         </Link>
@@ -42,13 +42,13 @@ function MobileMenu({ anchorHref }: { anchorHref: (href: string) => string }) {
           <path d="M3 12h18M3 6h18M3 18h18" />
         </svg>
       </summary>
-      <div className="absolute right-0 top-full mt-2 bg-primary border-2 border-black shadow-lg w-48">
+      <div className="absolute right-0 top-full mt-2 bg-paper border-2 border-black shadow-lg w-48">
         {NAV_ITEMS.map((item) => (
           <Link key={item.href} to={anchorHref(item.href)} className="block px-4 py-3 font-medium border-b border-black/20 hover:bg-black/5">
             {item.label}
           </Link>
         ))}
-        <Link to="/kontak" className="block px-4 py-3 font-semibold bg-dark text-primary text-center">
+        <Link to="/kontak" className="block px-4 py-3 font-semibold bg-dark text-paper text-center">
           Hubungi Saya
         </Link>
       </div>

@@ -9,7 +9,7 @@ import Reveal from "~/components/reveal";
 
 export function meta({}: Route.MetaArgs) {
   return pageMeta({
-    title: `FAQ — ${SITE.name}`,
+    title: `FAQ | ${SITE.name}`,
     description:
       "Pertanyaan umum tentang jasa pembuatan website & aplikasi Laravel: biaya, durasi, proses kerja, maintenance, pembayaran, dan migrasi sistem lama.",
     path: "/faq",
@@ -50,7 +50,7 @@ export default function Faq() {
                     <span>{faq.q}</span>
                     <span
                       aria-hidden="true"
-                      className="w-8 h-8 shrink-0 border-2 border-black flex items-center justify-center font-black group-open:bg-dark group-open:text-primary"
+                      className="w-8 h-8 shrink-0 border-2 border-black flex items-center justify-center font-black group-open:bg-dark group-open:text-paper"
                     >
                       <span className="group-open:hidden">+</span>
                       <span className="hidden group-open:inline">−</span>
@@ -63,7 +63,7 @@ export default function Faq() {
           </div>
         </section>
 
-        <section className="bg-primary py-16 px-6 border-t-2 border-black">
+        <section className="bg-paper py-16 px-6 border-t-2 border-black">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <h2 className="text-3xl md:text-4xl font-black tracking-tight">
               Pertanyaan Lain?
@@ -75,7 +75,7 @@ export default function Faq() {
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 to="/kontak"
-                className="bg-dark text-primary font-semibold px-8 py-4 text-base hover:opacity-90 transition-opacity"
+                className="bg-dark text-paper font-semibold px-8 py-4 text-base hover:opacity-90 transition-opacity"
               >
                 Hubungi Saya
               </Link>
@@ -83,7 +83,7 @@ export default function Faq() {
                 href={`https://wa.me/${SITE.wa}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border-2 border-dark text-dark font-semibold px-8 py-4 text-base hover:bg-dark hover:text-primary transition-colors"
+                className="border-2 border-dark text-dark font-semibold px-8 py-4 text-base hover:bg-dark hover:text-paper transition-colors"
               >
                 WhatsApp
               </a>

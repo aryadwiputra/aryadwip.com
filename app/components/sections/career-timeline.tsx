@@ -31,7 +31,7 @@ export default function CareerTimeline() {
                 >
                   {/* node */}
                   <div
-                    className={`absolute top-1 left-4 w-9 h-9 rounded-full bg-primary border-2 border-dark flex items-center justify-center text-sm font-bold z-10 ${
+                    className={`absolute top-1 left-4 w-9 h-9 rounded-full bg-terracotta border-2 border-dark flex items-center justify-center text-sm font-bold z-10 ${
                       left
                         ? "md:left-full md:-translate-x-1/2"
                         : "md:left-0 md:-translate-x-1/2"
@@ -40,7 +40,7 @@ export default function CareerTimeline() {
                     {i + 1}
                   </div>
                   <div className="border-2 border-black p-6 bg-white hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-shadow">
-                    <span className="inline-block bg-dark text-primary text-xs font-semibold px-2 py-1 mb-3">
+                    <span className="inline-block bg-dark text-paper text-xs font-semibold px-2 py-1 mb-3">
                       {exp.period}
                     </span>
                     <h3 className="text-xl font-bold">{exp.role}</h3>
